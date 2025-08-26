@@ -1,0 +1,1 @@
+C:\Users\tnert\OneDrive\Documents\GitHub\react-testing\recttesting2\recttesting2\target\wasm32-unknown-unknown\debug\recttesting2.wasm: C:\Users\tnert\OneDrive\Documents\GitHub\react-testing\recttesting2\recttesting2\src\lib.rs
