@@ -1,0 +1,10 @@
+C:\Users\tnert\OneDrive\Documents\GitHub\react-testing\frissonic-formulae\target\wasm32-unknown-unknown\debug\deps\stacker-32fd2b69e4dc409f.d: C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\lib.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\mod.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\fallback.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\alloc_stack_restore_guard.rs
+
+C:\Users\tnert\OneDrive\Documents\GitHub\react-testing\frissonic-formulae\target\wasm32-unknown-unknown\debug\deps\libstacker-32fd2b69e4dc409f.rlib: C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\lib.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\mod.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\fallback.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\alloc_stack_restore_guard.rs
+
+C:\Users\tnert\OneDrive\Documents\GitHub\react-testing\frissonic-formulae\target\wasm32-unknown-unknown\debug\deps\libstacker-32fd2b69e4dc409f.rmeta: C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\lib.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\mod.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\fallback.rs C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\alloc_stack_restore_guard.rs
+
+C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\lib.rs:
+C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\mod.rs:
+C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\backends\fallback.rs:
+C:\Users\tnert\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\stacker-0.1.21\src\alloc_stack_restore_guard.rs:

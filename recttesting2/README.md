@@ -1,3 +1,0 @@
-```shell
-cargo generate
-```

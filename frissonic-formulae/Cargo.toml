@@ -1,0 +1,30 @@
+[package]
+name = "frissonic-formulae"
+version = "0.0.1"
+authors = ["thatchedroof <tnert.wire100@gmail.com>"]
+edition = "2021"
+
+[lib]
+name = "frissonic_formulae"
+path = "src/lib.rs"
+crate-type = ["cdylib", "lib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+wasm-bindgen = "0.2.92"
+console_error_panic_hook = { version = "0.1.7", optional = true }
+wasm-logger = "0.2.0"
+ron = "0.10.1"
+serde = { version = "1.0.219", features = ["derive"] }
+web-sys = "0.3.77"
+guitar_chords = { path = "../../guitar-chords/guitar_chords", version = "*" }
+regex = "1.11.1"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.34"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
