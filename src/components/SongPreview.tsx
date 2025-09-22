@@ -1,5 +1,5 @@
 import { ChordData } from 'src/lib/utils.js'
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card.js'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.js'
 
 export default function SongPreview({ data, setActive }: { data: ChordData; setActive: () => void }) {
   return (
@@ -8,7 +8,7 @@ export default function SongPreview({ data, setActive }: { data: ChordData; setA
         <CardTitle className="text-lg font-bold">{data.name}</CardTitle>
       </CardHeader>
       <CardContent>
-        <pre className="whitespace-pre-wrap">{data.chords}</pre>
+        <pre className="whitespace-pre-wrap">{data.chords?.join('; ')}</pre>
       </CardContent>
     </Card>
   )

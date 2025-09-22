@@ -23,23 +23,24 @@ export type Marker = {
 }
 
 export class ChordData {
-  chords?: string
-  key?: string
-  bpmStart?: number
-  bpmEnd?: number
-  bpmSteps?: number
+  chords?: string[]
+  key?: string[]
+  bpmStart?: number[]
+  bpmEnd?: number[]
+  bpmSteps?: number[]
   videoId?: string
   chordWebsiteId?: string
   name?: string
   time?: number
-  startTime?: number
-  endTime?: number
+  startTime?: number[]
+  endTime?: number[]
   cycles?: number[]
-  multiplier?: number
+  chordTimes?: number[][]
+  multiplier?: number[]
   todo?: boolean
 }
 
-export const numberKeys: (keyof ChordData)[] = ['bpmStart', 'bpmEnd', 'bpmSteps', 'startTime', 'endTime']
+export const numberKeys = ['bpmStart', 'bpmEnd', 'bpmSteps', 'startTime', 'endTime'] as const
 
 function singleToString(data: ChordData): string {
   let result = ''
@@ -57,15 +58,15 @@ function singleToString(data: ChordData): string {
   }
 
   if (data.time) {
-    let minutes = Math.floor(data.time / 60)
-    let seconds = (data.time % 60).toString().padStart(2, '0')
+    const minutes = Math.floor(data.time / 60)
+    const seconds = (data.time % 60).toString().padStart(2, '0')
 
     result += `${minutes}:${seconds}\n`
   }
 
-  for (const key of numberKeys as (keyof ChordData)[]) {
-    if (data[key] !== undefined) {
-      result += `${key}:${data[key]}\n`
+  for (const key of numberKeys) {
+    if (data[key]) {
+      result += `${key}:${data[key].join(';')}\n`
     }
   }
 
@@ -73,16 +74,24 @@ function singleToString(data: ChordData): string {
     result += `cycles:${data.cycles.join(',')}\n`
   }
 
+  if (data.chordTimes) {
+    result += `chordTimes:${data.chordTimes.map((times) => times.map((t) => t.toFixed(4)).join(',')).join(';')}\n`
+  }
+
   if (data.multiplier) {
     result += `x${data.multiplier}\n`
   }
 
   if (data.chords) {
-    result += `${data.chords}\n`
+    result += `${data.chords.join(';')}\n`
   }
 
   if (data.key) {
-    result += `${data.key}\n`
+    result += `${data.key.join(';')}\n`
+  }
+
+  if (data.todo) {
+    result += `TODO\n`
   }
 
   return result
@@ -95,8 +104,8 @@ export function chordDataToString(data: ChordData[]): string {
 const notes = ['C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B']
 
 export function parseSingleChordData(input: string): ChordData {
-  let lines = input.trim().split(/\r?\n/)
-  let chordData: ChordData = {}
+  const lines = input.trim().split(/\r?\n/)
+  const chordData: ChordData = {}
 
   chordData.name = lines.shift()?.trim()
 
@@ -127,10 +136,13 @@ export function parseSingleChordData(input: string): ChordData {
       continue
     }
 
-    for (const key of numberKeys as (keyof ChordData)[]) {
+    for (const key of numberKeys) {
       if (line.includes(`${key}:`)) {
-        // @ts-ignore
-        chordData[key] = parseFloat(line.split(':')[1].trim())
+        chordData[key] = line
+          .split(':')[1]
+          .trim()
+          .split(';')
+          .map((part) => Number(part.trim()))
         continue
       }
     }
@@ -146,7 +158,7 @@ export function parseSingleChordData(input: string): ChordData {
     }
 
     if (line.split(';').every((note) => notes.includes(note.trim()))) {
-      chordData.key = line
+      chordData.key = line.split(';').map((note) => note.trim())
       continue
     }
 
@@ -155,12 +167,21 @@ export function parseSingleChordData(input: string): ChordData {
       continue
     }
 
-    if (/^x\d+$/.test(line)) {
-      chordData.multiplier = parseInt(line.split('x')[1].trim())
+    if (line.includes('chordTimes:')) {
+      chordData.chordTimes = line
+        .split(':')[1]
+        .trim()
+        .split(';')
+        .map((part) => part.split(',').map(Number))
       continue
     }
 
-    chordData.chords = line
+    if (/^x\d+$/.test(line)) {
+      chordData.multiplier = line.split(';').map((part) => parseInt(part.split('x')[1].trim()))
+      continue
+    }
+
+    chordData.chords = line.split(';').map((part) => part.trim())
   }
 
   return chordData
@@ -188,3 +209,17 @@ export function findNCycles(n: number, chords: Pattern): [number, any[]] {
 
   return [nCycles, result]
 }
+
+export function hitsInterval(offset: number, diff: number, start: number, end: number): boolean {
+  const n = Math.ceil((start - offset) / diff)
+  const x = offset + n * diff
+
+  return x < end
+}
+
+export type InMsg = { type: 'init'; chords: string; multiplier: number } | { type: 'compute'; length: number }
+
+export type OutMsg =
+  | { type: 'ready' }
+  | { type: 'result'; nCycles: number; haps: any }
+  | { type: 'error'; message: string }

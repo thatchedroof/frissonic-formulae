@@ -1,10 +1,8 @@
 // @ts-ignore
-import { TimeSpan, Fraction, Pattern, State, Hap } from '@strudel/core'
-import { absolute_to_relative } from '../../frissonic-formulae/pkg/frissonic_formulae.js'
+import { Pattern } from '@strudel/core'
+import { absolute_to_relative } from '../../../frissonic-formulae/pkg/frissonic_formulae.js'
 import { useEffect, useState } from 'react'
-import { Marker } from './TimelineTrack.js'
-import { Textarea } from './ui/textarea.js'
-import { AutosizeTextarea } from './ui/textarea-autosize.js'
+import { AutosizeTextarea } from '../ui/textarea-autosize.js'
 import { findNCycles } from 'src/lib/utils.js'
 
 export default function ChordRecorder({
@@ -32,7 +30,7 @@ export default function ChordRecorder({
     const time = currentTime()
     setBeats((prevBeats) => {
       const newBeats = [...prevBeats, time]
-      let [nCycles, newHaps] = findNCycles(newBeats.length, chords)
+      const [nCycles, newHaps] = findNCycles(newBeats.length, chords)
       setCycles([nCycles])
       setHaps(newHaps)
       setBeatText(newBeats.map((b) => b.toFixed(4)).join('\n'))
@@ -56,8 +54,10 @@ export default function ChordRecorder({
   return (
     <div className="flex flex-row items-start">
       <div className="mt-1.5">
-        {haps?.map((hap) => (
-          <div className="font-[Campania]">{key ? absolute_to_relative(hap.value.chord, key) : hap.value.chord}</div>
+        {haps?.map((hap, idx) => (
+          <div key={hap.value?.chord ?? idx} className="font-[Campania]">
+            {key ? absolute_to_relative(hap.value.chord, key) : hap.value.chord}
+          </div>
         ))}
       </div>
       <AutosizeTextarea

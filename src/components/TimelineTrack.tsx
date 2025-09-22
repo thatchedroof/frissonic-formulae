@@ -39,7 +39,7 @@ export const TimelineTrack: React.FC<Props> = ({
   end,
   markers,
   pixPerValue,
-  selectMarker,
+  // selectMarker,
   width = '100%',
   height = 80,
 }) => {
@@ -185,7 +185,7 @@ export const TimelineTrack: React.FC<Props> = ({
       aria-valuenow={typeof value === 'number' ? Math.round(value) : undefined}
     >
       <div style={contentStyle}>
-        {markers.map((marker, i) => {
+        {markers.map((marker) => {
           const x = valueToX(marker.value)
           if (0 <= x) {
             return renderMarker(x, marker)
