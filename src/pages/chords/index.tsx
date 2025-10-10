@@ -13,7 +13,9 @@ export default function Chords() {
       const text = await res.text()
       console.log('Songs:\n', text)
       if (!ignore) {
-        setData(parseChordData(text))
+        const parsed = parseChordData(text)
+        console.log('Parsed:', parsed)
+        setData(parsed)
       }
     })()
     return () => {
