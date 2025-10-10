@@ -4,6 +4,7 @@ import SongPreview from 'src/components/SongPreview.js'
 import Song from 'src/components/Song.js'
 import { ChordData, chordDataToString, parseChordData } from 'src/lib/utils.js'
 import useLocalStorageState from 'src/hooks/use-localstorage-state.js'
+import { Button } from 'src/components/ui/button.js'
 
 export default function Home() {
   const [data, setData] = useLocalStorageState<ChordData[] | null>('chordData', null)
@@ -22,27 +23,37 @@ export default function Home() {
 
   useEffect(() => {
     if (data !== null) return
-    fetch('/songs.txt')
-      .then(async (res) => res.text())
-      .then((text) => {
+    let ignore = false
+    ;(async () => {
+      const res = await fetch('/songs.txt')
+      const text = await res.text()
+      if (!ignore) {
         setData(parseChordData(text))
-      })
-  }, [data, setData])
+      }
+    })()
+    return () => {
+      ignore = true
+    }
+  }, [])
+
+  const saveData = useCallback((data: ChordData[]) => {
+    if (data) {
+      const text = chordDataToString(data)
+      const blob = new Blob([text], { type: 'text/plain' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'songs.txt'
+      a.click()
+      URL.revokeObjectURL(url)
+    }
+  }, [])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === 's') {
         event.preventDefault()
-        if (data) {
-          const text = chordDataToString(data)
-          const blob = new Blob([text], { type: 'text/plain' })
-          const url = URL.createObjectURL(blob)
-          const a = document.createElement('a')
-          a.href = url
-          a.download = 'songs.txt'
-          a.click()
-          URL.revokeObjectURL(url)
-        }
+        saveData(dataRef.current ?? [])
       }
     }
 
@@ -50,7 +61,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [data])
+  }, [saveData])
 
   const updateData = useCallback(
     (newData: ChordData) => {
@@ -62,7 +73,7 @@ export default function Home() {
 
       setData(updated)
     },
-    [activeIndex],
+    [activeIndex, setData],
   )
 
   return (
@@ -71,11 +82,24 @@ export default function Home() {
         <title>Frissonic Formulae</title>
       </Helmet>
       <div className="h-20"></div>
+      <p>
+        {(data ?? []).filter((item) => !item.todo).filter((item) => (item.chordTimes ?? []).flat().length > 0).length}
+        {' / '}
+        {(data ?? []).filter((item) => !item.todo).length}
+        {' / '}
+        {(data ?? []).length} songs with chords
+      </p>
+      {data && <Button onClick={() => saveData(data)}>Save songs.txt</Button>}
       {data
         ?.map((item, index) => [item, index] as const)
         .filter(([item]) => !item.todo)
         .map(([item, index]) => (
-          <SongPreview key={index} data={item} setActive={() => setActiveIndex(index)} />
+          <SongPreview
+            key={index}
+            data={item}
+            highlighted={(item.chordTimes ?? []).flat().length > 0}
+            setActive={() => setActiveIndex(index)}
+          />
         ))}
       {activeIndex !== null && inputData !== null && (
         <Song inputData={inputData} close={() => setActiveIndex(null)} updateData={updateData} />

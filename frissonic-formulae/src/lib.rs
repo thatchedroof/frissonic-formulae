@@ -4,6 +4,8 @@ use guitar_chords::note::{Interval12, PitchClass12};
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 
+pub mod path;
+
 #[derive(Deserialize, Serialize, Debug, Clone)]
 struct ChordData {
     chords: String,

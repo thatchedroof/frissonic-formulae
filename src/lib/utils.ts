@@ -36,8 +36,10 @@ export class ChordData {
   endTime?: number[]
   cycles?: number[]
   chordTimes?: number[][]
+  chordSymbols?: string[][]
   multiplier?: number[]
   todo?: boolean
+  comment?: string
 }
 
 export const numberKeys = ['bpmStart', 'bpmEnd', 'bpmSteps', 'startTime', 'endTime'] as const
@@ -78,6 +80,10 @@ function singleToString(data: ChordData): string {
     result += `chordTimes:${data.chordTimes.map((times) => times.map((t) => t.toFixed(4)).join(',')).join(';')}\n`
   }
 
+  if (data.chordSymbols) {
+    result += `chordSymbols:${data.chordSymbols.map((symbols) => symbols.join(',')).join(';')}\n`
+  }
+
   if (data.multiplier) {
     result += `x${data.multiplier}\n`
   }
@@ -90,6 +96,10 @@ function singleToString(data: ChordData): string {
     result += `${data.key.join(';')}\n`
   }
 
+  if (data.comment) {
+    result += `// ${data.comment}\n`
+  }
+
   if (data.todo) {
     result += `TODO\n`
   }
@@ -98,7 +108,7 @@ function singleToString(data: ChordData): string {
 }
 
 export function chordDataToString(data: ChordData[]): string {
-  return data.map((item: ChordData) => singleToString(item)).join('\n\n')
+  return data.map((item: ChordData) => singleToString(item)).join('\n')
 }
 
 const notes = ['C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B']
@@ -118,7 +128,7 @@ export function parseSingleChordData(input: string): ChordData {
     }
 
     if (line.startsWith('// ')) {
-      continue
+      chordData.comment = line.slice(3).trim()
     }
 
     if (line.includes('youtube.com')) {
@@ -173,6 +183,15 @@ export function parseSingleChordData(input: string): ChordData {
         .trim()
         .split(';')
         .map((part) => part.split(',').map(Number))
+      continue
+    }
+
+    if (line.includes('chordSymbols:')) {
+      chordData.chordSymbols = line
+        .split(':')[1]
+        .trim()
+        .split(';')
+        .map((part) => part.split(',').map((s) => s.trim()))
       continue
     }
 

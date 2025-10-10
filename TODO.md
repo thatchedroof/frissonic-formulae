@@ -1,0 +1,8 @@
+- Jump back to start time
+- Micro adjustments
+- Switch tempo via keyboard
+- Highlight current beat (on click?)
+- Notate final chord in loop (if unique), fade out
+- Color special chords
+- Notes box
+- Make monotonic by stopping when starting to go backwards then starting again at same place

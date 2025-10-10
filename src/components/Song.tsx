@@ -1,8 +1,8 @@
 import { ChordData, InMsg } from 'src/lib/utils.js'
 import { Dialog, DialogHeader, DialogTitle, DialogContent } from './ui/dialog.js'
-import YouTube, { YouTubePlayer, YouTubeProps } from 'react-youtube'
+import YouTube, { YouTubeEvent, YouTubePlayer, YouTubeProps } from 'react-youtube'
 import { Marker, TimelineTrack } from './TimelineTrack.js'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Slider } from './ui/slider.js'
 import { absolute_to_relative, relative_to_absolute } from '../../frissonic-formulae/pkg/frissonic_formulae'
 import { Input } from './ui/input.js'
@@ -11,6 +11,7 @@ import { Label } from './ui/label.js'
 import { AutosizeTextarea } from './ui/textarea-autosize.js'
 import CyclesWorkerUrl from 'src/lib/cycles.worker.ts?worker'
 import { Button } from './ui/button.js'
+import ChordVis from './ChordVis.js'
 
 function updateDataKey<K extends keyof ChordData>(
   data: ChordData,
@@ -85,6 +86,12 @@ export default function Song({
     dataRef.current = data
   }, [data])
 
+  const playSound = useCallback(() => {
+    const metronome = audioRef.current
+    metronome.currentTime = 0
+    metronome.play()
+  }, [])
+
   const [subKey, setSubKey] = useState<number>(0)
 
   const [duration, setDuration] = useState<number | undefined>(undefined)
@@ -96,9 +103,7 @@ export default function Song({
   // useEffect(() => {
   //   beatsRef.current = beats
   // }, [beats, data])
-
-  const [haps, setHaps] = useState<any[]>([])
-  const [beatText, setBeatText] = useState('')
+  const [beatText, setBeatText] = useState<string | null>(null)
 
   const chords = data.chords?.[subKey]
   const key = data.key?.[subKey]
@@ -108,6 +113,18 @@ export default function Song({
   const beats = data.chordTimes?.[subKey]
 
   const workerRef = useRef<Worker | null>(null)
+
+  const [haps, setHaps] = useState<any[]>([])
+  const relativeChordSymbols = useMemo(
+    () => data.chordSymbols?.[subKey].map((chord) => (key ? absolute_to_relative(chord, key) : chord) as string),
+    [data.chordSymbols, subKey, key],
+  )
+
+  useEffect(() => {
+    if (beatText === null && beats) {
+      setBeatText((beats ?? []).map((b) => b.toFixed(4)).join('\n'))
+    }
+  }, [beats, beatText])
 
   useEffect(() => {
     if (key && chords) {
@@ -124,6 +141,13 @@ export default function Song({
       if (e.data.type === 'result') {
         updateDataSubKey(dataRef.current, 'cycles', subKey, e.data.nCycles, updateDataFunc)
         setHaps(e.data.haps)
+        updateDataSubKey(
+          dataRef.current,
+          'chordSymbols',
+          subKey,
+          e.data.haps.map((hap: any) => hap.value.chord),
+          updateDataFunc,
+        )
       }
     }
 
@@ -163,12 +187,27 @@ export default function Song({
         console.log('Recording beat at time:', time)
         playSound()
         const newBeats = [...(prevBeats ?? []), time]
+        newBeats.sort((a, b) => a - b)
         setBeatText(newBeats.map((b) => b.toFixed(4)).join('\n'))
         return newBeats
       },
       updateDataFunc,
     )
-  }, [data, updateDataFunc, subKey])
+  }, [data, updateDataFunc, subKey, playSound])
+
+  const [playbackRates, setPlaybackRates] = useState<number[]>([])
+  const [currentPlaybackRate, setCurrentPlaybackRate] = useState<number | null>(null)
+
+  const toggleVideo = useCallback(() => {
+    if (player.current?.getPlayerState() === 1) {
+      player.current.pauseVideo()
+    } else {
+      player.current.playVideo()
+    }
+  }, [])
+
+  const hoveredChordIndex = useRef<number | null>(null)
+  const [seekTo, setSeekTo] = useState<number | null>(null)
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -177,28 +216,28 @@ export default function Song({
 
       if ((event.ctrlKey || event.metaKey) && event.key === 'e') {
         event.preventDefault()
-        console.log('Start time:', data.startTime)
+        console.log('Start time:', data.startTime?.[subKey])
 
-        if (data.startTime === undefined) {
+        if (data.startTime?.[subKey] === undefined) {
           updateDataSubKey(data, 'startTime', subKey, player.current?.getCurrentTime(), updateDataFunc)
         } else {
           updateDataSubKey(data, 'startTime', subKey, undefined, updateDataFunc)
         }
 
-        console.log('Start time set to:', data.startTime)
+        console.log('Start time set to:', data.startTime?.[subKey])
       }
 
       if ((event.ctrlKey || event.metaKey) && event.key === 'r') {
         event.preventDefault()
-        console.log('End time:', data.endTime)
+        console.log('End time:', data.endTime?.[subKey])
 
-        if (data.endTime === undefined) {
+        if (data.endTime?.[subKey] === undefined) {
           updateDataSubKey(data, 'endTime', subKey, player.current?.getCurrentTime(), updateDataFunc)
         } else {
           updateDataSubKey(data, 'endTime', subKey, undefined, updateDataFunc)
         }
 
-        console.log('End time set to:', data.endTime)
+        console.log('End time set to:', data.endTime?.[subKey])
       }
 
       if (event.key === 'c') {
@@ -210,6 +249,48 @@ export default function Song({
         event.preventDefault()
         toggleVideo()
       }
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        const newTime = (currentTimeRef.current ?? 0) - 0.1
+        setSeekTo(currentTimeRef.current ?? null)
+        player.current?.playVideo()
+        console.log('Seeking to:', currentTimeRef.current)
+
+        player.current?.seekTo(Math.max(0, newTime), true)
+        setCurrentTime(newTime)
+      }
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        setSeekTo(currentTimeRef.current ? currentTimeRef.current + 0.1 : null)
+        player.current?.playVideo()
+        console.log('Seeking to:', currentTimeRef.current)
+      }
+
+      if (hoveredChordIndex.current !== null) {
+        if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+          let delta = event.key === 'ArrowUp' ? 0.001 : -0.001
+          if (event.shiftKey) {
+            delta *= 10
+          }
+
+          event.preventDefault()
+          setBeatText(null)
+          updateDataSubKey(
+            dataRef.current,
+            'chordTimes',
+            subKey,
+            (prevBeats: number[] | undefined) => {
+              if (!prevBeats || hoveredChordIndex.current === null) return prevBeats
+              const newBeats = [...prevBeats]
+              newBeats[hoveredChordIndex.current] = Math.max(0, newBeats[hoveredChordIndex.current] + delta)
+              return newBeats
+            },
+            updateDataFunc,
+          )
+        }
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -219,7 +300,7 @@ export default function Song({
       window.removeEventListener('keydown', handleKeyDown)
       console.log('Effect cleanup: removed keydown event listener')
     }
-  }, [updateDataFunc, recordBeat, subKey])
+  }, [updateDataFunc, recordBeat, subKey, toggleVideo])
 
   const convertRelative = useCallback(
     (string: string) => {
@@ -240,15 +321,24 @@ export default function Song({
   const [currentTime, setCurrentTime] = useState<number | undefined>(undefined)
   const player = useRef<YouTubePlayer | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined)
+  const [currentBeatIndex, setCurrentBeatIndex] = useState<number | null>(null)
 
   const currentTimeRef = useRef(currentTime)
   useEffect(() => {
     currentTimeRef.current = currentTime
   }, [currentTime])
 
-  // Update current time every 100ms
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (seekTo !== null && currentTime !== undefined && currentTime >= seekTo) {
+      console.log('Successfully seeked to:', currentTime)
+      setSeekTo(null)
+      player.current?.pauseVideo()
+    }
+  }, [seekTo, currentTime])
+
+  useEffect(() => {
+    let raf = 0
+    const tick = () => {
       const lastTime = currentTimeRef.current
       const time = player.current?.getCurrentTime()
       setCurrentTime(time)
@@ -257,7 +347,8 @@ export default function Song({
         const idx = beats.findIndex((beat) => beat > lastTime && beat <= (time ?? 0))
 
         if (idx !== -1) {
-          playSound()
+          setCurrentBeatIndex(idx)
+          // playSound()
           console.log('Playing sound at beat:', beats[idx], 'currentTime:', time)
         }
       }
@@ -266,30 +357,43 @@ export default function Song({
         console.log('Looping back to start time:', startTime)
         player.current?.seekTo(startTime ?? 0, true)
       }
-    }, 100)
+
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
 
     console.log('Effect ran: created interval for updating current time')
     return () => {
       console.log('Effect cleanup: clearing interval for updating current time')
-      clearInterval(interval)
+      cancelAnimationFrame(raf)
     }
-  }, [startTime, endTime, beats])
+  }, [startTime, endTime, beats, playSound])
 
-  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-    player.current = event.target
-    const time = event.target.getDuration()
+  const onPlayerReady = useCallback(
+    (event: YouTubeEvent<any>) => {
+      player.current = event.target
+      const time = event.target.getDuration()
 
-    if (endTime === 0) {
-      updateDataSubKey(dataRef.current, 'endTime', subKey, time, updateDataFunc)
-    }
+      if (endTime === 0) {
+        updateDataSubKey(dataRef.current, 'endTime', subKey, time, updateDataFunc)
+      }
 
-    setDuration(time)
-  }
+      setDuration(time)
 
-  const onPause = () => {
+      setPlaybackRates(event.target?.getAvailablePlaybackRates() ?? [])
+      setCurrentPlaybackRate(event.target?.getPlaybackRate() ?? null)
+    },
+    [endTime, subKey, updateDataFunc],
+  )
+
+  const onPause = useCallback(() => {
     clearInterval(intervalRef.current)
     intervalRef.current = undefined
-  }
+  }, [])
+
+  const onPlaybackRateChange = useCallback((event: YouTubeEvent<number>) => {
+    setCurrentPlaybackRate(event.data)
+  }, [])
 
   const opts: YouTubeProps['opts'] = {
     height: '390',
@@ -305,20 +409,6 @@ export default function Song({
   }
 
   const audioRef = useRef(new Audio('/metronome_1.mp3'))
-
-  const playSound = () => {
-    const metronome = audioRef.current
-    metronome.currentTime = 0
-    metronome.play()
-  }
-
-  const toggleVideo = () => {
-    if (player.current?.getPlayerState() === 1) {
-      player.current.pauseVideo()
-    } else {
-      player.current.playVideo()
-    }
-  }
 
   return (
     <Dialog open onOpenChange={close}>
@@ -380,6 +470,17 @@ export default function Song({
                 Pause
               </Button>
               <Button onClick={recordBeat}>Record Beat</Button>
+              {playbackRates.map((rate, i) => (
+                <Button
+                  key={i}
+                  onClick={() => {
+                    player.current?.setPlaybackRate(rate)
+                  }}
+                  disabled={currentPlaybackRate === rate}
+                >
+                  {rate}x
+                </Button>
+              ))}
             </div>
             <div
               className="w-full overflow-scroll"
@@ -390,7 +491,13 @@ export default function Song({
                 el.scrollTo({ left: x, top: y, behavior: 'auto' })
               }}
             >
-              <YouTube videoId={data.videoId!} opts={opts} onReady={onPlayerReady} onPause={onPause} />
+              <YouTube
+                videoId={data.videoId!}
+                opts={opts}
+                onReady={onPlayerReady}
+                onPause={onPause}
+                onPlaybackRateChange={onPlaybackRateChange}
+              />
             </div>
             {duration && (
               <TimelineTrack
@@ -420,42 +527,75 @@ export default function Song({
           </ResizablePanel>
           <ResizableHandle />
           <ResizablePanel defaultSize={50} className="flex flex-col gap-2 m-5">
-            <Button
-              onClick={() => {
-                setTimeout(() => {
-                  workerRef.current?.postMessage({
-                    type: 'compute',
-                    length: beats?.length ?? 0,
-                  } as InMsg)
-                }, 100)
-              }}
-            >
-              Compute Cycles
-            </Button>
-            <div className="flex flex-row items-start">
-              <div className="mt-1.5">
-                {haps?.map((hap, idx) => (
-                  <div key={idx} className="font-[Campania]">
-                    {key ? absolute_to_relative(hap.value.chord, key) : hap.value.chord}
-                  </div>
-                ))}
-              </div>
-              <AutosizeTextarea
-                className="ml-4 flex-1 font-mono text-base"
-                value={beatText}
-                onChange={(e) => {
-                  setBeatText(e.target.value)
-                  updateDataSubKey(
-                    data,
-                    'chordTimes',
-                    subKey,
-                    e.target.value
-                      .split('\n')
-                      .map((line) => parseFloat(line))
-                      .filter((n) => !isNaN(n)),
-                    updateDataFunc,
-                  )
+            <div className="overflow-x-scroll overflow-auto h-[70vh]">
+              <Button
+                onClick={() => {
+                  setTimeout(() => {
+                    workerRef.current?.postMessage({
+                      type: 'compute',
+                      length: beats?.length ?? 0,
+                    } as InMsg)
+                  }, 100)
                 }}
+              >
+                Compute Cycles
+              </Button>
+              <div className="mt-2.5 flex flex-row items-stretch">
+                <div className="mt-1.5 mb-5.5 flex flex-col justify-between items-end">
+                  {beatText?.split('\n').map((_, index) =>
+                    relativeChordSymbols?.[index] ? (
+                      <div
+                        key={index}
+                        className="h-6 overflow-hidden flex justify-end items-end hover:opacity-70"
+                        onMouseEnter={() => (hoveredChordIndex.current = index)}
+                        onMouseLeave={() => {
+                          if (hoveredChordIndex.current === index) {
+                            hoveredChordIndex.current = null
+                          }
+                        }}
+                      >
+                        <div className="font-[Campania]">{relativeChordSymbols[index]}</div>
+                      </div>
+                    ) : (
+                      <div
+                        key={index}
+                        className="mt-2.5 h-2 w-2 mb-1.5 rounded-full bg-primary hover:opacity-70"
+                        onMouseEnter={() => (hoveredChordIndex.current = index)}
+                        onMouseLeave={() => {
+                          if (hoveredChordIndex.current === index) {
+                            hoveredChordIndex.current = null
+                          }
+                        }}
+                      ></div>
+                    ),
+                  )}
+                </div>
+                <AutosizeTextarea
+                  className="ml-4 flex-1 font-mono text-base"
+                  value={beatText ?? ''}
+                  onChange={(e) => {
+                    setBeatText(e.target.value)
+                    updateDataSubKey(
+                      data,
+                      'chordTimes',
+                      subKey,
+                      e.target.value
+                        .split('\n')
+                        .map((line) => parseFloat(line))
+                        .filter((n) => !isNaN(n)),
+                      updateDataFunc,
+                    )
+                  }}
+                />
+              </div>
+              {/* <div className="text-2xl font-bold ml-4 mt-1.5 font-[Campania]">
+              {currentBeatIndex !== null && relativeChordSymbols[currentBeatIndex]}
+            </div> */}
+              <ChordVis
+                value={currentTime ?? 0}
+                chords={relativeChordSymbols ?? []}
+                times={data?.chordTimes?.[subKey] ?? []}
+                activeIndex={currentBeatIndex}
               />
             </div>
           </ResizablePanel>

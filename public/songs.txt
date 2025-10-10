@@ -1,38 +1,48 @@
 Breaking Us In Two
 https://www.youtube.com/watch?v=HCVgdldT5vQ
 https://tabs.ultimate-guitar.com/tab/joe-jackson/breaking-us-in-two-chords-72227
+chordTimes:0.0000,1.0000,2.0000,2.5000,6.0000,7.0000
+chordSymbols:F#,E,F#,D,E,F#
 F# E/F# F# D E
 F#
 
 The Molosse of Monument Hill
-https://youtu.be/yHbWt31ceso
-sec:584
+https://www.youtube.com/watch?v=yHbWt31ceso
+9:44
 F#@4 C#@4 A@2 B C#@3
 C#
 
 Good Day
-https://youtu.be/VGQZItOMz6k
+https://www.youtube.com/watch?v=VGQZItOMz6k
 https://www.hooktheory.com/theorytab/view/tally-hall/good-day
-sec:29
+0:29
+startTime:
+endTime:
 F# B G Eb F A E
 E
 
 Hardware Store
-https://youtu.be/DFI6cV9slfI
+https://www.youtube.com/watch?v=DFI6cV9slfI
 https://www.hooktheory.com/theorytab/view/weird-al-yankovic/hardware-store
-sec:180
+3:00
 Bb Ab Db Eb;G F Bbm A D (Gb) Eb (Ab) Fsus4 F (Bb)
 Bb
 
 Radio Martini
 https://www.youtube.com/watch?v=v2M6VIhNjkQ
 https://www.hooktheory.com/theorytab/view/kevin-macleod/radio-martini
+chordTimes:1.8362,2.7000,3.2248,3.7369,4.6900,5.2505,5.7534,6.7135,7.2970,7.8307,8.7395,9.3231,9.8624,10.7987,11.3551,11.8840,12.7912,13.3636,13.8784,14.8091,15.3763,15.9384,16.8695,17.3958,17.9524,18.9113,19.4538,19.9870,20.8716,21.4414,21.9137,22.9297,23.5062,24.1253,24.9708,25.5371,26.0877
+chordSymbols:C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C
 C [Ab Bb]
 C
 
 Thanksgiving Theme
 https://www.youtube.com/watch?v=-aN4Cn3_AtU
 https://www.hooktheory.com/theorytab/view/vince-guaraldi-trio/thanksgiving-theme
+startTime:0
+endTime:7.266666412353516
+chordTimes:0.3602,0.6836,1.0960,1.9904,2.3858,2.7729,3.7307,4.0896,4.5206,5.4305,5.8070,6.2650
+chordSymbols:C,F,G,Ab,Bb,C,C,F,G,Ab,Bb,C
 C F G@2 Ab Bb C@2
 C
 
@@ -45,6 +55,10 @@ G
 Closer To the Sun
 https://www.youtube.com/watch?v=kP_shZ8bIsk
 https://tabs.ultimate-guitar.com/tab/slightly-stoopid/closer-to-the-sun-chords-1061649
+startTime:
+endTime:40.54622397234345
+chordTimes:0.2440,1.7987,3.4600,5.1032,6.7221,8.3401,9.9541,11.6427,13.2703,14.9139,16.4856,18.0372,19.6033,21.2249,22.8170,24.3872,25.9413,27.5557,29.1226,30.7054,32.3019,33.9110,35.5268,37.0954,38.6915
+chordSymbols:E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E
 E A C D
 E
 
@@ -65,8 +79,8 @@ https://www.youtube.com/watch?v=UvUkPtSheyg
 C
 
 Ballad of Pancho Villa
-https://youtu.be/z0tQ4YTortE
-sec:3
+https://www.youtube.com/watch?v=z0tQ4YTortE
+0:03
 I IV bVI bVII I
 TODO
 
@@ -83,6 +97,8 @@ A
 Soul Coaxing
 https://www.youtube.com/watch?v=vGhVkob-m94
 https://tabs.ultimate-guitar.com/tab/4593572
+chordTimes:15.9942,15.4597,14.9780,13.9404,12.0036,11.0729,10.1086,8.0754,4.2132,0.0000
+chordSymbols:E,A,G#m,A,B,E,G,A,B,E
 E@4 A@4 G#m@2 A B E@2 G [A B]
 E
 
@@ -95,6 +111,9 @@ B
 S.O.S.
 https://www.youtube.com/watch?v=CxMcD8QHVag
 https://www.hooktheory.com/theorytab/view/abba/sos
+startTime:151.40691110490417
+chordTimes:159.5356,161.3756,162.3144,163.1932,166.9636,168.9003,169.8088,170.6786,174.4617,176.4118,177.3490,178.2945,181.9656,183.8813,184.7689,185.7002
+chordSymbols:Bb,Db,Eb,F,Bb,Db,Eb,F,Bb,Db,Eb,F,Bb,Db,Eb,F
 Bb [Db Eb] F@2
 F
 
@@ -123,6 +142,8 @@ C
 Cooking by the Book
 https://www.youtube.com/watch?v=ZD71JeX4Vk0
 https://www.hooktheory.com/theorytab/view/lazytown/cooking-by-the-book
+chordTimes:22.0080,23.0921,24.2220,25.2690,25.8291,26.3549,27.4910,28.5178,29.5810,30.7057,31.7951,32.9305,34.0231,34.5436,35.0748,36.1398,37.2359,38.3156,39.4470
+chordSymbols:F,C,Bb,Ab,Gb,F,C,Bb,C,F,C,Bb,Ab,Gb,F,C,Bb,C,F
 F C Bb [Ab Gb] F C Bb C
 F
 
@@ -133,7 +154,7 @@ Eb Ab F Bb;Gb Ab Eb F Gb Ab A Bb Eb Ab
 Ab
 
 A big hug
-https://youtu.be/b40Sl8HddSs
+https://www.youtube.com/watch?v=b40Sl8HddSs
 D A F G D/F# C A
 D
 
@@ -146,12 +167,20 @@ B
 Walk Hard
 https://www.youtube.com/watch?v=Gp6wDjU23yI
 https://tabs.ultimate-guitar.com/tab/dewey-cox/walk-hard-chords-899567
+startTime:84.70190395231629
+endTime:99.11903406675721
+chordTimes:87.9200,90.4079,91.6351,92.9203,95.3181,96.5462,97.8279
+chordSymbols:F#,G#,A#,F#,G#,A#,F#
 F# [G# A#]
 F#
 
 Rock Lobster
 https://www.youtube.com/watch?v=vz65vonktMA
 https://www.hooktheory.com/theorytab/view/the-b-52s/rock-lobster
+startTime:195.30631908010864
+endTime:207.04993796566774
+chordTimes:195.5645,196.8660,198.1813,199.5158,200.8694,202.1779,203.4758,204.8309
+chordSymbols:Cm,Eb,Ab,G,Cm,Eb,Ab,G
 Cm Eb Ab G
 C
 
@@ -168,12 +197,18 @@ Ab Cb Ab
 
 Abstract Expression
 https://www.youtube.com/watch?v=ZW3qZqe5AVM
+startTime:1.8152902940826525
+endTime:26.555713977111818
+chordTimes:3.3222,3.6608,4.0693,4.6484,4.9914,5.3781,5.7345,6.2633,6.6493,7.0541,7.4269,7.9908,8.3660,8.7649,9.1344,9.7092,10.0872,10.4402,10.8015,11.3468,11.6837,12.0990,12.5021,13.0730,13.4590,13.8084,14.1806,14.7562,15.1038,15.4962,15.8812,16.4494,16.8273
+chordSymbols:F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F
 F Ab Bb C
 F
 
 Here and Now
 https://www.youtube.com/watch?v=JO5xHqGOajs
 https://tabs.ultimate-guitar.com/tab/letters-to-cleo/here-and-now-chords-1932651
+chordTimes:0.5542,2.8244,5.0017,7.1506,9.3520,11.4519,13.6798,15.8496,18.0023,20.1211,22.2206,24.3228,26.4064
+chordSymbols:E,G,A,E,E,G,A,E,E,G,A,E,E
 E G A E
 E
 
@@ -202,7 +237,7 @@ Db@2 E Ab [Db@3 Dbsus4@3 Db@2] F Gb D@2 Fb@2 C@2;Bbm Eb Db Cb Bbm Eb Cb Db
 Db;Bb
 
 Troublemaker
-https://youtu.be/2x6ST88-E-o
+https://www.youtube.com/watch?v=2x6ST88-E-o
 TODO
 
 Gospel
@@ -222,6 +257,9 @@ TODO
 Ratboy Genius Theme Song
 https://www.youtube.com/watch?v=0iw1EnLvm88
 https://www.hooktheory.com/theorytab/view/ryan-dorin/ratboy-genius-theme-song
+endTime:22.043780154495238
+chordTimes:2.2259,4.5810,5.8682,7.1092,7.7856,8.3654,8.9849,9.5981,11.9903,14.4252,15.6660,16.8403,17.4914,18.1300,18.7213,19.3172
+chordSymbols:G,C,G,Eb,Bb,Db,Ab,G,G,C,G,Eb,Bb,Db,Ab,G
 G@2 C G [Eb Bb] [Db Ab] G@2
 G
 
@@ -238,6 +276,8 @@ TODO
 Light My Fire
 https://www.youtube.com/watch?v=qoX6AKuYWL8
 https://www.hooktheory.com/theorytab/view/the-doors/light-my-fire
+chordTimes:0.7744,1.6650,2.5652,3.5056,4.4680,5.3607,6.2762
+chordSymbols:G,D,F,Bb,Eb,Ab,A
 G D F Bb Eb Ab A
 G
 
@@ -256,6 +296,7 @@ E
 Everything You Know Is Wrong
 https://www.youtube.com/watch?v=W8tRDv9fZ_c
 https://www.hooktheory.com/theorytab/view/weird-al-yankovic/everything-you-know-is-wrong#Chorus
+// Lotta stuff here
 // Lotta stuff here
 TODO
 
@@ -303,6 +344,10 @@ A;F#;A
 Dead Man
 https://www.youtube.com/watch?v=o3dnfCndAfg
 https://tabs.ultimate-guitar.com/tab/self/dead-man-chords-5429862
+startTime:5.821500963760376
+endTime:26.265867999046325
+chordTimes:7.3238,8.2208,9.3225,10.2630,11.2980,12.2920,13.2962,14.2187,15.2860,16.3529,17.2826,18.3057,19.3023,20.3141,21.3198,22.2526,23.3775
+chordSymbols:B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B
 B G7 C#7 F#7
 B
 
@@ -352,12 +397,17 @@ F#
 
 Wooden Philosopher
 https://www.youtube.com/watch?v=-WN14MIMPtc
+chordTimes:0.1571,2.3027,4.5809,8.1101,9.4684,11.4574,13.7438,17.2256,18.3545,20.6308,22.8616,26.3346,27.4315,29.7915,32.0435,35.4263,36.5579,38.8061,41.1136,44.5787,45.6493
+chordSymbols:B,Em,C,F#,B,Em,C,F#,B,Em,C,F#,B,Em,C,F#,B,Em,C,F#,B
 B@2 Em@2 C@3 F#
 B
 
 Mirror Man
 https://www.youtube.com/watch?v=NqUHjySqq_o
 https://tabs.ultimate-guitar.com/tab/jack-stauber/mirror-man-chords-3432953
+startTime:12.514777074386597
+chordTimes:13.1622,14.7858,16.2932,17.8028,19.3785,20.9159,22.5422,24.0799
+chordSymbols:C,C#,G,C,C,C#,G,C
 C C# G C C C# G C
 C
 
@@ -378,7 +428,6 @@ F Bb F Bb F Bb Eb Ab Db Gb C F
 A Lady / &
 https://www.youtube.com/watch?v=rygZkj3W_RM
 https://tabs.ultimate-guitar.com/tab/tally-hall/a-lady-chords-2436795
-Cm F Cm F G# C# G@2 Cm F Cm F G# A# C@2
 Cm
 
 Laughing Owl
@@ -388,13 +437,13 @@ TODO
 
 Art of Bullying
 https://www.youtube.com/watch?v=qrByxOmq628
+2:36
 Db7 C7 F7 Gb7;
 F
-2:36
 TODO
 
 When I Nod
-https://youtube.com/watch?v=k_jiA0xMrKI
+https://www.youtube.com/watch?v=k_jiA0xMrKI
 B E F# Bm G C B E
 B
 
@@ -428,6 +477,8 @@ TODO
 Thomas the Tank Engine Theme
 https://www.youtube.com/watch?v=WUNL7PjBr8U
 https://www.hooktheory.com/theorytab/view/mike-odonnell/thomas-the-tank-engine-theme#Verse
+chordTimes:5.1165,7.5555,9.9149,11.2094,12.3514,13.5054,14.7473,17.1872,19.6236,20.8466,22.0199
+chordSymbols:C,Ab7,Dm7,G,Dm,G,C,Ab7,Dm7,G,Dm
 C@2 Ab7@2 Dm7 G Dm G
 C
 
@@ -456,12 +507,18 @@ G
 Rainbow Tylenol
 https://www.youtube.com/watch?v=5K7Frc2lTI8
 https://www.hooktheory.com/theorytab/view/kitsune/rainbow-tylenol#Instrumental
+startTime:28.79950205340576
+chordTimes:29.2436,30.9124,32.7596,34.5265,36.2930,38.0605,39.8451,41.6142
+chordSymbols:Ab,Eb,Bb,C,Ab,Eb,Bb,C
 Ab Eb Bb C
 C
 
 Lullaby of the Leaves
 https://www.youtube.com/watch?v=5FNHqwMBXPE
 https://www.hooktheory.com/theorytab/view/george-olsen/lullaby-of-the-leaves#Intro
+startTime:7.587684036239624
+chordTimes:10.4378,12.6919,14.9305,17.1573,19.4064,20.6333,21.7495,22.8227,23.9070,26.2366,27.3393,28.4111,30.6001,32.8031,34.9794,37.1754,38.3202,39.4457,40.5228,41.6117
+chordSymbols:Dm,A7,D,Gm7,E7,A,E7,A,Dm,Bb,A7,Dm,A7,D,Gm7,E7,A,E7,A,Dm
 Dm A7 D Gm7 [E7 A] [E7 A] Dm [Bb A7]
 D
 
@@ -473,12 +530,16 @@ D
 
 Handbags and Gladrags
 https://www.youtube.com/watch?v=9llfUGKW4KI
+chordTimes:2.3239,5.3901,8.4877,11.5406,12.3008,14.6213,14.8901,20.6793,22.2571,23.7739,25.3706,25.8311
+chordSymbols:Fm,Eb,Ab,Bbsus4,Bb,Bb,Db,Ab,Ab7,Db,Ab
 Fm@2 Eb@2 Ab@2 [Bbsus4 Bb] Bb Db@4 Ab Ab7 Db@2 Ab@2
 Ab
 
 Apache (Jump On It)
 https://www.youtube.com/watch?v=0D9HGM8fsWU
 https://www.hooktheory.com/theorytab/view/sugarhill-gang/apache---jump-on-it#Chorus
+chordTimes:25.4773,27.5706,29.6660,33.7648,35.8452,37.9349,42.1363,44.2740,46.3549,50.5198,52.5958,54.6709,58.8489
+chordSymbols:Am,D,Am,Am,D,Am,D,G,Dm,Am,D,Am,Am
 Am D Am@2 Am D Am@2 D G Dm@2 Am D Am@2
 A
 
@@ -488,11 +549,10 @@ https://www.hooktheory.com/theorytab/view/laura-shigihara/loonboon#Verse
 TODO
 
 Nànnuflày
-https://www.youtube.com/watch?v=H1YIgwPsX5Q
 https://www.youtube.com/watch?v=Kk8eJh4i8Lo
-TODO
 Bbm Eb
 Bb
+TODO
 
 Bulletproof
 https://www.youtube.com/watch?v=Kk8eJh4i8Lo
@@ -508,6 +568,10 @@ TODO
 Sundial
 https://www.youtube.com/watch?v=tdbhU7EHAhc
 https://tabs.ultimate-guitar.com/tab/lemon-demon/sundial-chords-3132773
+startTime:0
+endTime:13.466666412353517
+chordTimes:0.4355,1.0652,1.6464,2.2372,2.8756,3.5020,4.1254,4.7233,5.2326,6.0009,6.6442,7.2471,7.8811,8.4779,9.1381,9.7397,10.3533,10.9641,11.4477,12.2348
+chordSymbols:Cm,G#,D#,A#,G#,A#,Cm,F7,Cm,F7,Cm,G#,D#,A#,G#,A#,Cm,F7,Cm,F7
 Cm G# D# A# G# A# Cm F7 Cm F7
 C
 
@@ -526,6 +590,8 @@ G
 Root Beer Rag
 https://www.youtube.com/watch?v=VWH9iwtl9Q4
 https://www.hooktheory.com/theorytab/view/billy-joel/root-beer-rag#Intro
+chordTimes:7.8409,9.4689,10.2680,11.1145,12.7544,13.5710,14.4549,16.0724,16.9447,17.8264
+chordSymbols:Db,Cb,Gb,Db,Cb,Ab7,Db,Cb,Gb,Db
 Db@2 Cb Gb Db@2 Cb Ab7
 Db
 
@@ -538,6 +604,8 @@ A
 Taste the Fame
 https://www.youtube.com/watch?v=yj2JRp0lZVI
 https://www.hooktheory.com/theorytab/view/they-might-be-giants/taste-the-fame#Intro
+chordTimes:11.0419,13.3104,15.5176,17.9029,20.2762
+chordSymbols:C,Am,F,Ab,C
 C Am F Ab
 C
 
@@ -561,6 +629,8 @@ C
 Norwegian Wood
 https://www.youtube.com/watch?v=B_RQv7OMJFI
 https://www.hooktheory.com/theorytab/view/the-beatles/norwegian-wood#Chorus
+chordTimes:0.4228,5.4696,6.3070,8.3690,13.2854,14.1831,16.2273,21.1091,22.0129,23.9795,28.9930,29.9793,32.1034
+chordSymbols:E,D,A,E,E,D,A,E,E,D,A,E,E
 E@5 [D@2 A] E@2
 E
 
@@ -579,34 +649,49 @@ A
 I Wanna Be A Hippy
 https://www.youtube.com/watch?v=-zDFe1EfMBg
 https://tabs.ultimate-guitar.com/tab/technohead/i-wanna-be-a-hippie-chords-2101127
+startTime:81.49435704196166
 C Bb
 C
 
 Johnny Q
 https://www.youtube.com/watch?v=INNmLQnmTa8
+startTime:19.27652794277954
+chordTimes:19.5441,20.5928,21.9903,23.0688,24.4812,25.5559,26.9817,28.0409,29.4068
+chordSymbols:C,G,A#,F,C,G,A#,F,C
 C G A# F
 C
 
 Drunk
 https://www.youtube.com/watch?v=T3hTwgDy_Ww
 https://www.hooktheory.com/theorytab/view/the-living-tombstone/drunk#Chorus
+startTime:170.36666641235354
+chordTimes:173.3754,175.1372,177.2816,179.4224,180.7969,181.8722,183.6836,185.8112,187.9539,189.1072,190.4076,192.2665,194.3903,196.5969,197.8778,198.9490,200.7950,202.9634
+chordSymbols:Ab,Fm,C,Eb,Eb7,Ab,Fm,C,Eb,Eb7,Ab,Fm,C,Eb,Eb7,Ab,Fm,C
 Ab Fm C [Eb Eb7]
 Eb
 
 It's Been So Long
 https://www.youtube.com/watch?v=qt2Ht_Tl9Ic
 https://www.hooktheory.com/theorytab/view/the-living-tombstone/its-been-so-long
+startTime:67.03672712397766
+chordTimes:70.0990,71.3632,72.6299,73.8720,74.5389,75.1381,76.3839,77.6688,78.8720,79.5384,80.1693,81.4074,82.5889,83.8914,84.4818,85.1358,86.4171,87.6558,88.8720,89.5364,90.2927
+chordSymbols:Bbm,Ab7,Db,Co,F,Bbm,Ab7,Db,Co,F,Bbm,Ab7,Db,Co,F,Bbm,Ab7,Db,Co,F,Bbm
 Bbm Ab7 Db [Co F]
 Bb
 
 Banjo Kazooie Theme
 https://www.youtube.com/watch?v=pGWwe4OysKA
 https://www.hooktheory.com/theorytab/view/grant-kirkhope/banjo-kazooie---intro#Verse
+startTime:5.311542131607055
+chordTimes:8.3818,9.9688,11.5099,14.7558,16.4024,17.9410,21.1782,22.7559,24.3321,27.5085,29.1527,30.7347,33.9205
+chordSymbols:C,Ab7,C,C,Ab7,C,C,Ab7,C,C,Ab7,C,C
 C Ab7 C@2
 C
 
 Monster's Mouth
 https://www.youtube.com/watch?v=gkYBRRerduE
+chordTimes:0.6680,1.2065,1.7721,2.3652,2.9281,4.0771,4.8064,5.4024,5.9507,6.5582,7.1318,8.1997,8.8941,9.4707,10.0255,10.6344,11.6126,12.4289,12.9436,13.5035,14.0799,14.6859,15.8237,16.4881,17.0520,17.6277,18.3055,19.2471,20.0208,20.5884,21.1356,21.7275,22.3226,23.4661,24.0799,24.6389,25.2172,25.8213,26.7795,27.5373,28.1362,28.6837,29.2884,29.8539,32.0713,32.6969,33.3516,33.8729,34.5252,35.4377,36.2158,36.7283,37.3508,37.8885,38.5193,39.6079,40.1820,40.7467,41.4280,41.9825,42.9356,43.6883,44.3033,44.8365,45.4018,45.9809,48.3368,48.8914,49.4841,50.0504,50.6999,51.6616,52.4382,52.9328,53.6168,54.0599,54.6226
+chordSymbols:Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb
 Bb F C Eb Bb@2 F Ebm Bb F Ab Eb@4
 Bb
 
@@ -618,6 +703,7 @@ TODO
 Make Over (Or: lamb enters riviera)
 https://www.youtube.com/watch?v=ODOBnU2mD68
 // Note second progression near the end
+// Note second progression near the end
 TODO
 
 Do the Confusion
@@ -625,13 +711,16 @@ https://www.youtube.com/watch?v=lV-Nk3uWiBo
 TODO
 
 Nobody's a Nun
-https://youtube.com/watch?v=DW7P7-BAZ-s
+https://www.youtube.com/watch?v=DW7P7-BAZ-s
 E A D A;F#m B F#m B7
 A;B
 
 Gut Feeling
 https://www.youtube.com/watch?v=bbbpk9HN_As
 https://www.hooktheory.com/theorytab/view/devo/gut-feeling#Chorus
+startTime:54.91009305722046
+endTime:128.4585248893738
+chordTimes:57.2057,58.7804,60.3294,61.8653,63.4813,64.9772,66.4941,68.0818,69.5909,71.1612,72.6255,74.2533,75.7187,77.2487,78.7517,80.3335,81.8486,83.3988,84.9178,86.4039,87.9654,89.4729,90.9349,92.4254,93.9131,95.4199,96.9047,98.4297,99.9428,101.4578,102.9029,104.4280,105.9077,107.3928,108.8828,110.3354,111.8211,113.3881,114.8462,116.2750,117.7757,119.2819,120.7274,122.2209,123.6696,125.1640
 E G C A D
 E
 
@@ -677,6 +766,9 @@ E
 
 Yodeling in Heaven
 https://www.youtube.com/watch?v=XQsyAeuLKTA
+startTime:242.2942619809265
+chordTimes:251.2923,252.9765,254.6609,256.3488,257.9758,259.6399,261.3294,262.9797
+chordSymbols:F#,G#,G#m,F#,F#,G#,G#m,F#
 F# G# G#m F#
 F#
 
@@ -694,16 +786,23 @@ A
 Just
 https://www.youtube.com/watch?v=oIFLtNYI3Ls
 https://www.hooktheory.com/theorytab/view/radiohead/just
+startTime:16.466666412353515
+chordTimes:18.7489,20.1542,21.4789,22.8448,24.2269,25.5886,26.9460,28.3356,29.7393
+chordSymbols:C,Eb,D,F,C,Eb,D,F,C
 C Eb D F
 C
 
 Spanish Flea
 https://www.youtube.com/watch?v=nnhQNWfE_q8
+chordTimes:
+chordSymbols:
 [G B7] E7 A7 D7 [G@3 C@3 F@2] [Bb@3 Eb@3 Ab@2] D7 [D7 G]
 
 Mean Girls
 https://www.youtube.com/watch?v=4RcFPLt3Dd0
 https://tabs.ultimate-guitar.com/tab/vulfpeck/mean-girls-chords-3596876
+chordTimes:4.7355,6.0644,7.2701,8.5668,9.8641,11.1538,12.5220,13.4954,15.0120,16.2166,17.4326,18.6396,19.8567,21.0133,22.2682,23.1057,24.6578,25.8560,27.0644,27.8659,29.5041,30.7020,31.9239,32.8189
+chordSymbols:D,A,C,G,D,A,C,G,D,A,C,G,D,A,C,G,D,A,C,G,D,A,C,G
 D A C G
 G
 
@@ -787,11 +886,13 @@ TODO
 Lifeblood
 https://www.youtube.com/watch?v=VqOc446VvfA
 https://tabs.ultimate-guitar.com/tab/william-d-drake/lifeblood-chords-4069489
+chordTimes:0.2732,1.3831,2.3330,3.2715,4.1987,5.2016,6.1425,7.0548,8.0043,8.9367,9.9117,10.8054,11.7529,12.6796,13.6679,14.5851,15.5570
+chordSymbols:C,F,Eb,Bb,Gm,Eb,F,C,C,F,Eb,Bb,Gm,Eb,F,C,C
 C F Eb Bb Gm Eb F C
 C
 
 Be Here Steryear
-https://youtube.com/watch?v=GgIPqNmW5Dc
+https://www.youtube.com/watch?v=GgIPqNmW5Dc
 TODO
 
 Little One
@@ -810,7 +911,7 @@ https://www.hooktheory.com/theorytab/view/mid-air-thief/gameun-deut
 TODO
 
 Sweet Adeline
-https://youtube.com/watch?v=0hopdWwHAZM
+https://www.youtube.com/watch?v=0hopdWwHAZM
 https://tabs.ultimate-guitar.com/tab/elliott-smith/sweet-adeline-chords-213102
 Bb Eb D [G G7];Eb Bb F Ab Db E@3
 G;E
