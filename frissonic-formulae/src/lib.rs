@@ -1,6 +1,9 @@
 use std::str::FromStr;
 
-use guitar_chords::note::{Interval12, PitchClass12};
+use guitar_chords::{
+    chord::{Chord, RelativeChord},
+    note::{Interval12, PitchClass12},
+};
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 
@@ -90,6 +93,24 @@ pub fn chordDifferences(input: &str) -> String {
     });
 
     accidental_to_ascii(result.to_string())
+}
+
+#[wasm_bindgen]
+pub struct RootMaj(pub i32, pub bool);
+
+#[wasm_bindgen]
+pub fn absolute_chord_to_root_maj(input: &str) -> Result<RootMaj, JsValue> {
+    let chord = Chord::from_str(input).map_err(|e| JsValue::from_str(&e.to_string()))?;
+    Ok(RootMaj(
+        chord.root.to_number() as i32,
+        chord.chord_type.is_major(),
+    ))
+}
+
+#[wasm_bindgen]
+pub fn relative_chord_to_root_maj(input: &str) -> Result<RootMaj, JsValue> {
+    let chord = RelativeChord::from_str(input).map_err(|e| JsValue::from_str(&e.to_string()))?;
+    Ok(RootMaj(chord.root.0, chord.chord_type.is_major()))
 }
 
 #[wasm_bindgen]

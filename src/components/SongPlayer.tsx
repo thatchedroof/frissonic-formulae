@@ -53,7 +53,6 @@ export default function SongPlayer({ data }: { data: ChordData }) {
 
   const [playerStarted, setPlayerStarted] = useState(false)
 
-  // !SongPlayer.tsx:51 Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render.
   useEffect(() => {
     if (!playerStarted) return
 
@@ -250,12 +249,24 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                   onPlaybackRateChange={onPlaybackRateChange}
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-purple-400 to-pink-500">
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-400 to-gray-600">
                   <p className="text-white text-sm font-medium">16:9</p>
                 </div>
               )}
             </AspectRatio>
           </div>
+          {/* <ChordVis
+            value={currentTime ?? 0}
+            chords={chordSymbols ?? []}
+            times={chordTimes ?? []}
+            activeIndex={currentChordIndex}
+          />
+          <CircleOfFifths
+            value={currentTime ?? 0}
+            chords={chordSymbols ?? []}
+            times={chordTimes ?? []}
+            activeIndex={currentChordIndex}
+          /> */}
         </CollapsibleContent>
       </Collapsible>
       <div onClick={(e) => e.stopPropagation()}>

@@ -116,9 +116,9 @@
 @font-face {
   font-family: 'Campania';
   src:
-    url('fonts/Campania.woff') format('woff'),
-    url('fonts/Campania.ttf') format('truetype'),
-    url('fonts/Campania.otf') format('opentype');
+    url('../assets/fonts/Campania.woff') format('woff'),
+    url('../assets/fonts/Campania.ttf') format('truetype'),
+    url('../assets/fonts/Campania.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

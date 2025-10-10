@@ -1,8 +1,6 @@
 Breaking Us In Two
 https://www.youtube.com/watch?v=HCVgdldT5vQ
 https://tabs.ultimate-guitar.com/tab/joe-jackson/breaking-us-in-two-chords-72227
-chordTimes:0.0000,1.0000,2.0000,2.5000,6.0000,7.0000
-chordSymbols:F#,E,F#,D,E,F#
 F# E/F# F# D E
 F#
 
@@ -41,7 +39,7 @@ https://www.youtube.com/watch?v=-aN4Cn3_AtU
 https://www.hooktheory.com/theorytab/view/vince-guaraldi-trio/thanksgiving-theme
 startTime:0
 endTime:7.266666412353516
-chordTimes:0.3602,0.6836,1.0960,1.9904,2.3858,2.7729,3.7307,4.0896,4.5206,5.4305,5.8070,6.2650
+chordTimes:6.2650,5.8070,5.4305,4.5206,4.0896,3.7307,2.7729,2.3858,1.9904,1.0960,0.6836,0.3602
 chordSymbols:C,F,G,Ab,Bb,C,C,F,G,Ab,Bb,C
 C F G@2 Ab Bb C@2
 C
@@ -351,6 +349,7 @@ chordSymbols:B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B
 B G7 C#7 F#7
 B
 
+Issac Turner Song
 https://www.tiktok.com/t/ZP8FEawKd/
 TODO
 
@@ -794,9 +793,8 @@ C
 
 Spanish Flea
 https://www.youtube.com/watch?v=nnhQNWfE_q8
-chordTimes:
-chordSymbols:
 [G B7] E7 A7 D7 [G@3 C@3 F@2] [Bb@3 Eb@3 Ab@2] D7 [D7 G]
+TODO
 
 Mean Girls
 https://www.youtube.com/watch?v=4RcFPLt3Dd0
@@ -886,7 +884,8 @@ TODO
 Lifeblood
 https://www.youtube.com/watch?v=VqOc446VvfA
 https://tabs.ultimate-guitar.com/tab/william-d-drake/lifeblood-chords-4069489
-chordTimes:0.2732,1.3831,2.3330,3.2715,4.1987,5.2016,6.1425,7.0548,8.0043,8.9367,9.9117,10.8054,11.7529,12.6796,13.6679,14.5851,15.5570
+endTime:16.866666412353517
+chordTimes:0.2732,1.2211,2.1202,3.1083,4.0852,5.0112,5.9376,6.8666,7.8304,8.7753,9.7387,10.6387,11.6574,12.5810,13.5015,14.5106,15.4685
 chordSymbols:C,F,Eb,Bb,Gm,Eb,F,C,C,F,Eb,Bb,Gm,Eb,F,C,C
 C F Eb Bb Gm Eb F C
 C

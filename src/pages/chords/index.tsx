@@ -9,7 +9,8 @@ export default function Chords() {
   useEffect(() => {
     let ignore = false
     ;(async () => {
-      const res = await fetch(`${import.meta.env.BASE_URL}/songs.txt`)
+      console.log(`${import.meta.env.BASE_URL}songs.txt`)
+      const res = await fetch(`${import.meta.env.BASE_URL}songs.txt`)
       const text = await res.text()
       console.log('Songs:\n', text)
       if (!ignore) {
@@ -40,6 +41,34 @@ export default function Chords() {
         .map((item, index) => (
           <SongPlayer key={index} data={item} />
         ))}
+      <div className="m-20">
+        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">TODO:</h2>
+        <p className="leading-7 [&:not(:first-child)]:mt-6">
+          {data
+            .filter((item) => item && item.todo)
+            .map((item, index) => (
+              <>
+                {item.videoId ? (
+                  <a
+                    key={index}
+                    href={`https://www.youtube.com/watch?v=${item.videoId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline italic"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <span key={index} className="italic">
+                    {item.name}
+                  </span>
+                )}
+                <span className="text-gray-500 mx-2">•</span>
+              </>
+            ))}
+          and more...
+        </p>
+      </div>
     </>
   )
 }
