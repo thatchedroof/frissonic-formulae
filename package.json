@@ -2,6 +2,7 @@
   "name": "frissonic-formulae",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://thatchedroof.github.io/frissonic-formulae",
   "scripts": {
     "build": "run-s wasm-pack:release typecheck vite:build",
     "dev": "run-s wasm-pack:dev vite:dev",

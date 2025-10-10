@@ -28,8 +28,7 @@ type ArrayKeys<T> = {
   [P in keyof T]-?: T[P] extends readonly any[] ? P : never
 }[keyof T]
 
-function // @ts-ignore
-updateDataSubKey<K extends ArrayKeys<ChordData>>(
+function updateDataSubKey<K extends ArrayKeys<ChordData>>(
   data: ChordData,
   key: K,
   subKey: number,

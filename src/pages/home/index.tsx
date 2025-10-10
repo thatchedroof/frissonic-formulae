@@ -25,7 +25,7 @@ export default function Home() {
     if (data !== null) return
     let ignore = false
     ;(async () => {
-      const res = await fetch('/songs.txt')
+      const res = await fetch(`${import.meta.env.BASE_URL}/songs.txt`)
       const text = await res.text()
       if (!ignore) {
         setData(parseChordData(text))

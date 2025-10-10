@@ -8,11 +8,11 @@ import ChordsPage from './pages/chords'
 export const routerObjects: RouteObject[] = [
   {
     path: '/',
-    Component: true ? HomePage : ChordsPage,
+    Component: ChordsPage,
   },
   {
-    path: '/chords',
-    Component: ChordsPage,
+    path: '/edit',
+    Component: HomePage,
   },
 ]
 
