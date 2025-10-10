@@ -487,6 +487,7 @@ dependencies = [
 [[package]]
 name = "guitar_chords"
 version = "0.0.1"
+source = "git+https://github.com/thatchedroof/guitar-chords#ef90cf9933cdebd13b0258c240ab8a98b6e61082"
 dependencies = [
  "anyhow",
  "chumsky",
