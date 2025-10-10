@@ -31,7 +31,11 @@ export default function Chords() {
       <div className="h-20"></div>
       {data
         .filter(
-          (item) => item && !item.todo && item.chordTimes!.flat().length! > 0 && item.chordSymbols!.flat().length > 0,
+          (item) =>
+            item &&
+            !item.todo &&
+            (item.chordTimes ?? []).flat().length > 0 &&
+            (item.chordSymbols ?? []).flat().length > 0,
         )
         .map((item, index) => (
           <SongPlayer key={index} data={item} />
