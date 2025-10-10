@@ -45,7 +45,7 @@ export default function Chords() {
         <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">TODO:</h2>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           {data
-            .filter((item) => item && item.todo && (item.chordTimes ?? []).flat().length > 0 && (item.chordSymbols ?? []).flat().length > 0)
+            .filter((item) => item && !(!item.todo && (item.chordTimes ?? []).flat().length > 0 && (item.chordSymbols ?? []).flat().length > 0))
             .map((item, index) => (
               <>
                 {item.videoId ? (
