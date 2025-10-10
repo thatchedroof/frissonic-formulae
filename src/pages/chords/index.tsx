@@ -11,6 +11,7 @@ export default function Chords() {
     ;(async () => {
       const res = await fetch(`${import.meta.env.BASE_URL}/songs.txt`)
       const text = await res.text()
+      console.log('Songs:\n', text)
       if (!ignore) {
         setData(parseChordData(text))
       }
