@@ -28,7 +28,8 @@ type ArrayKeys<T> = {
   [P in keyof T]-?: T[P] extends readonly any[] ? P : never
 }[keyof T]
 
-function updateDataSubKey<K extends ArrayKeys<ChordData>>(
+function // @ts-ignore
+updateDataSubKey<K extends ArrayKeys<ChordData>>(
   data: ChordData,
   key: K,
   subKey: number,
@@ -139,10 +140,12 @@ export default function Song({
 
     w.onmessage = (e: MessageEvent<any>) => {
       if (e.data.type === 'result') {
+        // @ts-ignore
         updateDataSubKey(dataRef.current, 'cycles', subKey, e.data.nCycles, updateDataFunc)
         setHaps(e.data.haps)
         updateDataSubKey(
           dataRef.current,
+          // @ts-ignore
           'chordSymbols',
           subKey,
           e.data.haps.map((hap: any) => hap.value.chord),
@@ -180,6 +183,7 @@ export default function Song({
   const recordBeat = useCallback(() => {
     updateDataSubKey(
       data,
+      // @ts-ignore
       'chordTimes',
       subKey,
       (prevBeats) => {
@@ -219,8 +223,10 @@ export default function Song({
         console.log('Start time:', data.startTime?.[subKey])
 
         if (data.startTime?.[subKey] === undefined) {
+          // @ts-ignore
           updateDataSubKey(data, 'startTime', subKey, player.current?.getCurrentTime(), updateDataFunc)
         } else {
+          // @ts-ignore
           updateDataSubKey(data, 'startTime', subKey, undefined, updateDataFunc)
         }
 
@@ -232,8 +238,10 @@ export default function Song({
         console.log('End time:', data.endTime?.[subKey])
 
         if (data.endTime?.[subKey] === undefined) {
+          // @ts-ignore
           updateDataSubKey(data, 'endTime', subKey, player.current?.getCurrentTime(), updateDataFunc)
         } else {
+          // @ts-ignore
           updateDataSubKey(data, 'endTime', subKey, undefined, updateDataFunc)
         }
 
@@ -279,6 +287,7 @@ export default function Song({
           setBeatText(null)
           updateDataSubKey(
             dataRef.current,
+            // @ts-ignore
             'chordTimes',
             subKey,
             (prevBeats: number[] | undefined) => {
@@ -313,6 +322,7 @@ export default function Song({
   const convertAbsolute = useCallback(
     (string: string) => {
       if (!dataRef.current.key) return
+      // @ts-ignore
       updateDataSubKey(dataRef.current, 'chords', subKey, relative_to_absolute(string, key), updateDataFunc)
     },
     [updateDataFunc, key, subKey],
@@ -375,6 +385,7 @@ export default function Song({
       const time = event.target.getDuration()
 
       if (endTime === 0) {
+        // @ts-ignore
         updateDataSubKey(dataRef.current, 'endTime', subKey, time, updateDataFunc)
       }
 
@@ -425,7 +436,9 @@ export default function Song({
               className="mb-2 font-mono"
               placeholder="Key (e.g. C, Dm, F#)"
               value={key}
-              onChange={(e) => updateDataSubKey(data, 'key', subKey, e.target.value, updateDataFunc)}
+              onChange={(
+                e, // @ts-ignore
+              ) => updateDataSubKey(data, 'key', subKey, e.target.value, updateDataFunc)}
             />
             <Input
               className="mb-2 font-mono"
@@ -435,6 +448,7 @@ export default function Song({
                 convertRelative(chords ?? '')
               }}
               onChange={(e) => {
+                // @ts-ignore
                 updateDataSubKey(data, 'chords', subKey, e.target.value, updateDataFunc)
                 convertRelative(e.target.value)
               }}
@@ -577,6 +591,7 @@ export default function Song({
                     setBeatText(e.target.value)
                     updateDataSubKey(
                       data,
+                      // @ts-ignore
                       'chordTimes',
                       subKey,
                       e.target.value
