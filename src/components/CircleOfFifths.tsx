@@ -1,46 +1,27 @@
+import { mod } from 'src/lib/utils.js'
 import { absolute_chord_to_root_maj } from '../../frissonic-formulae/pkg/frissonic_formulae'
 import { useMemo, useState } from 'react'
+
+const major = ['C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#', 'F']
+const minor = ['a', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'a#', 'f', 'c', 'g', 'd']
+const outerRadius = 200
+const innerRadius = outerRadius * 0.65
+const radius = outerRadius * 1.5
 
 export default function CircleOfFifths({
   value,
   chords,
   times,
   activeIndex,
+  songKey,
 }: {
   value: number
   chords: string[]
   times: number[]
   activeIndex: number | null
+  songKey: string | undefined
 }) {
-  const notes = [
-    'C',
-    'G',
-    'D',
-    'A',
-    'E',
-    'B',
-    'F#',
-    'C#',
-    'G#',
-    'D#',
-    'A#',
-    'F',
-    'a',
-    'e',
-    'b',
-    'f#',
-    'c#',
-    'g#',
-    'd#',
-    'a#',
-    'f',
-    'c',
-    'g',
-    'd',
-  ]
-  const outerRadius = 200
-  const innerRadius = outerRadius * 0.65
-  const radius = outerRadius * 1.5
+  const keyIndex = Math.max(0, major.indexOf(songKey ?? 'C'))
 
   const { chordIndexes, anyIsMinor } = useMemo(() => {
     let anyIsMinor = false
@@ -60,19 +41,25 @@ export default function CircleOfFifths({
     return { chordIndexes, anyIsMinor }
   }, [chords])
 
-  const circleCoords = notes.map((note, index) => {
-    if (index >= 12) {
-      const angle = ((index - 12) / 12) * 2 * Math.PI - Math.PI / 2
-      const x = Math.cos(angle) * innerRadius
-      const y = Math.sin(angle) * innerRadius
-      return { note, x, y }
-    } else {
-      const angle = (index / 12) * 2 * Math.PI - Math.PI / 2
-      const x = Math.cos(angle) * outerRadius
-      const y = Math.sin(angle) * outerRadius
-      return { note, x, y }
-    }
-  })
+  const circleCoords = useMemo(
+    () =>
+      major.concat(minor).map((note, index) => {
+        let radius
+        if (index >= 12) {
+          radius = innerRadius
+        } else {
+          radius = outerRadius
+        }
+
+        const chordIndex = mod(index - keyIndex, 12)
+
+        const angle = (chordIndex / 12) * 2 * Math.PI - Math.PI / 2
+        const x = Math.cos(angle) * radius
+        const y = Math.sin(angle) * radius
+        return { note, x, y }
+      }),
+    [keyIndex],
+  )
 
   const [prevLines, setPrevLines] = useState([])
 
@@ -96,8 +83,10 @@ export default function CircleOfFifths({
                 y={y}
                 textAnchor="middle"
                 dominantBaseline="central"
-                className={`font-[Campania] text-3xl transition-all duration-300 ${
-                  index === chordIndexes[activeIndex ?? 0] ? 'fill-red-500 font-semibold scale-110' : 'fill-white'
+                className={`font-[Campania] text-4xl transition-all duration-300 ${
+                  index === chordIndexes[activeIndex ?? 0]
+                    ? 'fill-secondary-foreground font-semibold scale-110'
+                    : 'fill-muted-foreground'
                 }`}
               >
                 {note}

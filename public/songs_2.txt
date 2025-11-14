@@ -1,18 +1,19 @@
 Breaking Us In Two
+By: Joe Jackson
 https://www.youtube.com/watch?v=HCVgdldT5vQ
 https://tabs.ultimate-guitar.com/tab/joe-jackson/breaking-us-in-two-chords-72227
-chordTimes:0.0000,1.0000,2.0000,2.5000,6.0000,7.0000
-chordSymbols:F#,E,F#,D,E,F#
 F# E/F# F# D E
 F#
 
 The Molosse of Monument Hill
+By: Bob Drake
 https://www.youtube.com/watch?v=yHbWt31ceso
 9:44
 F#@4 C#@4 A@2 B C#@3
 C#
 
 Good Day
+By: Tally Hall
 https://www.youtube.com/watch?v=VGQZItOMz6k
 https://www.hooktheory.com/theorytab/view/tally-hall/good-day
 0:29
@@ -20,6 +21,7 @@ F# B G Eb F A E
 E
 
 Hardware Store
+By: "Weird Al" Yankovic
 https://www.youtube.com/watch?v=DFI6cV9slfI
 https://www.hooktheory.com/theorytab/view/weird-al-yankovic/hardware-store
 3:00
@@ -27,112 +29,146 @@ Bb Ab Db Eb;G F Bbm A D (Gb) Eb (Ab) Fsus4 F (Bb)
 Bb
 
 Radio Martini
+By: Kevin MacLeod
 https://www.youtube.com/watch?v=v2M6VIhNjkQ
 https://www.hooktheory.com/theorytab/view/kevin-macleod/radio-martini
+chordTimes:1.8362,2.7000,3.2248,3.7369,4.6900,5.2505,5.7534,6.7135,7.2970,7.8307,8.7395,9.3231,9.8624,10.7987,11.3551,11.8840,12.7912,13.3636,13.8784,14.8091,15.3763,15.9384,16.8695,17.3958,17.9524,18.9113,19.4538,19.9870,20.8716,21.4414,21.9137,22.9297,23.5062,24.1253,24.9708,25.5371,26.0877
+chordSymbols:C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C,Ab,Bb,C
 C [Ab Bb]
 C
 
 Thanksgiving Theme
+By: Vince Guaraldi Trio
 https://www.youtube.com/watch?v=-aN4Cn3_AtU
 https://www.hooktheory.com/theorytab/view/vince-guaraldi-trio/thanksgiving-theme
-startTime:9.934319847412109
-endTime:16.200397085830687
-chordTimes:10.6942,11.5692,12.0559,12.4934,13.4147,13.8493,14.2903,15.2364,15.6803,16.1156
-chordSymbols:C,F,G,Ab,Bb,C,C,F,G,Ab
+startTime:0
+endTime:7.266666412353516
+chordTimes:0.3602,0.6836,1.0960,1.9904,2.3858,2.7729,3.7307,4.0896,4.5206,5.4305,5.8070,6.2650
+chordSymbols:C,F,G,Ab,Bb,C,C,F,G,Ab,Bb,C
 C F G@2 Ab Bb C@2
 C
 
 Kiss From a Rose
+By: Seal
 https://www.youtube.com/watch?v=vx-Lzo9NxAQ
 https://www.hooktheory.com/theorytab/view/seal/kiss-from-a-rose
 Bb F G;G D# F G D# F G F C G Gm D# F D# F G
 G
 
 Closer To the Sun
+By: Slightly Stoopid
 https://www.youtube.com/watch?v=kP_shZ8bIsk
 https://tabs.ultimate-guitar.com/tab/slightly-stoopid/closer-to-the-sun-chords-1061649
+startTime:0
+endTime:40.54622397234345
+chordTimes:0.2440,1.7987,3.4600,5.1032,6.7221,8.3401,9.9541,11.6427,13.2703,14.9139,16.4856,18.0372,19.6033,21.2249,22.8170,24.3872,25.9413,27.5557,29.1226,30.7054,32.3019,33.9110,35.5268,37.0954,38.6915
+chordSymbols:E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E
 E A C D
 E
 
 Zeplike
+By: Slightly Stoopid
 https://www.youtube.com/watch?v=DNFM6G3SSSo
 A E (E7);G A E
 E
 
 Ana Ng
+By: They Might Be Giants
 https://www.hooktheory.com/theorytab/view/they-might-be-giants/ana-ng
 G C D [C D] G Bb C D
 G
 
 Admiral Halsey
+By: Paul McCartney, Linda McCartney
 https://www.youtube.com/watch?v=UvUkPtSheyg
 2:40
 [C@3 Am] Dm G7 [F Ab Bb C]
 C
 
 Ballad of Pancho Villa
+By: Vince Guaraldi, Bola Sete
 https://www.youtube.com/watch?v=z0tQ4YTortE
 0:03
 I IV bVI bVII I
 TODO
 
 Sing a Song of Song
+By: Kenny Garrett
 https://www.youtube.com/watch?v=7Qkno-GGjms
 TODO
 
 I Am The Walrus
+By: The Beatles
 https://www.youtube.com/watch?v=t1Jm5epJr10
 https://www.hooktheory.com/theorytab/view/the-beatles/i-am-the-walrus
 A A7/G C [D E]
 A
 
 Soul Coaxing
+By: Raymond Lefèvre, Le Grand Orchestre de Raymond Lefèvre
 https://www.youtube.com/watch?v=vGhVkob-m94
 https://tabs.ultimate-guitar.com/tab/4593572
+chordTimes:0.0000,4.2132,8.0754,10.1086,11.0729,12.0036,13.9404,14.9780,15.4597,15.9942
+chordSymbols:E,A,G#m,A,B,E,G,A,B,E
 E@4 A@4 G#m@2 A B E@2 G [A B]
 E
 
 Hero
+By: Chad Kroeger, Josey Scott
 https://www.youtube.com/watch?v=ZjhkSjb41VQ
 https://www.hooktheory.com/theorytab/view/nickelback/hero
 G A B@2
 B
 
 S.O.S.
+By: ABBA
 https://www.youtube.com/watch?v=CxMcD8QHVag
 https://www.hooktheory.com/theorytab/view/abba/sos
+startTime:151.40691110490417
+chordTimes:159.5356,161.3756,162.3144,163.1932,166.9636,168.9003,169.8088,170.6786,174.4617,176.4118,177.3490,178.2945,181.9656,183.8813,184.7689,185.7002
+chordSymbols:Bb,Db,Eb,F,Bb,Db,Eb,F,Bb,Db,Eb,F,Bb,Db,Eb,F
 Bb [Db Eb] F@2
 F
 
 Hey Ya
+By: OutKast
 https://www.youtube.com/watch?v=ubk1skSE9OA
 https://www.hooktheory.com/theorytab/view/outkast/hey-ya
 G C@2 D@.5 E@2
 G
 
 Higher Ground
+By: Stevie Wonder
 https://www.youtube.com/watch?v=1esf0efHbjM
 https://tabs.ultimate-guitar.com/tab/stevie-wonder/higher-ground-chords-1841310
 D# [F# G#] D#@2
 D#
 
-Yellow Museum (2)
+Yellow Museum
+By: Šimon Ornest
 https://www.youtube.com/watch?v=d2EnKD7jj4w
+D [G A] [G@3 F] D@2 [G A] D@2
+D
 TODO
 
 Gotta Get Up
+By: Harry Nilson
 https://www.youtube.com/watch?v=dur1t_9V41A
 https://www.hooktheory.com/theorytab/view/harry-nilsson/gotta-get-up
 C Eb D [Ab G];C G C G C G C [Ab G]
 C
 
 Cooking by the Book
+By: Máni Svavarsson
 https://www.youtube.com/watch?v=ZD71JeX4Vk0
 https://www.hooktheory.com/theorytab/view/lazytown/cooking-by-the-book
+chordTimes:22.0080,23.0921,24.2220,25.2690,25.8291,26.3549,27.4910,28.5178,29.5810,30.7057,31.7951,32.9305,34.0231,34.5436,35.0748,36.1398,37.2359,38.3156,39.4470
+chordSymbols:F,C,Bb,Ab,Gb,F,C,Bb,C,F,C,Bb,Ab,Gb,F,C,Bb,C,F
 F C Bb [Ab Gb] F C Bb C
 F
 
 Me and My Husband
+By: Mitski
 https://www.youtube.com/watch?v=TU_Dbxciei8
 https://www.hooktheory.com/theorytab/view/mitski/me-and-my-husband
 Eb Ab F Bb;Gb Ab Eb F Gb Ab A Bb Eb Ab
@@ -144,172 +180,229 @@ D A F G D/F# C A
 D
 
 Rasputin
+By: Boney M.
 https://www.youtube.com/watch?v=6JhVo2zS8hU
 https://www.hooktheory.com/theorytab/view/boney-m/rasputin
 B D E B A E B@2
 B
 
 Walk Hard
+By: John C. Reilly
 https://www.youtube.com/watch?v=Gp6wDjU23yI
 https://tabs.ultimate-guitar.com/tab/dewey-cox/walk-hard-chords-899567
+startTime:84.70190395231629
+endTime:99.11903406675721
+chordTimes:87.9200,90.4079,91.6351,92.9203,95.3181,96.5462,97.8279
+chordSymbols:F#,G#,A#,F#,G#,A#,F#
 F# [G# A#]
 F#
 
 Rock Lobster
+By: The B-52's
 https://www.youtube.com/watch?v=vz65vonktMA
 https://www.hooktheory.com/theorytab/view/the-b-52s/rock-lobster
+startTime:195.30631908010864
+endTime:207.04993796566774
+chordTimes:195.5645,196.8660,198.1813,199.5158,200.8694,202.1779,203.4758,204.8309
+chordSymbols:Cm,Eb,Ab,G,Cm,Eb,Ab,G
 Cm Eb Ab G
 C
 
 I Feel Love
+By: Donna Summer
 https://www.youtube.com/watch?v=nTNcCKq6V2c
 https://www.hooktheory.com/theorytab/view/donna-summer/i-feel-love
 C D# F G
 C
 
 Linus and Lucy
+By: Vince Guaraldi Trio
 https://www.youtube.com/watch?v=dURiJSJkWFM
 https://www.hooktheory.com/theorytab/view/vince-guaraldi-trio/linus-and-lucy#Intro%20and%20Verse
 Ab Cb Ab
 
 Abstract Expression
+By: Dominique Leone
 https://www.youtube.com/watch?v=ZW3qZqe5AVM
+startTime:1.8152902940826525
+endTime:26.555713977111818
+chordTimes:3.3222,3.6608,4.0693,4.6484,4.9914,5.3781,5.7345,6.2633,6.6493,7.0541,7.4269,7.9908,8.3660,8.7649,9.1344,9.7092,10.0872,10.4402,10.8015,11.3468,11.6837,12.0990,12.5021,13.0730,13.4590,13.8084,14.1806,14.7562,15.1038,15.4962,15.8812,16.4494,16.8273
+chordSymbols:F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F,Ab,Bb,C,F
 F Ab Bb C
 F
 
 Here and Now
+By: Letters To Cleo
 https://www.youtube.com/watch?v=JO5xHqGOajs
 https://tabs.ultimate-guitar.com/tab/letters-to-cleo/here-and-now-chords-1932651
+chordTimes:0.5542,2.8244,5.0017,7.1506,9.3520,11.4519,13.6798,15.8496,18.0023,20.1211,22.2206,24.3228,26.4064
+chordSymbols:E,G,A,E,E,G,A,E,E,G,A,E,E
 E G A E
 E
 
 Let Me Entertain You
+By: Robbie Williams
 https://www.youtube.com/watch?v=kzeK0V0amPQ
 https://tabs.ultimate-guitar.com/tab/robbie-williams/let-me-entertain-you-chords-176987
 E G A E
 E
 
 Tears
+By: The Crocodiles
 https://www.youtube.com/watch?v=o_iMGqEK_V0
 https://tabs.ultimate-guitar.com/tab/the-crocodiles/tears-chords-5294676
 A [C D]
 A
 
 Lithium
+By: Nirvana
 https://www.youtube.com/watch?v=pkcJEvMcnEg
 https://www.hooktheory.com/theorytab/view/nirvana/lithium
 D F#m Bm G Bb C A C
 D
 
 Manchild
+By: Neneh Cherry
 https://www.youtube.com/watch?v=OJ9VBMBS3qE
 https://www.hooktheory.com/theorytab/view/neneh-cherry/manchild
 Db@2 E Ab [Db@3 Dbsus4@3 Db@2] F Gb D@2 Fb@2 C@2;Bbm Eb Db Cb Bbm Eb Cb Db
 Db;Bb
 
 Troublemaker
+By: Soundroll
 https://www.youtube.com/watch?v=2x6ST88-E-o
+A C G D
+A
 TODO
 
 Gospel
+By: MarchFourth
 https://www.youtube.com/watch?v=gMdVCaVkNU0
 https://www.hooktheory.com/theorytab/view/marchfourth-marching-band/gospel#Intro
 Eb F C D Bb F C@2
 C
 
 Operaland
+By: Bryan Scary
 https://www.youtube.com/watch?v=HlQNzLkxuuU
 TODO
 
 Car and TV
+By: Faust
 https://www.youtube.com/watch?v=_grhg_yPum4
+Gb Db E B D
 TODO
 
 Ratboy Genius Theme Song
+By: Ryan Dorin
 https://www.youtube.com/watch?v=0iw1EnLvm88
 https://www.hooktheory.com/theorytab/view/ryan-dorin/ratboy-genius-theme-song
+endTime:22.043780154495238
+chordTimes:2.2259,4.5810,5.8682,7.1092,7.7856,8.3654,8.9849,9.5981,11.9903,14.4252,15.6660,16.8403,17.4914,18.1300,18.7213,19.3172
+chordSymbols:G,C,G,Eb,Bb,Db,Ab,G,G,C,G,Eb,Bb,Db,Ab,G
 G@2 C G [Eb Bb] [Db Ab] G@2
 G
 
 Kristine from the 7th Grade
+By: Ben Folds
 https://www.youtube.com/watch?v=4aQTyLyDtQo
 https://tabs.ultimate-guitar.com/tab/ben-folds/kristine-from-the-7th-grade-chords-4795079
 [Csus4 C] [Fsus4 F] [Bbsus4 Bb] [Ebsus4 Eb] [Absus4 Ab] G7 C C/Bb Fm7 Bb Eb Ab Db G7 C
 C
 
 Hardest Geometry Problem in the World
+By: Mark Mothersbaugh
 https://www.youtube.com/watch?v=MAdH1NoHKYA
+A D G C F Bb E A
+A
 TODO
 
 Light My Fire
+By: The Doors
 https://www.youtube.com/watch?v=qoX6AKuYWL8
 https://www.hooktheory.com/theorytab/view/the-doors/light-my-fire
+chordTimes:0.7744,1.6650,2.5652,3.5056,4.4680,5.3607,6.2762
+chordSymbols:G,D,F,Bb,Eb,Ab,A
 G D F Bb Eb Ab A
 G
 
 Lila's Dance
+By: Mahavishnu Orchestra
 https://www.youtube.com/watch?v=T4fnJvhkXns
 https://tabs.ultimate-guitar.com/tab/mahavishnu-orchestra/lilas-dance-tabs-1461875
 G@4 C@3 Bb@4 Eb@3 Db@4 Gb@3 E@4 A@3 G@4 D/F#@3 Em9@7
 TODO
 
 Stand
+By: R.E.M.
 https://www.youtube.com/watch?v=iZffPVCTMCA
 https://www.hooktheory.com/theorytab/view/rem/stand#Chorus
 E A B A
 E
 
 Everything You Know Is Wrong
+By: "Weird Al" Yankovic
 https://www.youtube.com/watch?v=W8tRDv9fZ_c
 https://www.hooktheory.com/theorytab/view/weird-al-yankovic/everything-you-know-is-wrong#Chorus
-// Lotta stuff here
 // Lotta stuff here
 TODO
 
 Nellie McKay
+By: Dominique Leone
 https://www.youtube.com/watch?v=cBw2FPiY-eg
 C E(m) Eb(m) Ab G Gb B Bb
 C
 
 Creator
+By: Lena Raine
 https://www.youtube.com/watch?v=Qtf8YFw8iZg
 https://www.hooktheory.com/theorytab/view/lena-raine/creator#Verse
 Gb F Bbm F Gb F Bb@2 Gb F Bbm Ab Gb F Bbm@2
 Bb
 
 Still Alive
+By: Jonathan Coulton
 https://www.youtube.com/watch?v=Y6ljFaKRTrI
 https://www.hooktheory.com/theorytab/view/jonathan-coulton-and-ellen-mclain/still-alive#Chorus
 F C A# F F C A# F Gm C F Dm A# A;D
 F;D
 
 Modern Jazz Samba
+By: Kevin MacLeod
 https://www.youtube.com/watch?v=IaGW8L5S-XA
 https://www.hooktheory.com/theorytab/view/kevin-macleod/modern-jazz-samba#Verse
 Em7@2 F#9 B7 Em7@2 F#9 B7 Em7@2 F#9 B7 C7@2 B7
 E
 
 Dream a Little Dream of Me
+By: The Mamas & The Papas
 https://www.youtube.com/watch?v=v8I5vDewcZo
 https://www.hooktheory.com/theorytab/view/the-mamas-and-the-papas/dream-a-little-dream-of-me#Verse
 C B7 Ab G C E7 A A7 F@2 Fm@2 C [Ab G] G7@2
 C
 
 Sir Duke
+By: Stevie Wonder
 https://www.youtube.com/watch?v=ETFvmkIA6S4
 https://www.hooktheory.com/theorytab/view/stevie-wonder/sir-duke#Verse
 B G#m G F#
 B
 
 Want You Gone
+By: Jonathan Coulton
 https://www.youtube.com/watch?v=dVVZaZ8yO6o
 https://www.hooktheory.com/theorytab/view/jonathan-coulton-and-ellen-mclain/want-you-gone#Chorus
 A@2 D@2 A@2 D C#;F#@3 B F#@3 B F#@3 B;Bm E A
 A;F#;A
 
 Dead Man
+By: sELF
 https://www.youtube.com/watch?v=o3dnfCndAfg
 https://tabs.ultimate-guitar.com/tab/self/dead-man-chords-5429862
+startTime:5.821500963760376
+endTime:26.265867999046325
+chordTimes:7.3238,8.2208,9.3225,10.2630,11.2980,12.2920,13.2962,14.2187,15.2860,16.3529,17.2826,18.3057,19.3023,20.3141,21.3198,22.2526,23.3775
+chordSymbols:B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B
 B G7 C#7 F#7
 B
 
@@ -317,83 +410,102 @@ https://www.tiktok.com/t/ZP8FEawKd/
 TODO
 
 1000 Umbrellas
+By: XTC
 https://www.youtube.com/watch?v=gIs2LzcYuk0
 https://tabs.ultimate-guitar.com/tab/xtc/1000-umbrellas-chords-1238462
 B C#7 G7 F#7
 B
 
 Merry-Go-Round of Life
+By: Joe Hisaishi
 https://www.youtube.com/watch?v=HMGetv40FkI
 https://www.hooktheory.com/theorytab/view/joe-hisaishi/merry-go-round-of-life
 Em7 A7 Dm7 Fmaj7 Bb Am7 D7
 D
 
 Imitation of the Sky
+By: Bryan Scary and The Shredding Tears
 https://www.youtube.com/watch?v=36BVqjhH6ko
 https://www.hooktheory.com/theorytab/view/bryan-scary-and-the-shredding-tears/imitation-of-the-sky
 Abm Ebm Db@2 Abm Ebm Db [E Ebm] Ab@2;
 Ab
 
 White Hill - Maromi's Theme
+By: Susumu Hirasawa
 https://www.youtube.com/watch?v=etFneUVRFCI
 https://www.hooktheory.com/theorytab/view/susumu-hirasawa/white-hill---maromis-theme---paranoia-agent#Instrumental
 A F Em B F Em A@2
 A
 
 Vienna
+By: Billy Joel
 https://www.youtube.com/watch?v=wccRif2DaGs
 https://www.hooktheory.com/theorytab/view/billy-joel/vienna#Verse
 Eb [Am7 D7] Gm7 C7 Gb7 F Bb@2
 Bb
 
 Gitanerías
+By: Alfredo Rodríguez
 https://www.youtube.com/watch?v=zxVapveok7s
 Dm [Eb A/C#]
 D
 
 Happy Factory
+By: Ryan Dorin
 https://www.youtube.com/watch?v=efjjmpOVzRg
 https://www.hooktheory.com/theorytab/view/ryan-dorin/happy-factory#Solo
 F#m C# E B D A G [C#sus4@2 C#];F#m C# A D#m7 Dmaj7@2 G C#
 F#
 
 Wooden Philosopher
+By: Exurb1a
 https://www.youtube.com/watch?v=-WN14MIMPtc
+chordTimes:0.1571,2.3027,4.5809,8.1101,9.4684,11.4574,13.7438,17.2256,18.3545,20.6308,22.8616,26.3346,27.4315,29.7915,32.0435,35.4263,36.5579,38.8061,41.1136,44.5787,45.6493
+chordSymbols:B,Em,C,F#,B,Em,C,F#,B,Em,C,F#,B,Em,C,F#,B,Em,C,F#,B
 B@2 Em@2 C@3 F#
 B
 
 Mirror Man
+By: Jack Stauber
 https://www.youtube.com/watch?v=NqUHjySqq_o
 https://tabs.ultimate-guitar.com/tab/jack-stauber/mirror-man-chords-3432953
+startTime:12.514777074386597
+chordTimes:13.1622,14.7858,16.2932,17.8028,19.3785,20.9159,22.5422,24.0799
+chordSymbols:C,C#,G,C,C,C#,G,C
 C C# G C C C# G C
 C
 
 Sally's Song
+By: Catherine O'Hara
 https://www.youtube.com/watch?v=VgL4graXGOo
 https://www.hooktheory.com/theorytab/view/catherine-ohara---danny-elfman/sallys-song---the-nightmare-before-christmas#Verse
 Em@4 F@3 B7@2 Em@2 [Em D7] G@2 F@3 B7@2 Em@2 [Em D7] G@2 F@2
 E
 
 La Negra Atilia
+By: Panorama Jazz Band
 https://www.youtube.com/watch?v=425MgYrkJgo
 TODO
 
 A Windmill In Old Amsterdam
+By: Ronnie Hilton
 https://www.hooktheory.com/theorytab/view/ronnie-hilton/a-windmill-in-old-amsterdam
 F Bb F Bb F Bb Eb Ab Db Gb C F
 
 A Lady / &
+By: Tally Hall
 https://www.youtube.com/watch?v=rygZkj3W_RM
 https://tabs.ultimate-guitar.com/tab/tally-hall/a-lady-chords-2436795
-Cm F Cm F G# C# G@2 Cm F Cm F G# A# C@2
 Cm
 
 Laughing Owl
+By: John Zorn
 https://www.youtube.com/watch?v=lSJmRc_fRTQ
 1:41
 TODO
 
 Art of Bullying
+By: Joanna Wang
 https://www.youtube.com/watch?v=qrByxOmq628
 2:36
 Db7 C7 F7 Gb7;
@@ -401,448 +513,838 @@ F
 TODO
 
 When I Nod
+By: Joanna Wang
 https://www.youtube.com/watch?v=k_jiA0xMrKI
 B E F# Bm G C B E
 B
 
 Adult Crap
+By: Joanna Wang
 https://www.youtube.com/watch?v=le22ZfiDOZ4
 VI II V I
 TODO
 
 I'm So Green
+By: Can
 https://www.youtube.com/watch?v=AYNikOG_lUE
 https://tabs.ultimate-guitar.com/tab/can/im-so-green-chords-2442737
 A7 D7 G7 C
 C
 
 Welcome To Tally Hall
+By: Tally Hall
 https://www.youtube.com/watch?v=-krA-ubCQqg
 https://www.hooktheory.com/theorytab/view/tally-hall/welcome-to-tally-hall#Verse
 B E A D
 D
 
 Cherry Lips
+By: Garbage
 https://www.youtube.com/watch?v=y395z7TGCyo
 https://tabs.ultimate-guitar.com/tab/garbage/cherry-lips-chords-903642
 C# F# B E A@2 F# G#
 A
 
 Pressure's On Me (Space Saloon Theme)
+By: Joanna Wang
 https://www.youtube.com/watch?v=ftEcJ5BFwxU
 TODO
 
 Thomas the Tank Engine Theme
+By: Mike O'Donnell
 https://www.youtube.com/watch?v=WUNL7PjBr8U
 https://www.hooktheory.com/theorytab/view/mike-odonnell/thomas-the-tank-engine-theme#Verse
+chordTimes:5.1165,7.5555,9.9149,11.2094,12.3514,13.5054,14.7473,17.1872,19.6236,20.8466,22.0199
+chordSymbols:C,Ab7,Dm7,G,Dm,G,C,Ab7,Dm7,G,Dm
 C@2 Ab7@2 Dm7 G Dm G
 C
 
 Peter and the Wolf
+By: Sergei Prokofiev
 https://www.youtube.com/watch?v=Fmi5zHg4QSM
 https://www.hooktheory.com/theorytab/view/sergei-prokofiev/peter-and-the-wolf
 C@2 Ab Eb@3 [Bm D7] G
 C
 
 Nu Pogodi Theme
+By: Tamás Deák
 https://www.youtube.com/watch?v=mhEvV9Q7zfE
 https://www.hooktheory.com/theorytab/view/tamas-deak/nu-pogodi-theme#Instrumental
 F@2 Db C F@2 D7@2 Gm9 [C13@3 Fmaj7] [Am7 Abm7] [Gm7 Gb7]
 F
 
 Marmalade March
+By: Psychedelic Porn Crumpets
 https://www.youtube.com/watch?v=P2GNGwChDUQ
+B E A D G C Gb@4 B E A D G C B@4 B7@4
+B
 TODO
 
 Battle of Who Could Care Less
+By: Ben Folds Five
 https://www.youtube.com/watch?v=0Y1wm7CFRCQ
 https://tabs.ultimate-guitar.com/tab/ben-folds-five/battle-of-who-could-care-less-chords-1971081
 G F Eb Db Db Eb B Db G F Eb Db Db Eb B Db Eb F@2
 G
 
 Rainbow Tylenol
+By: Kitsune
 https://www.youtube.com/watch?v=5K7Frc2lTI8
 https://www.hooktheory.com/theorytab/view/kitsune/rainbow-tylenol#Instrumental
+startTime:28.79950205340576
+chordTimes:29.2436,30.9124,32.7596,34.5265,36.2930,38.0605,39.8451,41.6142
+chordSymbols:Ab,Eb,Bb,C,Ab,Eb,Bb,C
 Ab Eb Bb C
 C
 
 Lullaby of the Leaves
+By: George Olsen
 https://www.youtube.com/watch?v=5FNHqwMBXPE
 https://www.hooktheory.com/theorytab/view/george-olsen/lullaby-of-the-leaves#Intro
+startTime:7.587684036239624
+chordTimes:10.4378,12.6919,14.9305,17.1573,19.4064,20.6333,21.7495,22.8227,23.9070,26.2366,27.3393,28.4111,30.6001,32.8031,34.9794,37.1754,38.3202,39.4457,40.5228,41.6117
+chordSymbols:Dm,A7,D,Gm7,E7,A,E7,A,Dm,Bb,A7,Dm,A7,D,Gm7,E7,A,E7,A,Dm
 Dm A7 D Gm7 [E7 A] [E7 A] Dm [Bb A7]
 D
 
 National Aerobics Championship Theme
+By: Ty Parr
 https://www.youtube.com/watch?v=DCyTijJzEwo
 https://www.hooktheory.com/theorytab/view/ty-parr/national-aerobics-championship-theme#Instrumental
 Bb F C D Bb F C Dm
 D
 
 Handbags and Gladrags
+By: Rod Stewart
 https://www.youtube.com/watch?v=9llfUGKW4KI
+chordTimes:2.3239,5.3901,8.4877,11.5406,12.3008,14.6213,14.8901,20.6793,22.2571,23.7739,25.3706,25.8311
+chordSymbols:Fm,Eb,Ab,Bbsus4,Bb,Bb,Db,Ab,Ab7,Db,Ab
 Fm@2 Eb@2 Ab@2 [Bbsus4 Bb] Bb Db@4 Ab Ab7 Db@2 Ab@2
 Ab
 
 Apache (Jump On It)
+By: The Sugarhill Gang
 https://www.youtube.com/watch?v=0D9HGM8fsWU
 https://www.hooktheory.com/theorytab/view/sugarhill-gang/apache---jump-on-it#Chorus
+chordTimes:25.4773,27.5706,29.6660,33.7648,35.8452,37.9349,42.1363,44.2740,46.3549,50.5198,52.5958,54.6709,58.8489
+chordSymbols:Am,D,Am,Am,D,Am,D,G,Dm,Am,D,Am,Am
 Am D Am@2 Am D Am@2 D G Dm@2 Am D Am@2
 A
 
 Loonboon
+By: Laura Shigihara
 https://www.youtube.com/watch?v=lr4vi_XAjQQ
 https://www.hooktheory.com/theorytab/view/laura-shigihara/loonboon#Verse
 TODO
 
 Nànnuflày
-https://www.youtube.com/watch?v=Kk8eJh4i8Lo
+By: Tinariwen
+https://www.youtube.com/watch?v=H1YIgwPsX5Q
 Bbm Eb
 Bb
 TODO
 
 Bulletproof
+By: La Roux
 https://www.youtube.com/watch?v=Kk8eJh4i8Lo
 https://www.hooktheory.com/theorytab/view/la-roux/bulletproof#Verse
 D#m G# B D#m
 D#
 
 Another Believer
+By: Rufus Wainwright
 https://www.youtube.com/watch?v=WwcEH24Ommw
 https://tabs.ultimate-guitar.com/tab/rufus-wainwright/another-believer-chords-3153971
+E
 TODO
 
 Sundial
+By: Lemon Demon
 https://www.youtube.com/watch?v=tdbhU7EHAhc
 https://tabs.ultimate-guitar.com/tab/lemon-demon/sundial-chords-3132773
+startTime:0
+endTime:13.466666412353517
+chordTimes:0.4355,1.0652,1.6464,2.2372,2.8756,3.5020,4.1254,4.7233,5.2326,6.0009,6.6442,7.2471,7.8811,8.4779,9.1381,9.7397,10.3533,10.9641,11.4477,12.2348
+chordSymbols:Cm,G#,D#,A#,G#,A#,Cm,F7,Cm,F7,Cm,G#,D#,A#,G#,A#,Cm,F7,Cm,F7
 Cm G# D# A# G# A# Cm F7 Cm F7
 C
 
 House of the Rising Sun
+By: The Animals
 https://www.youtube.com/watch?v=MJkr0DWbhTk
 https://www.hooktheory.com/theorytab/view/the-animals/house-of-the-rising-sun#Verse
 Am C D F Am E Am E
 A
 
 Watery Graves
+By: Laura Shigihara
 https://www.youtube.com/watch?v=ILkWJfmd6ZM
 https://www.hooktheory.com/theorytab/view/laura-shigihara/watery-graves#Intro
 Gm D Dm Csus2 [Cm7 D] [Gm C] [Eb Cm7] D
 G
 
 Root Beer Rag
+By: Billy Joel
 https://www.youtube.com/watch?v=VWH9iwtl9Q4
 https://www.hooktheory.com/theorytab/view/billy-joel/root-beer-rag#Intro
+chordTimes:7.8409,9.4689,10.2680,11.1145,12.7544,13.5710,14.4549,16.0724,16.9447,17.8264
+chordSymbols:Db,Cb,Gb,Db,Cb,Ab7,Db,Cb,Gb,Db
 Db@2 Cb Gb Db@2 Cb Ab7
 Db
 
 Raining Sunshine
+By: Miranda Cosgrove, Matthew R.T. Gerrard, Jay Landers, Charlie Midnight
 https://www.youtube.com/watch?v=I9EVr6jRlvU
 https://www.hooktheory.com/theorytab/view/miranda-cosgrove/raining-sunshine#Intro
 A Dm B7 D
 A
 
 Taste the Fame
+By: They Might Be Giants
 https://www.youtube.com/watch?v=yj2JRp0lZVI
 https://www.hooktheory.com/theorytab/view/they-might-be-giants/taste-the-fame#Intro
+chordTimes:11.0419,13.3104,15.5176,17.9029,20.2762
+chordSymbols:C,Am,F,Ab,C
 C Am F Ab
 C
 
 Love Me More
+By: Mitski
 https://www.youtube.com/watch?v=P4J3Z9xgjWQ
 https://www.hooktheory.com/theorytab/view/mitski/love-me-more#Verse
 TODO
 
 Never Ever Getting Rid of Me
+By: Christopher Fitzgerald, Kimiko Glenn, Waitress Original Broadway Cast Ensemble
 https://www.youtube.com/watch?v=oQvqDYrCi_k
 https://tabs.ultimate-guitar.com/tab/sara-bareilles/never-ever-getting-rid-of-me-chords-1781459
 D E G Gm;C D F G
 D;C
 
 Kitten is Angry
+By: Lemon Demon
 https://www.youtube.com/watch?v=Fee4c34VFxw
 https://tabs.ultimate-guitar.com/tab/lemon-demon/kitten-is-angry-chords-4191343
 G# Eb G C
 C
 
 Norwegian Wood
+By: The Beatles
 https://www.youtube.com/watch?v=B_RQv7OMJFI
 https://www.hooktheory.com/theorytab/view/the-beatles/norwegian-wood#Chorus
+chordTimes:0.4228,5.4696,6.3070,8.3690,13.2854,14.1831,16.2273,21.1091,22.0129,23.9795,28.9930,29.9793,32.1034
+chordSymbols:E,D,A,E,E,D,A,E,E,D,A,E,E
 E@5 [D@2 A] E@2
 E
 
 Pippin finale
+By: Stephen Schwartz
 https://www.youtube.com/watch?v=cOVbsf2eLbw
 https://www.hooktheory.com/theorytab/view/pippin-%28new-broadway-cast%29/finale
 Gm C Am7 D7 Gm Db F@2
 F
 
 Marketland
+By: Lemon Demon
 https://www.youtube.com/watch?v=_bPjmsu8q-o
 https://tabs.ultimate-guitar.com/tab/lemon-demon/marketland-chords-743334
 E Am F C E Am
 A
 
 I Wanna Be A Hippy
+By: Technohead
 https://www.youtube.com/watch?v=-zDFe1EfMBg
 https://tabs.ultimate-guitar.com/tab/technohead/i-wanna-be-a-hippie-chords-2101127
+startTime:81.49435704196166
 C Bb
 C
 
 Johnny Q
+By: Crazy 8's
 https://www.youtube.com/watch?v=INNmLQnmTa8
+startTime:19.27652794277954
+chordTimes:19.5441,20.5928,21.9903,23.0688,24.4812,25.5559,26.9817,28.0409,29.4068
+chordSymbols:C,G,A#,F,C,G,A#,F,C
 C G A# F
 C
 
 Drunk
+By: The Living Tombstone
 https://www.youtube.com/watch?v=T3hTwgDy_Ww
 https://www.hooktheory.com/theorytab/view/the-living-tombstone/drunk#Chorus
+startTime:170.36666641235354
+chordTimes:173.3754,175.1372,177.2816,179.4224,180.7969,181.8722,183.6836,185.8112,187.9539,189.1072,190.4076,192.2665,194.3903,196.5969,197.8778,198.9490,200.7950,202.9634
+chordSymbols:Ab,Fm,C,Eb,Eb7,Ab,Fm,C,Eb,Eb7,Ab,Fm,C,Eb,Eb7,Ab,Fm,C
 Ab Fm C [Eb Eb7]
 Eb
 
 It's Been So Long
+By: The Living Tombstone
 https://www.youtube.com/watch?v=qt2Ht_Tl9Ic
 https://www.hooktheory.com/theorytab/view/the-living-tombstone/its-been-so-long
+startTime:67.03672712397766
+chordTimes:70.0990,71.3632,72.6299,73.8720,74.5389,75.1381,76.3839,77.6688,78.8720,79.5384,80.1693,81.4074,82.5889,83.8914,84.4818,85.1358,86.4171,87.6558,88.8720,89.5364,90.2927
+chordSymbols:Bbm,Ab7,Db,Co,F,Bbm,Ab7,Db,Co,F,Bbm,Ab7,Db,Co,F,Bbm,Ab7,Db,Co,F,Bbm
 Bbm Ab7 Db [Co F]
 Bb
 
 Banjo Kazooie Theme
+By: Grant Kirkhope
 https://www.youtube.com/watch?v=pGWwe4OysKA
 https://www.hooktheory.com/theorytab/view/grant-kirkhope/banjo-kazooie---intro#Verse
+startTime:5.311542131607055
+chordTimes:8.3818,9.9688,11.5099,14.7558,16.4024,17.9410,21.1782,22.7559,24.3321,27.5085,29.1527,30.7347,33.9205
+chordSymbols:C,Ab7,C,C,Ab7,C,C,Ab7,C,C,Ab7,C,C
 C Ab7 C@2
 C
 
 Monster's Mouth
+By: Shelly's Gone
 https://www.youtube.com/watch?v=gkYBRRerduE
+chordTimes:0.6680,1.2065,1.7721,2.3652,2.9281,4.0771,4.8064,5.4024,5.9507,6.5582,7.1318,8.1997,8.8941,9.4707,10.0255,10.6344,11.6126,12.4289,12.9436,13.5035,14.0799,14.6859,15.8237,16.4881,17.0520,17.6277,18.3055,19.2471,20.0208,20.5884,21.1356,21.7275,22.3226,23.4661,24.0799,24.6389,25.2172,25.8213,26.7795,27.5373,28.1362,28.6837,29.2884,29.8539,32.0713,32.6969,33.3516,33.8729,34.5252,35.4377,36.2158,36.7283,37.3508,37.8885,38.5193,39.6079,40.1820,40.7467,41.4280,41.9825,42.9356,43.6883,44.3033,44.8365,45.4018,45.9809,48.3368,48.8914,49.4841,50.0504,50.6999,51.6616,52.4382,52.9328,53.6168,54.0599,54.6226
+chordSymbols:Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb,Bb,F,C,Eb,Bb,F,Ebm,Bb,F,Ab,Eb
 Bb F C Eb Bb@2 F Ebm Bb F Ab Eb@4
 Bb
 
 Chitterchat
+By: Joanna Wang
 https://www.youtube.com/watch?v=V8zqjNokjjs
 D G C F# (Bm)
 TODO
 
-Make Over (Or: lamb enters riviera)
+Make Over
+By: Rachel Portman
 https://www.youtube.com/watch?v=ODOBnU2mD68
-// Note second progression near the end
+startTime:17.031983855041503
+A E G D
+D
 // Note second progression near the end
 TODO
 
 Do the Confusion
+By: Logan Whitehurst & the Junior Science Club
 https://www.youtube.com/watch?v=lV-Nk3uWiBo
 TODO
 
 Nobody's a Nun
+By: Joanna Wang
 https://www.youtube.com/watch?v=DW7P7-BAZ-s
 E A D A;F#m B F#m B7
 A;B
 
 Gut Feeling
+By: Devo
 https://www.youtube.com/watch?v=bbbpk9HN_As
 https://www.hooktheory.com/theorytab/view/devo/gut-feeling#Chorus
+startTime:54.91009305722046
+endTime:128.4585248893738
+chordTimes:57.2057,58.7804,60.3294,61.8653,63.4813,64.9772,66.4941,68.0818,69.5909,71.1612,72.6255,74.2533,75.7187,77.2487,78.7517,80.3335,81.8486,83.3988,84.9178,86.4039,87.9654,89.4729,90.9349,92.4254,93.9131,95.4199,96.9047,98.4297,99.9428,101.4578,102.9029,104.4280,105.9077,107.3928,108.8828,110.3354,111.8211,113.3881,114.8462,116.2750,117.7757,119.2819,120.7274,122.2209,123.6696,125.1640
 E G C A D
 E
 
 Perspective
+By: Yellow Magic Orchestra
 https://www.youtube.com/watch?v=p6f7tY_TOys
 Am Em F Dm D# B C# Dm
 A
 
 Leave the Mud For the Worms
+By: Blue Apple Boy
 https://www.youtube.com/watch?v=uRtSuiDfznI
 A C G E
 G
 
 Do You Think the Boss Does Drugs
+By: Jake Tobin
 https://www.youtube.com/watch?v=gt0WHs7YDXg
 F# Bb Eb Eb7 F# B Bb@2
 Bb
 
 Captain Easychord
+By: Stereolab
 https://www.youtube.com/watch?v=Sn663SWZX2c
 https://www.hooktheory.com/theorytab/view/stereolab/captain-easychord#Verse
 D@3 G C@2 F@3 C@2 G D@4;G@4 F@2 Bb@2 F C@3 D@4
 D
 
 Dog Eat Spine
+By: The Sea Nymphs
 https://www.youtube.com/watch?v=BXe9Gon41TU
 G7 F# F [Bb Eb]
 Bb
 
 Straight Outta The Clear Blue Sky
+By: Gavin Caine
 https://www.youtube.com/watch?v=Ayq2GnBcVvc
 G F#m D G F#m C E G#m D# Bb C# G#m E F# B
 TODO
 
 7 Billion
+By: Cyriak
 https://www.youtube.com/watch?v=zKPhjkw3Y84
+Eb Gb D F Bb Bbm Db Abm E G
+Eb
 TODO
 
 Tina's Hausu
+By: Joanna Wang
 https://www.youtube.com/watch?v=6eAkK0CbHcE
 Bm E G A Dm G E A Bm E G A F F# B E
 E
 
 Yodeling in Heaven
+By: Beth Williams
 https://www.youtube.com/watch?v=XQsyAeuLKTA
+startTime:242.2942619809265
+chordTimes:251.2923,252.9765,254.6609,256.3488,257.9758,259.6399,261.3294,262.9797
+chordSymbols:F#,G#,G#m,F#,F#,G#,G#m,F#
 F# G# G#m F#
 F#
 
 Did You Hear?
+By: Tchotchke
 https://www.youtube.com/watch?v=U6gPqo_ZiRw
 A@2 D G F#@2 Bm E7
 A
 
 Teardrop
+By: Massive Attack
 https://www.youtube.com/watch?v=3h-JYx76QNM
 https://www.hooktheory.com/theorytab/view/massive-attack/teardrop#Verse
 A G D A
 A
 
 Just
+By: Radiohead
 https://www.youtube.com/watch?v=oIFLtNYI3Ls
 https://www.hooktheory.com/theorytab/view/radiohead/just
+startTime:16.466666412353515
+chordTimes:18.7489,20.1542,21.4789,22.8448,24.2269,25.5886,26.9460,28.3356,29.7393
+chordSymbols:C,Eb,D,F,C,Eb,D,F,C
 C Eb D F
 C
 
 Spanish Flea
+By: Joanna Wang
 https://www.youtube.com/watch?v=nnhQNWfE_q8
+chordTimes:0.0000
+chordSymbols:
 [G B7] E7 A7 D7 [G@3 C@3 F@2] [Bb@3 Eb@3 Ab@2] D7 [D7 G]
 
 Mean Girls
+By: Vulfpeck
 https://www.youtube.com/watch?v=4RcFPLt3Dd0
 https://tabs.ultimate-guitar.com/tab/vulfpeck/mean-girls-chords-3596876
+chordTimes:4.7355,6.0644,7.2701,8.5668,9.8641,11.1538,12.5220,13.4954,15.0120,16.2166,17.4326,18.6396,19.8567,21.0133,22.2682,23.1057,24.6578,25.8560,27.0644,27.8659,29.5041,30.7020,31.9239,32.8189
+chordSymbols:D,A,C,G,D,A,C,G,D,A,C,G,D,A,C,G,D,A,C,G,D,A,C,G
 D A C G
 G
 
 Autistic Genius
+By: Graham Kartna
 https://www.youtube.com/watch?v=w-aioK8gpD8
 TODO
 
 Shadow at My Feet
+By: Joanna Wang
 https://www.youtube.com/watch?v=A7JorcbiBqk
 TODO
 
 Double Helix
+By: Little Tin Frog
 https://www.youtube.com/watch?v=ULNSwQFBGn4
 TODO
 
 Don't Go, Go
+By: Little Tin Frog
 https://www.youtube.com/watch?v=nZZGT2rX-10
 TODO
 
 Chips & Dip
+By: Sam Greenfield
 https://www.youtube.com/watch?v=rk_3F4sWAfg
-https://www.reddit.com/r/Vulfpeck/comments/16dj2tj/comment/jzrxvw6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+// https://www.reddit.com/r/Vulfpeck/comments/16dj2tj/comment/jzrxvw6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 TODO
 
 I Can Hear It
+By: Editrix
 https://www.youtube.com/watch?v=f_h1CPps-5A
 TODO
 
-Curve and Light (곡선과 투과광)
+Curve and Light
+By: Mid-Air Thief
 https://www.youtube.com/watch?v=kEXr8_5Q7sU
 TODO
 
 Little Girl's World
+By: Slapp Happy
 https://www.youtube.com/watch?v=LKZCsPofmwY
 TODO
 
 Giants
+By: Slapp Happy
 https://www.youtube.com/watch?v=MEVgzyaHPnc
 TODO
 
 Buon lavoro!
+By: Stormy Six
 https://www.youtube.com/watch?v=AKJ-lHXpOGM
 TODO
 
 Got The Time
+By: Joe Jackson
 https://www.youtube.com/watch?v=jr1BvAn2iK4
 TODO
 
 Snow Over Atlanta
+By: Jake Tobin
 https://www.youtube.com/watch?v=pHDhmn8_o8M
 TODO
 
-La roue - Miriodor
+La roue
+By: Miriodor
 https://www.youtube.com/watch?v=Z_YDJoeze5o
+startTime:41.418236049591066
 D7 Bb7 G7 C7
 TODO
 
 Koko a Bučka
+By: Combo FH
 https://www.youtube.com/watch?v=4feedsR0a-8
 TODO
 
 Remote Control
+By: Joanna Wang
 https://www.youtube.com/watch?v=wrIvO5NsV0U
 TODO
 
 Blue Ribbons
+By: TrackTribe
 https://www.youtube.com/watch?v=-r8vIf80so4
 TODO
 
-Imouha?
+Imouha
+By: Etran De L'Aïr
+https://www.youtube.com/watch?v=BNxUbIHcp4c
 TODO
 
 When You Dream In Technicolor
+By: Joanna Wang
 https://www.youtube.com/watch?v=0pzHodjjbV8
 TODO
 
 Science
+By: The Dodies
 https://www.youtube.com/watch?v=f39l2z7c0xU
 TODO
 
 Lifeblood
+By: William D. Drake
 https://www.youtube.com/watch?v=VqOc446VvfA
 https://tabs.ultimate-guitar.com/tab/william-d-drake/lifeblood-chords-4069489
+chordTimes:0.2732,1.3831,2.3330,3.2715,4.1987,5.2016,6.1425,7.0548,8.0043,8.9367,9.9117,10.8054,11.7529,12.6796,13.6679,14.5851,15.5570
+chordSymbols:C,F,Eb,Bb,Gm,Eb,F,C,C,F,Eb,Bb,Gm,Eb,F,C,C
 C F Eb Bb Gm Eb F C
 C
 
 Be Here Steryear
+By: William D. Drake
 https://www.youtube.com/watch?v=GgIPqNmW5Dc
 TODO
 
 Little One
+By: Beck
 https://www.youtube.com/watch?v=8ZsTfi9aS3c
 https://tabs.ultimate-guitar.com/tab/beck/little-one-chords-1191636
 E Eb [C Cmaj7] G C# [C A] G
 G
 
 Tropicalia
+By: Beck
+https://www.youtube.com/watch?v=3WupmwnVjPQ
 https://tabs.ultimate-guitar.com/tab/beck/tropicalia-chords-1710505
 TODO
 
 Gameun Deut
+By: Mid-Air Thief
 https://www.youtube.com/watch?v=3WupmwnVjPQ
 https://www.hooktheory.com/theorytab/view/mid-air-thief/gameun-deut
 TODO
 
 Sweet Adeline
+By: Elliott Smith
 https://www.youtube.com/watch?v=0hopdWwHAZM
 https://tabs.ultimate-guitar.com/tab/elliott-smith/sweet-adeline-chords-213102
 Bb Eb D [G G7];Eb Bb F Ab Db E@3
 G;E
 
 Dumb Dumb
+By: mazie
+https://www.youtube.com/watch?v=ckRrcEEcyIw
+https://www.hooktheory.com/theorytab/view/mazie/dumb-dumb
 TODO
 
 Mourning Dove Meets the Mayflower
+By: Bryan Scary
+https://www.youtube.com/watch?v=F8VHzBg8YfY
 TODO
 
 Man Like Me
+By: Robert Downey Jr.
+https://www.youtube.com/watch?v=_A94IGtKB2I
+https://tabs.ultimate-guitar.com/tab/robert-downey-jr-/man-like-me-chords-913986
 TODO
 
 Sexy Sadie
+By: The Beatles
+https://www.youtube.com/watch?v=tSk5U4oHhu0
+https://www.hooktheory.com/theorytab/view/the-beatles/sexy-sadie
 TODO
 
 Morning Broadway
+By: Keith Mansfield, The KPM Orchestra
+https://www.youtube.com/watch?v=8YNwZ5N6vug
 https://www.hooktheory.com/theorytab/view/keith-mansfield/morning-broadway
 TODO
 
 Princess
+By: Dominique Leone
+https://www.youtube.com/watch?v=EyLbsc33OG0
 TODO
 
 Fourth Color
+By: King Gizzard And The Lizard Wizard
+https://www.youtube.com/watch?v=8dG4YON3kRg
 TODO
 
 The Ballad of Hank McCain
+By: Ennio Morricone
+https://www.youtube.com/watch?v=D6ZiPT0l2oc
+TODO
+
+Behind the Mask
+By: Yellow Magic Orchestra
+https://www.youtube.com/watch?v=02IvYUAJbtY
+https://www.hooktheory.com/theorytab/view/yellow-magic-orchestra/behind-the-mask
+TODO
+
+Life's Work
+By: Hannah Frances
+https://www.youtube.com/watch?v=t1cHq4LJazw
+TODO
+
+Electrified Teenybop!
+By: Stereolab
+https://www.youtube.com/watch?v=Zy6vKUJFLb0
+https://tabs.ultimate-guitar.com/tab/stereolab/electrified-teenybop-chords-5819519
+TODO
+
+My Little Princess
+By: Eiko Ishibashi
+https://www.youtube.com/watch?v=AyFrec9tR_A
+TODO
+
+Contessa
+By: Decibel
+https://www.youtube.com/watch?v=G6DlS_kNxoA
+https://tabs.ultimate-guitar.com/tab/decibel/contessa-chords-3554240
+TODO
+
+The Brazilian
+By: Genesis
+https://www.youtube.com/watch?v=OmlgPjxO7VI
+https://tabs.ultimate-guitar.com/tab/genesis/the-brazilian-tabs-3535163
+// More interesting chords near end
+TODO
+
+Pollyanna (I Believe In You)
+By: Catherine Warwick
+https://www.youtube.com/watch?v=w3NyycHR3fE
+https://www.hooktheory.com/theorytab/view/keiichi-suzuki/pollyanna-i-believe-in-you---earthbound-beginnings
+// Modulation near end
+TODO
+
+Juicy Lucy
+By: Medeski Scofield Martin & Wood
+https://www.youtube.com/watch?v=8GLstK4g2Z4
+TODO
+
+Brittle
+By: Sidi Bou Said
+https://www.youtube.com/watch?v=iM-YkqeD6Yk
+TODO
+
+Cover Yourself
+By: Dominique Leone
+https://www.youtube.com/watch?v=8fwdb2qn4bk
+// Second verse of last part
+TODO
+
+Someone
+By: Dominique Leone
+https://www.youtube.com/watch?v=RfYxkx7WOcI
+// Near middle
+TODO
+
+Cardboard Dog
+By: Mike Keneally, Beer For Dolphins
+https://www.youtube.com/watch?v=ic6f2J-SMuk
+TODO
+
+Land
+By: Mike Keneally
+https://www.youtube.com/watch?v=T9wp8EJY5cQ
+TODO
+
+Regression To The Mean
+By: MoeTar
+https://www.youtube.com/watch?v=GsVv1zJoITM
+TODO
+
+He's Given Us The Freedom To Do What's Right
+By: Joanna Wang
+https://www.youtube.com/watch?v=DcpYWIOryFk
+TODO
+
+My Belly Really Aches
+By: Joanna Wang
+https://www.youtube.com/watch?v=WjYFYfpBUtk
+TODO
+
+Nekevah
+By: John Zorn, Klezmerson
+https://www.youtube.com/watch?v=Cqzhnc1iEk8
+TODO
+
+Magic Toy Missing
+By: Meat Puppets
+https://www.youtube.com/watch?v=f8dmsoxUaJg
+TODO
+
+Best Regards
+By: Echolyn
+https://www.youtube.com/watch?v=P-Rz4eEkXjY
+// 2 moments
+TODO
+
+Faster
+By: Mystic Knights Of The Oingo Boingo
+https://www.youtube.com/watch?v=B1lEapLHPNw
+TODO
+
+Claire
+By: Dominique Leone
+https://www.youtube.com/watch?v=d0Apwk2rtxI
+TODO
+
+Tension
+By: Dominique Leone
+https://www.youtube.com/watch?v=QSbwb_qQ80s
+TODO
+
+Duyen
+By: Dominique Leone
+https://www.youtube.com/watch?v=aXkmPr0MuXo
+TODO
+
+Musmjölkningsmaskinen
+By: Samla Mammas Manna
+https://www.youtube.com/watch?v=sP_Y3dlDbX8
+TODO
+
+Knots
+By: Gentle Giant
+https://www.youtube.com/watch?v=eVlAQL-Bq5s
+TODO
+
+Carmine
+By: Stormy Six
+https://www.youtube.com/watch?v=sBhX_CWDYP8
+TODO
+
+Gioia E Rivoluzione
+By: Area
+https://www.youtube.com/watch?v=8iNtpUvGP38
+https://tabs.ultimate-guitar.com/tab/area/gioia-e-rivoluzione-chords-1906304
+TODO
+
+Malfunction
+By: Cyriak
+https://www.youtube.com/watch?v=tnWP2Emps1M
+TODO
+
+L'Apprendista
+By: Stormy Six
+https://www.youtube.com/watch?v=YOulG-jSHFg
+TODO
+
+The Oldest Road
+By: Arch Garrison
+https://www.youtube.com/watch?v=M53d2c1rGPc
+TODO
+
+Perfect Present
+By: Shrubbies
+https://www.youtube.com/watch?v=GMFkP0SOees
+TODO
+
+fiddle-dee-dee!!
+By: Plus-Tech Squeeze Box
+https://www.youtube.com/watch?v=ydlkAnEeJS8
+TODO
+
+Kitchen Life II
+By: After Dinner
+https://www.youtube.com/watch?v=INvkB9wyM1o
+TODO
+
+Carefree Clothes
+By: Shrubbies
+https://www.youtube.com/watch?v=z1tha-JKQcQ
+TODO
+
+No Sounds
+By: Shrubbies
+https://www.youtube.com/watch?v=7IBUhI-gqck
+Gb B@2 Db@4
+Db
+TODO
+
+Memphis In Texas
+By: Shrubbies
+https://www.youtube.com/watch?v=0bEuO7h70ks
+TODO
+
+Bella
+By: Sidi Bou Said
+https://www.youtube.com/watch?v=45CiBlJPhWE
+C G Ab Bb
+C
+// Chorus
+TODO
+
+The Flood Part 6
+By: Ryan Dorin
+https://www.youtube.com/watch?v=Qx-9ALRL1TQ
+TODO
+
+You Lie In His Arms
+By: The Suits
+https://www.youtube.com/watch?v=702-1IboA0k
+TODO
+
+Slitty Gap
+By: Sidi Bou Said
+https://www.youtube.com/watch?v=lePvMfK92Vw
+TODO
+
+Exceeder
+By: Mason
+https://www.youtube.com/watch?v=KHyCnanvMEw
+https://www.hooktheory.com/theorytab/view/mason-vs-princess-superstar/perfect-exceeder
+TODO
+
+Riverway
+By: Gavin Caine
+https://www.youtube.com/watch?v=j_Z6gJj6c1o
 TODO

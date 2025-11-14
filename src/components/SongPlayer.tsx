@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ChordData } from 'src/lib/utils.js'
 import ProgressBar from './ProgressBar.js'
-import YouTube, { YouTubeEvent, YouTubePlayer, YouTubeProps } from 'react-youtube'
-import { absolute_to_relative } from '../../frissonic-formulae/pkg/frissonic_formulae'
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './ui/collapsible'
 import { ChevronRight } from 'lucide-react'
-import { AspectRatio } from './ui/aspect-ratio.js'
 import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group'
+import ChordVis from './ChordVis.js'
+import CircleOfFifths from './CircleOfFifths.js'
+import { useYouTubeController } from 'src/hooks/useYoutubeController.js'
+import YouTubePlayer from './YouTubePlayer.js'
+import { absolute_to_relative } from '../../frissonic-formulae/pkg/frissonic_formulae'
 
 export default function SongPlayer({ data }: { data: ChordData }) {
   const [subKey, setSubKey] = useState<number>(0)
@@ -26,7 +28,20 @@ export default function SongPlayer({ data }: { data: ChordData }) {
 
   const [relativeChordSymbols, setRelativeChordSymbols] = useState<string[] | undefined>(undefined)
 
-  const player = useRef<YouTubePlayer | null>(null)
+  useEffect(() => {
+    setRelativeChordSymbols(chordSymbols?.map((chord) => (key ? absolute_to_relative(chord, key) : chord)))
+  }, [chordSymbols, key])
+
+  const {
+    player,
+    playerStarted,
+    setPlaying,
+    isPlaying,
+    duration,
+    playbackRates,
+    currentPlaybackRate,
+    handlers: { onPlayerReady, onPlay, onPause, onPlaybackRateChange },
+  } = useYouTubeController(chordTimeBounds?.min)
 
   const [currentTime, setCurrentTime] = useState<number | undefined>(undefined)
 
@@ -37,7 +52,6 @@ export default function SongPlayer({ data }: { data: ChordData }) {
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
-  const [isPlaying, setIsPlaying] = useState(false)
   const isPlayingRef = useRef(isPlaying)
   useEffect(() => {
     isPlayingRef.current = isPlaying
@@ -50,8 +64,6 @@ export default function SongPlayer({ data }: { data: ChordData }) {
   useEffect(() => {
     currentChordIndexRef.current = currentChordIndex
   }, [currentChordIndex])
-
-  const [playerStarted, setPlayerStarted] = useState(false)
 
   useEffect(() => {
     if (!playerStarted) return
@@ -124,64 +136,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
         intervalRef.current = null
       }
     }
-  }, [playerStarted, data, subKey, chordTimeBounds])
-
-  const [duration, setDuration] = useState<number | undefined>(undefined)
-  const [playbackRates, setPlaybackRates] = useState<number[] | undefined>(undefined)
-
-  const onPlayerReady: YouTubeProps['onReady'] = useCallback(
-    (event: YouTubeEvent) => {
-      player.current = event.target
-      const time = event.target.getDuration()
-      player.current.seekTo(Math.max((chordTimeBounds?.min ?? 0) - 1, 0), true)
-
-      setDuration(time)
-      setRelativeChordSymbols(chordSymbols?.map((chord) => (key ? absolute_to_relative(chord, key) : chord)))
-      setPlaybackRates(event.target.getAvailablePlaybackRates())
-    },
-    [chordTimeBounds, chordSymbols, key],
-  )
-  const [currentPlaybackRate, setCurrentPlaybackRate] = useState<number | null>(null)
-
-  const onPlay = useCallback(() => {
-    setIsPlaying(true)
-  }, [])
-
-  const onPause = useCallback(() => {
-    setIsPlaying(false)
-    clearInterval(intervalRef.current ?? undefined)
-    intervalRef.current = null
-  }, [])
-
-  const onPlaybackRateChange = useCallback((event: YouTubeEvent<number>) => {
-    console.log('Playback rate changed to', event.data)
-    setCurrentPlaybackRate(event.data)
-  }, [])
-
-  const opts: YouTubeProps['opts'] = {
-    playerVars: {
-      controls: 0,
-      disablekb: 1,
-      showinfo: 0,
-      playsinline: 1,
-      rel: 0,
-      autoplay: 1,
-    },
-  }
-
-  const setPlaying = (play: boolean) => {
-    if (!playerStarted) {
-      console.log('Starting player!')
-      setPlayerStarted(true)
-      player.current?.playVideo()
-    } else if (play) {
-      console.log('Playing!')
-      player.current?.playVideo()
-    } else {
-      console.log('Pausing!')
-      player.current?.pauseVideo()
-    }
-  }
+  }, [playerStarted, data, subKey, chordTimeBounds, player])
 
   const [collapsibleState, setCollapsibleState] = useState<boolean | undefined>(undefined)
 
@@ -237,36 +192,23 @@ export default function SongPlayer({ data }: { data: ChordData }) {
               transition: 'opacity 1s ease-in-out',
             }}
           >
-            <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg overflow-hidden">
-              {data.videoId && playerStarted ? (
-                <YouTube
-                  style={{ height: '100%', width: '100%' }}
-                  videoId={data.videoId}
-                  opts={opts}
-                  onReady={onPlayerReady}
-                  onPlay={onPlay}
-                  onPause={onPause}
-                  onPlaybackRateChange={onPlaybackRateChange}
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-400 to-gray-600">
-                  <p className="text-white text-sm font-medium">16:9</p>
-                </div>
-              )}
-            </AspectRatio>
+            <YouTubePlayer
+              videoId={data.videoId}
+              playerStarted={playerStarted}
+              onPlayerReady={onPlayerReady}
+              onPlay={onPlay}
+              onPause={onPause}
+              onPlaybackRateChange={onPlaybackRateChange}
+            />
           </div>
-          {/* <ChordVis
-            value={currentTime ?? 0}
-            chords={chordSymbols ?? []}
-            times={chordTimes ?? []}
-            activeIndex={currentChordIndex}
-          />
+          <ChordVis value={currentTime ?? 0} chords={chordSymbols ?? []} times={chordTimes ?? []} />
           <CircleOfFifths
             value={currentTime ?? 0}
             chords={chordSymbols ?? []}
             times={chordTimes ?? []}
             activeIndex={currentChordIndex}
-          /> */}
+            songKey={key}
+          />
         </CollapsibleContent>
       </Collapsible>
       <div onClick={(e) => e.stopPropagation()}>

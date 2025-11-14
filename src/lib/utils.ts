@@ -40,6 +40,48 @@ export class ChordData {
   multiplier?: number[]
   todo?: boolean
   comment?: string
+  artists?: string[]
+  album?: string
+}
+
+export class YoutubeData {
+  info: {
+    id: string
+    title: string
+    thumbnail: string
+    description: string
+    channel_url: string
+    duration: number
+    view_count: number
+    categories: string[]
+    tags: string[]
+    playable_in_embed: boolean
+    album: null | string
+    artists: null | string[]
+    track: null | string
+    release_date: null | string
+    release_year: number | null
+    channel: string
+    timestamp: number
+    artist: null | string
+    creators: null | string[]
+    creator: null | string
+    filesize: number | null
+    aspect_ratio: null | number
+  }
+  beats: [number, number][]
+  chords: [number, number, string][]
+
+  constructor(info: YoutubeData['info'], beats: YoutubeData['beats'], chords: YoutubeData['chords']) {
+    this.info = info
+    this.beats = beats
+    this.chords = chords
+  }
+
+  static fromJSON(json: string): YoutubeData {
+    const data = JSON.parse(json)
+    return new YoutubeData(data.info, data.beats, data.chords)
+  }
 }
 
 export const numberKeys = ['bpmStart', 'bpmEnd', 'bpmSteps', 'startTime', 'endTime'] as const
@@ -49,6 +91,14 @@ function singleToString(data: ChordData): string {
 
   if (data.name) {
     result += `${data.name}\n`
+  }
+
+  if (data.artists && data.artists.length > 0) {
+    result += `By: ${data.artists.join(', ')}\n`
+  }
+
+  if (data.album) {
+    result += `On: ${data.album}\n`
   }
 
   if (data.videoId) {
@@ -128,7 +178,9 @@ export function parseSingleChordData(input: string): ChordData {
     }
 
     if (line.startsWith('// ')) {
+      console.log('Comment:', line)
       chordData.comment = line.slice(3).trim()
+      continue
     }
 
     if (line.includes('youtube.com')) {
@@ -147,14 +199,16 @@ export function parseSingleChordData(input: string): ChordData {
     }
 
     for (const key of numberKeys) {
+      let anyMatch = false
       if (line.includes(`${key}:`)) {
         chordData[key] = line
           .split(':')[1]
           .trim()
           .split(';')
           .map((part) => Number(part.trim()))
-        continue
+        anyMatch = true
       }
+      if (anyMatch) continue
     }
 
     if (line.match(/^\d+:\d+$/)) {
@@ -200,6 +254,18 @@ export function parseSingleChordData(input: string): ChordData {
       continue
     }
 
+    if (line.startsWith('By:')) {
+      chordData.artists = line
+        .split(':')[1]
+        .trim()
+        .split(',')
+        .map((part) => part.trim())
+    }
+
+    if (line.startsWith('On:')) {
+      chordData.album = line.split(':')[1].trim()
+    }
+
     chordData.chords = line.split(';').map((part) => part.trim())
   }
 
@@ -242,3 +308,7 @@ export type OutMsg =
   | { type: 'ready' }
   | { type: 'result'; nCycles: number; haps: any }
   | { type: 'error'; message: string }
+
+export function mod(n: number, m: number) {
+  return ((n % m) + m) % m
+}

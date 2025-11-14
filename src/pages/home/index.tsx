@@ -2,9 +2,11 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import SongPreview from 'src/components/SongPreview.js'
 import Song from 'src/components/Song.js'
-import { ChordData, chordDataToString, parseChordData } from 'src/lib/utils.js'
+import { ChordData, chordDataToString, parseChordData, YoutubeData } from 'src/lib/utils.js'
 import useLocalStorageState from 'src/hooks/use-localstorage-state.js'
 import { Button } from 'src/components/ui/button.js'
+import { StrudelCtx, useStrudelPlayer } from 'src/hooks/chordPlayer.js'
+import { SplineWorkerProvider } from 'src/hooks/useSplineWorker.js'
 
 export default function Home() {
   const [data, setData] = useLocalStorageState<ChordData[] | null>('chordData', null)
@@ -21,11 +23,31 @@ export default function Home() {
     }
   }, [activeIndex])
 
+  const [youtubeData, setYoutubeData] = useState<{ [key: string]: YoutubeData }>({})
+
+  const getYoutubeData = useCallback(
+    async (id: string) => {
+      if (youtubeData[id]) {
+        return youtubeData[id]
+      }
+
+      console.log(`Fetching from ${import.meta.env.BASE_URL}data/${id}.json`)
+
+      const res = await fetch(`${import.meta.env.BASE_URL}data/${id}.json`)
+      const text = await res.text()
+      console.log(res)
+      const data = YoutubeData.fromJSON(text)
+      setYoutubeData((prev) => ({ ...prev, [id]: data }))
+      return data
+    },
+    [youtubeData],
+  )
+
   useEffect(() => {
     if (data !== null) return
     let ignore = false
     ;(async () => {
-      const res = await fetch(`${import.meta.env.BASE_URL}/songs.txt`)
+      const res = await fetch(`${import.meta.env.BASE_URL}songs.txt`)
       const text = await res.text()
       if (!ignore) {
         setData(parseChordData(text))
@@ -76,34 +98,44 @@ export default function Home() {
     [activeIndex, setData],
   )
 
+  const api = useStrudelPlayer()
+
   return (
-    <>
-      <Helmet>
-        <title>Frissonic Formulae</title>
-      </Helmet>
-      <div className="h-20"></div>
-      <p>
-        {(data ?? []).filter((item) => !item.todo).filter((item) => (item.chordTimes ?? []).flat().length > 0).length}
-        {' / '}
-        {(data ?? []).filter((item) => !item.todo).length}
-        {' / '}
-        {(data ?? []).length} songs with chords
-      </p>
-      {data && <Button onClick={() => saveData(data)}>Save songs.txt</Button>}
-      {data
-        ?.map((item, index) => [item, index] as const)
-        .filter(([item]) => !item.todo)
-        .map(([item, index]) => (
-          <SongPreview
-            key={index}
-            data={item}
-            highlighted={(item.chordTimes ?? []).flat().length > 0}
-            setActive={() => setActiveIndex(index)}
+    <StrudelCtx.Provider value={api}>
+      <SplineWorkerProvider size={Math.min(4, navigator.hardwareConcurrency || 2)}>
+        <Helmet>
+          <title>Frissonic Formulae</title>
+        </Helmet>
+        <div className="h-20"></div>
+        <p className="mb-4">
+          {(data ?? []).filter((item) => !item.todo).filter((item) => (item.chordTimes ?? []).flat().length > 0).length}
+          {' / '}
+          {(data ?? []).filter((item) => !item.todo).length}
+          {' / '}
+          {(data ?? []).length} songs with chords
+        </p>
+        {data && <Button onClick={() => saveData(data)}>Save songs.txt</Button>}
+        {data
+          ?.map((item, index) => [item, index] as const)
+          .filter(([item]) => item.videoId)
+          // .filter(([item]) => !item.todo)
+          .map(([item, index]) => (
+            <SongPreview
+              key={index}
+              data={item}
+              highlighted={(item.chordTimes ?? []).flat().length > 0}
+              setActive={() => setActiveIndex(index)}
+            />
+          ))}
+        {activeIndex !== null && inputData !== null && (
+          <Song
+            inputData={inputData}
+            close={() => setActiveIndex(null)}
+            updateData={updateData}
+            youtubeData={inputData.videoId ? getYoutubeData(inputData.videoId) : undefined}
           />
-        ))}
-      {activeIndex !== null && inputData !== null && (
-        <Song inputData={inputData} close={() => setActiveIndex(null)} updateData={updateData} />
-      )}
-    </>
+        )}
+      </SplineWorkerProvider>
+    </StrudelCtx.Provider>
   )
 }

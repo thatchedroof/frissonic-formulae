@@ -56,7 +56,6 @@
     "tailwind-merge": "3.3.1",
     "tailwindcss-animate": "1.0.7",
     "tw-animate-css": "^1.3.7",
-    "typescript-cubic-spline": "^1.0.1",
     "vite-plugin-top-level-await": "^1.6.0",
     "vite-plugin-wasm": "3.5.0",
     "vite-plugin-wasm-pack-watcher": "^1.0.1",

@@ -6,3 +6,4 @@
 - Color special chords
 - Notes box
 - Make monotonic by stopping when starting to go backwards then starting again at same place
+- Should split big components into hooks

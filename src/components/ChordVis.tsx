@@ -1,88 +1,63 @@
-import { useEffect, useRef, useState } from 'react'
-// import { MonotoneCubicSpline } from '../../frissonic-formulae/pkg/frissonic_formulae'
-import Spline from 'typescript-cubic-spline'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { StrudelCtx } from 'src/hooks/chordPlayer.js'
+import { useSplineWorker } from 'src/hooks/useSplineWorker.js'
+import Spline from 'src/lib/Spline'
 
-function cumWidths(widths: number[], spaceBetween: number): number[] {
-  const result: number[] = []
-  let total = 0
-  for (let i = 0; i < widths.length; i++) {
-    total += widths[i] / 2
-    result.push(total)
-    total += widths[i] / 2
-    total += spaceBetween
-  }
-  return result
-}
-
-export default function ChordVis({
-  value,
-  chords,
-  times,
-  activeIndex,
-}: {
-  value: number
-  chords: string[]
-  times: number[]
-  activeIndex: number | null
-}) {
+export default function ChordVis({ value, chords, times }: { value: number; chords: string[]; times: number[] }) {
   const refs = useRef<(HTMLDivElement | null)[]>([])
-  const spline = useRef<Spline | null>(null)
   const [widths, setWidths] = useState<number[]>([])
   const [error, setError] = useState<string | null>(null)
   const [currentOffset, setCurrentOffset] = useState(0)
-  const [splineData, setSplineData] = useState<{ time: number; value: number }[]>([])
-  const [memoizedOffsets, setMemoizedOffsets] = useState<{ time: number; value: number }[]>([])
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const [maxMinTimes, setMaxMinTimes] = useState<{ max: number; min: number } | null>(null)
   const [opacity, setOpacity] = useState(0)
+
+  const strudel = useContext(StrudelCtx)
 
   useEffect(() => {
     const newWidths = refs.current.map((el) => el?.getBoundingClientRect().width || 0)
     setWidths(newWidths)
   }, [chords])
 
+  const { run } = useSplineWorker()
+  const [memoizedOffsets, setMemoizedOffsets] = useState<{ time: number; value: number }[]>([])
+  const [spline, setSpline] = useState<Spline | null>(null)
+
   useEffect(() => {
-    if (widths.length > 0 && times.length > 0) {
-      try {
-        console.log('Creating Spline with times:', times, 'and widths:', widths)
-        spline.current = new Spline(times, cumWidths(widths, 8))
-
-        const maxTime = times.toSorted((a, b) => b - a)[0]
-        const minTime = times.toSorted((a, b) => a - b)[0]
-        setMaxMinTimes({ max: maxTime, min: minTime })
-
-        const step = 0.001
-        const newTimes = []
-        for (let t = minTime; t <= maxTime; t += step) {
-          newTimes.push({ time: t, value: spline.current.at(t) })
-        }
-        // console.log('New times for spline:', newTimes)
-        setMemoizedOffsets(newTimes)
-
-        const newSplineData: { time: number; value: number }[] = []
-        for (let t = times[0]; t <= times[times.length - 1]; t += 1 / 100) {
-          if (spline.current) {
-            newSplineData.push({ time: t, value: spline.current.at(t) })
-          }
-        }
-        setSplineData(newSplineData)
-        setError(null)
-      } catch (e) {
-        setError((e as Error).message)
-        console.error('Error creating Spline:', e)
-      }
+    let mounted = true
+    if (times.length === 0 || widths.length === 0) {
+      console.log('Not enough data to run spline worker')
+      return
     }
-  }, [widths, times])
+    console.log('Running spline worker with times and widths')
+
+    run({ times, widths }).then((res) => {
+      if (!mounted) return
+      if (res.ok) {
+        setMemoizedOffsets(res.memoizedOffsets)
+        const splineInstance = Spline.fromJSON(res.splineData)
+        setSpline(splineInstance)
+      } else console.error(res.error)
+    })
+    return () => {
+      mounted = false
+    }
+  }, [times, widths, run])
 
   useEffect(() => {
-    if (spline.current) {
-      const offset = spline.current.at(value)
-      // const closest = memoizedOffsets.reduce((prev, curr) =>
+    if (spline) {
+      const offset = spline.at(value)
+      // const closest = data.memoizedOffsets.reduce((prev, curr) =>
       //   Math.abs(curr.time - value) < Math.abs(prev.time - value) ? curr : prev,
       // )
       // const offset = closest.value
       setCurrentOffset(offset)
       // setSplineData((prev) => [...prev, { time: value, value: offset }].sort((a, b) => a.time - b.time))
+
+      // Find the current time index
+      const currentIndex = times.findIndex((time) => time >= value) - 1
+      setActiveIndex(currentIndex)
 
       if (maxMinTimes) {
         const buffer = 0.5
@@ -95,7 +70,7 @@ export default function ChordVis({
     } else {
       setCurrentOffset(0)
     }
-  }, [value, memoizedOffsets, maxMinTimes])
+  }, [value, maxMinTimes, times, spline])
 
   return (
     <div
@@ -118,11 +93,19 @@ export default function ChordVis({
           {chords?.map((chord, idx) => (
             <div
               key={idx}
-              className="font-[Campania] text-2xl font-bold mb-1.5 text-muted-foreground"
+              className="font-[Campania] text-2xl font-bold mb-1.5 text-secondary-foreground"
               ref={(el) => {
                 refs.current[idx] = el
               }}
               style={{ opacity: activeIndex === null || activeIndex !== idx ? 0.3 : 1 }}
+              onClick={() => {
+                console.log('Clicked chord:', chord)
+                if (!strudel?.ready) {
+                  console.log('Strudel player not ready')
+                  return
+                }
+                strudel?.playRelativeChord(chord, 500)
+              }}
             >
               {chord}
             </div>
@@ -138,7 +121,7 @@ export default function ChordVis({
         ))}
       </ul> */}
       {error && <div className="text-red-500">Error: {error}</div>}
-      {spline.current && (
+      {spline && (
         <>
           {/* <div className="mt-4">
             <div className="relative h-6 w-full max-w-lg bg-zinc-800/90 border border-black/40">

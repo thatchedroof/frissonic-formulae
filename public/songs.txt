@@ -14,8 +14,6 @@ Good Day
 https://www.youtube.com/watch?v=VGQZItOMz6k
 https://www.hooktheory.com/theorytab/view/tally-hall/good-day
 0:29
-startTime:
-endTime:
 F# B G Eb F A E
 E
 
@@ -39,7 +37,7 @@ https://www.youtube.com/watch?v=-aN4Cn3_AtU
 https://www.hooktheory.com/theorytab/view/vince-guaraldi-trio/thanksgiving-theme
 startTime:0
 endTime:7.266666412353516
-chordTimes:6.2650,5.8070,5.4305,4.5206,4.0896,3.7307,2.7729,2.3858,1.9904,1.0960,0.6836,0.3602
+chordTimes:0.3602,0.6836,1.0960,1.9904,2.3858,2.7729,3.7307,4.0896,4.5206,5.4305,5.8070,6.2650
 chordSymbols:C,F,G,Ab,Bb,C,C,F,G,Ab,Bb,C
 C F G@2 Ab Bb C@2
 C
@@ -53,7 +51,7 @@ G
 Closer To the Sun
 https://www.youtube.com/watch?v=kP_shZ8bIsk
 https://tabs.ultimate-guitar.com/tab/slightly-stoopid/closer-to-the-sun-chords-1061649
-startTime:
+startTime:0
 endTime:40.54622397234345
 chordTimes:0.2440,1.7987,3.4600,5.1032,6.7221,8.3401,9.9541,11.6427,13.2703,14.9139,16.4856,18.0372,19.6033,21.2249,22.8170,24.3872,25.9413,27.5557,29.1226,30.7054,32.3019,33.9110,35.5268,37.0954,38.6915
 chordSymbols:E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E,A,C,D,E
@@ -95,7 +93,7 @@ A
 Soul Coaxing
 https://www.youtube.com/watch?v=vGhVkob-m94
 https://tabs.ultimate-guitar.com/tab/4593572
-chordTimes:15.9942,15.4597,14.9780,13.9404,12.0036,11.0729,10.1086,8.0754,4.2132,0.0000
+chordTimes:0.0000,4.2132,8.0754,10.1086,11.0729,12.0036,13.9404,14.9780,15.4597,15.9942
 chordSymbols:E,A,G#m,A,B,E,G,A,B,E
 E@4 A@4 G#m@2 A B E@2 G [A B]
 E
@@ -129,6 +127,8 @@ D#
 
 Yellow Museum (2)
 https://www.youtube.com/watch?v=d2EnKD7jj4w
+D [G A] [G@3 F] D@2 [G A] D@2
+D
 TODO
 
 Gotta Get Up
@@ -236,6 +236,8 @@ Db;Bb
 
 Troublemaker
 https://www.youtube.com/watch?v=2x6ST88-E-o
+A C G D
+A
 TODO
 
 Gospel
@@ -250,6 +252,7 @@ TODO
 
 Car and TV
 https://www.youtube.com/watch?v=_grhg_yPum4
+Gb Db E B D
 TODO
 
 Ratboy Genius Theme Song
@@ -269,6 +272,8 @@ C
 
 Hardest Geometry Problem in the World
 https://www.youtube.com/watch?v=MAdH1NoHKYA
+A D G C F Bb E A
+A
 TODO
 
 Light My Fire
@@ -294,7 +299,6 @@ E
 Everything You Know Is Wrong
 https://www.youtube.com/watch?v=W8tRDv9fZ_c
 https://www.hooktheory.com/theorytab/view/weird-al-yankovic/everything-you-know-is-wrong#Chorus
-// Lotta stuff here
 // Lotta stuff here
 TODO
 
@@ -349,7 +353,6 @@ chordSymbols:B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B,G7,C#7,F#7,B
 B G7 C#7 F#7
 B
 
-Issac Turner Song
 https://www.tiktok.com/t/ZP8FEawKd/
 TODO
 
@@ -495,6 +498,8 @@ F
 
 Marmalade March
 https://www.youtube.com/watch?v=P2GNGwChDUQ
+B E A D G C Gb@4 B E A D G C B@4 B7@4
+B
 TODO
 
 Battle of Who Could Care Less
@@ -548,7 +553,7 @@ https://www.hooktheory.com/theorytab/view/laura-shigihara/loonboon#Verse
 TODO
 
 Nànnuflày
-https://www.youtube.com/watch?v=Kk8eJh4i8Lo
+https://www.youtube.com/watch?v=H1YIgwPsX5Q
 Bbm Eb
 Bb
 TODO
@@ -562,6 +567,7 @@ D#
 Another Believer
 https://www.youtube.com/watch?v=WwcEH24Ommw
 https://tabs.ultimate-guitar.com/tab/rufus-wainwright/another-believer-chords-3153971
+E
 TODO
 
 Sundial
@@ -701,7 +707,9 @@ TODO
 
 Make Over (Or: lamb enters riviera)
 https://www.youtube.com/watch?v=ODOBnU2mD68
-// Note second progression near the end
+startTime:17.031983855041503
+A E G D
+D
 // Note second progression near the end
 TODO
 
@@ -756,6 +764,8 @@ TODO
 
 7 Billion
 https://www.youtube.com/watch?v=zKPhjkw3Y84
+Eb Gb D F Bb Bbm Db Abm E G
+Eb
 TODO
 
 Tina's Hausu
@@ -793,8 +803,9 @@ C
 
 Spanish Flea
 https://www.youtube.com/watch?v=nnhQNWfE_q8
+chordTimes:
+chordSymbols:
 [G B7] E7 A7 D7 [G@3 C@3 F@2] [Bb@3 Eb@3 Ab@2] D7 [D7 G]
-TODO
 
 Mean Girls
 https://www.youtube.com/watch?v=4RcFPLt3Dd0
@@ -822,7 +833,7 @@ TODO
 
 Chips & Dip
 https://www.youtube.com/watch?v=rk_3F4sWAfg
-https://www.reddit.com/r/Vulfpeck/comments/16dj2tj/comment/jzrxvw6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+// https://www.reddit.com/r/Vulfpeck/comments/16dj2tj/comment/jzrxvw6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 TODO
 
 I Can Hear It
@@ -853,8 +864,9 @@ Snow Over Atlanta
 https://www.youtube.com/watch?v=pHDhmn8_o8M
 TODO
 
-La roue - Miriodor
+La roue
 https://www.youtube.com/watch?v=Z_YDJoeze5o
+startTime:41.418236049591066
 D7 Bb7 G7 C7
 TODO
 
@@ -884,8 +896,7 @@ TODO
 Lifeblood
 https://www.youtube.com/watch?v=VqOc446VvfA
 https://tabs.ultimate-guitar.com/tab/william-d-drake/lifeblood-chords-4069489
-endTime:16.866666412353517
-chordTimes:0.2732,1.2211,2.1202,3.1083,4.0852,5.0112,5.9376,6.8666,7.8304,8.7753,9.7387,10.6387,11.6574,12.5810,13.5015,14.5106,15.4685
+chordTimes:0.2732,1.3831,2.3330,3.2715,4.1987,5.2016,6.1425,7.0548,8.0043,8.9367,9.9117,10.8054,11.7529,12.6796,13.6679,14.5851,15.5570
 chordSymbols:C,F,Eb,Bb,Gm,Eb,F,C,C,F,Eb,Bb,Gm,Eb,F,C,C
 C F Eb Bb Gm Eb F C
 C
@@ -901,6 +912,7 @@ E Eb [C Cmaj7] G C# [C A] G
 G
 
 Tropicalia
+https://www.youtube.com/watch?v=3WupmwnVjPQ
 https://tabs.ultimate-guitar.com/tab/beck/tropicalia-chords-1710505
 TODO
 
@@ -916,26 +928,222 @@ Bb Eb D [G G7];Eb Bb F Ab Db E@3
 G;E
 
 Dumb Dumb
+https://www.youtube.com/watch?v=ckRrcEEcyIw
+https://www.hooktheory.com/theorytab/view/mazie/dumb-dumb
 TODO
 
 Mourning Dove Meets the Mayflower
+https://www.youtube.com/watch?v=F8VHzBg8YfY
 TODO
 
 Man Like Me
+https://www.youtube.com/watch?v=_A94IGtKB2I
+https://tabs.ultimate-guitar.com/tab/robert-downey-jr-/man-like-me-chords-913986
 TODO
 
 Sexy Sadie
+https://www.youtube.com/watch?v=tSk5U4oHhu0
+https://www.hooktheory.com/theorytab/view/the-beatles/sexy-sadie
 TODO
 
 Morning Broadway
+https://www.youtube.com/watch?v=8YNwZ5N6vug
 https://www.hooktheory.com/theorytab/view/keith-mansfield/morning-broadway
 TODO
 
 Princess
+https://www.youtube.com/watch?v=EyLbsc33OG0
 TODO
 
 Fourth Color
+https://www.youtube.com/watch?v=8dG4YON3kRg
 TODO
 
 The Ballad of Hank McCain
+https://www.youtube.com/watch?v=D6ZiPT0l2oc
+TODO
+
+Behind the Mask
+https://www.youtube.com/watch?v=02IvYUAJbtY
+https://www.hooktheory.com/theorytab/view/yellow-magic-orchestra/behind-the-mask
+TODO
+
+Life's Work
+https://www.youtube.com/watch?v=t1cHq4LJazw
+TODO
+
+Electrified Teenybop!
+https://www.youtube.com/watch?v=Zy6vKUJFLb0
+https://tabs.ultimate-guitar.com/tab/stereolab/electrified-teenybop-chords-5819519
+TODO
+
+My Little Princess
+https://www.youtube.com/watch?v=AyFrec9tR_A
+TODO
+
+Contessa
+https://www.youtube.com/watch?v=G6DlS_kNxoA
+https://tabs.ultimate-guitar.com/tab/decibel/contessa-chords-3554240
+TODO
+
+The Brazilian
+https://www.youtube.com/watch?v=OmlgPjxO7VI
+https://tabs.ultimate-guitar.com/tab/genesis/the-brazilian-tabs-3535163
+// More interesting chords near end
+TODO
+
+Pollyanna (I Believe In You)
+https://www.youtube.com/watch?v=w3NyycHR3fE
+https://www.hooktheory.com/theorytab/view/keiichi-suzuki/pollyanna-i-believe-in-you---earthbound-beginnings
+// Modulation near end
+TODO
+
+Juicy Lucy
+https://www.youtube.com/watch?v=8GLstK4g2Z4
+TODO
+
+Brittle
+https://www.youtube.com/watch?v=iM-YkqeD6Yk
+TODO
+
+Cover Yourself
+https://www.youtube.com/watch?v=8fwdb2qn4bk
+// Second verse of last part
+TODO
+
+Someone
+https://www.youtube.com/watch?v=RfYxkx7WOcI
+// Near middle
+TODO
+
+Cardboard Dog
+https://www.youtube.com/watch?v=ic6f2J-SMuk
+TODO
+
+Land
+https://www.youtube.com/watch?v=T9wp8EJY5cQ
+TODO
+
+Regression To The Mean
+https://www.youtube.com/watch?v=GsVv1zJoITM
+TODO
+
+He's Given Us The Freedom To Do What's Right
+https://www.youtube.com/watch?v=DcpYWIOryFk
+TODO
+
+My Belly Really Aches
+https://www.youtube.com/watch?v=WjYFYfpBUtk
+TODO
+
+Nekevah
+https://www.youtube.com/watch?v=Cqzhnc1iEk8
+TODO
+
+Magic Toy Missing
+https://www.youtube.com/watch?v=f8dmsoxUaJg
+TODO
+
+Best Regards
+https://www.youtube.com/watch?v=P-Rz4eEkXjY
+// 2 moments
+TODO
+
+Faster
+https://www.youtube.com/watch?v=B1lEapLHPNw
+TODO
+
+Claire
+https://www.youtube.com/watch?v=d0Apwk2rtxI
+TODO
+
+Tension
+https://www.youtube.com/watch?v=QSbwb_qQ80s
+TODO
+
+Duyen
+https://www.youtube.com/watch?v=aXkmPr0MuXo
+TODO
+
+Musmjölkningsmaskinen
+https://www.youtube.com/watch?v=sP_Y3dlDbX8
+TODO
+
+Knots
+https://www.youtube.com/watch?v=eVlAQL-Bq5s
+TODO
+
+Carmine
+https://www.youtube.com/watch?v=sBhX_CWDYP8
+TODO
+
+Gioia E Rivoluzione
+https://www.youtube.com/watch?v=8iNtpUvGP38
+https://tabs.ultimate-guitar.com/tab/area/gioia-e-rivoluzione-chords-1906304
+TODO
+
+Malfunction
+https://www.youtube.com/watch?v=tnWP2Emps1M
+TODO
+
+L'Apprendista
+https://www.youtube.com/watch?v=YOulG-jSHFg
+TODO
+
+The Oldest Road
+https://www.youtube.com/watch?v=M53d2c1rGPc
+TODO
+
+Perfect Present
+https://www.youtube.com/watch?v=GMFkP0SOees
+TODO
+
+fiddle-dee-dee!!
+https://www.youtube.com/watch?v=ydlkAnEeJS8
+TODO
+
+Kitchen Life II
+https://www.youtube.com/watch?v=INvkB9wyM1o
+TODO
+
+Carefree Clothes
+https://www.youtube.com/watch?v=z1tha-JKQcQ
+TODO
+
+No Sounds
+https://www.youtube.com/watch?v=7IBUhI-gqck
+Gb B@2 Db@4
+Db
+TODO
+
+Memphis In Texas
+https://www.youtube.com/watch?v=0bEuO7h70ks
+TODO
+
+Bella
+https://www.youtube.com/watch?v=45CiBlJPhWE
+C G Ab Bb
+C
+// Chorus
+TODO
+
+The Flood Part 6
+https://www.youtube.com/watch?v=Qx-9ALRL1TQ
+TODO
+
+You Lie In His Arms
+https://www.youtube.com/watch?v=702-1IboA0k
+TODO
+
+Slitty Gap
+https://www.youtube.com/watch?v=lePvMfK92Vw
+TODO
+
+Perfect Exceeder
+https://www.youtube.com/watch?v=KHyCnanvMEw
+https://www.hooktheory.com/theorytab/view/mason-vs-princess-superstar/perfect-exceeder
+TODO
+
+Riverway
+https://www.youtube.com/watch?v=j_Z6gJj6c1o
 TODO

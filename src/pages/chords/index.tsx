@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import SongPlayer from 'src/components/SongPlayer.js'
+import { SplineWorkerProvider } from 'src/hooks/useSplineWorker.js'
 import { ChordData, parseChordData } from 'src/lib/utils.js'
 
 export default function Chords() {
@@ -25,7 +26,7 @@ export default function Chords() {
   }, [])
 
   return (
-    <>
+    <SplineWorkerProvider size={Math.min(4, navigator.hardwareConcurrency || 2)}>
       <Helmet>
         <title>Frissonic Formulae</title>
       </Helmet>
@@ -45,12 +46,20 @@ export default function Chords() {
         <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">TODO:</h2>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           {data
-            .filter((item) => item && !(!item.todo && (item.chordTimes ?? []).flat().length > 0 && (item.chordSymbols ?? []).flat().length > 0))
+            .filter(
+              (item) =>
+                item &&
+                !(
+                  !item.todo &&
+                  (item.chordTimes ?? []).flat().length > 0 &&
+                  (item.chordSymbols ?? []).flat().length > 0
+                ),
+            )
             .map((item, index) => (
               <>
                 {item.videoId ? (
                   <a
-                    key={index}
+                    key={`link-${index}`}
                     href={`https://www.youtube.com/watch?v=${item.videoId}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -59,16 +68,18 @@ export default function Chords() {
                     {item.name}
                   </a>
                 ) : (
-                  <span key={index} className="italic">
+                  <span key={`link-${index}`} className="italic">
                     {item.name}
                   </span>
                 )}
-                <span className="text-gray-500 mx-2">•</span>
+                <span className="text-gray-500 mx-2" key={`dot-${index}`}>
+                  •
+                </span>
               </>
             ))}
           and more...
         </p>
       </div>
-    </>
+    </SplineWorkerProvider>
   )
 }

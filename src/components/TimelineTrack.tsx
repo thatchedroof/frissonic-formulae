@@ -1,4 +1,3 @@
-import { HoverCard, HoverCardTrigger, HoverCardContent } from './ui/hover-card'
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
 export type Marker = {
@@ -136,7 +135,7 @@ export const TimelineTrack: React.FC<Props> = ({
     width: `${contentWidth}px`,
   }
 
-  const renderMarker = (xPx: number, marker: Marker) => {
+  const renderMarker = (xPx: number, marker: Marker, i: number) => {
     const markerStyle: React.CSSProperties = {
       position: 'absolute',
       top: 0,
@@ -162,13 +161,8 @@ export const TimelineTrack: React.FC<Props> = ({
     }
 
     return (
-      <div key={`${marker.title}-${xPx}`} style={markerStyle} title={marker.title}>
-        <HoverCard>
-          <HoverCardTrigger>
-            <span style={labelStyle}>{marker.label}</span>
-          </HoverCardTrigger>
-          <HoverCardContent>Tester {marker.title}</HoverCardContent>
-        </HoverCard>
+      <div key={`${marker.title}-${xPx}-${i}`} style={markerStyle} title={marker.title}>
+        <span style={labelStyle}>{marker.label}</span>
       </div>
     )
   }
@@ -185,22 +179,26 @@ export const TimelineTrack: React.FC<Props> = ({
       aria-valuenow={typeof value === 'number' ? Math.round(value) : undefined}
     >
       <div style={contentStyle}>
-        {markers.map((marker) => {
+        {markers.map((marker, i) => {
           const x = valueToX(marker.value)
           if (0 <= x) {
-            return renderMarker(x, marker)
+            return renderMarker(x, marker, i)
           }
           return null
         })}
 
         {typeof value !== 'undefined' &&
-          renderMarker(valueToX(value), {
-            value,
-            color: '#e11d48',
-            title: `Current position: ${value.toFixed(2)}`,
-            label: value.toFixed(2),
-            showLabel: true,
-          })}
+          renderMarker(
+            valueToX(value),
+            {
+              value,
+              color: '#e11d48',
+              title: `Current position: ${value.toFixed(2)}`,
+              label: value.toFixed(2),
+              showLabel: true,
+            },
+            0,
+          )}
       </div>
     </div>
   )

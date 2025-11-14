@@ -1,8 +1,7 @@
-import { ChordData, InMsg } from 'src/lib/utils.js'
+import { ChordData, InMsg, YoutubeData } from 'src/lib/utils.js'
 import { Dialog, DialogHeader, DialogTitle, DialogContent } from './ui/dialog.js'
-import YouTube, { YouTubeEvent, YouTubePlayer, YouTubeProps } from 'react-youtube'
-import { Marker, TimelineTrack } from './TimelineTrack.js'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Marker } from './TimelineTrack.js'
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Slider } from './ui/slider.js'
 import { absolute_to_relative, relative_to_absolute } from '../../frissonic-formulae/pkg/frissonic_formulae'
 import { Input } from './ui/input.js'
@@ -12,6 +11,10 @@ import { AutosizeTextarea } from './ui/textarea-autosize.js'
 import CyclesWorkerUrl from 'src/lib/cycles.worker.ts?worker'
 import { Button } from './ui/button.js'
 import ChordVis from './ChordVis.js'
+import { StrudelCtx } from 'src/hooks/chordPlayer.js'
+import { useYouTubeController } from 'src/hooks/useYoutubeController.js'
+import YouTubePlayer from './YouTubePlayer.js'
+import { YouTubeProps } from 'react-youtube'
 
 function updateDataKey<K extends keyof ChordData>(
   data: ChordData,
@@ -55,10 +58,12 @@ export default function Song({
   inputData,
   close,
   updateData,
+  youtubeData,
 }: {
   inputData: ChordData
   close: () => void
   updateData: (data: ChordData) => void
+  youtubeData?: Promise<YoutubeData>
 }) {
   // console.log('Rendering Song component with data:', data)
   const [data, setData] = useState<ChordData>(inputData)
@@ -86,15 +91,25 @@ export default function Song({
     dataRef.current = data
   }, [data])
 
-  const playSound = useCallback(() => {
+  const {
+    player,
+    playerStarted,
+    setPlaying,
+    toggleVideo,
+    duration,
+    playbackRates,
+    currentPlaybackRate,
+    handlers: { onPlayerReady, onPlay, onPause, onPlaybackRateChange },
+  } = useYouTubeController()
+
+  const playSound = useCallback((level: number = 1) => {
     const metronome = audioRef.current
     metronome.currentTime = 0
+    metronome.volume = 1 - (level - 1) * 0.1
     metronome.play()
   }, [])
 
   const [subKey, setSubKey] = useState<number>(0)
-
-  const [duration, setDuration] = useState<number | undefined>(undefined)
 
   const [relativeString, setRelativeString] = useState<string>('')
 
@@ -111,6 +126,7 @@ export default function Song({
   const startTime = data.startTime?.[subKey]
   const endTime = data.endTime?.[subKey]
   const beats = data.chordTimes?.[subKey]
+  const comment = data.comment
 
   const workerRef = useRef<Worker | null>(null)
 
@@ -165,6 +181,22 @@ export default function Song({
 
   const [markers, setMarkers] = useState<Marker[]>([])
 
+  const [ytData, setYtData] = useState<YoutubeData | null>(null)
+
+  useEffect(() => {
+    if (!youtubeData) return
+    let ignore = false
+    ;(async () => {
+      const data = await youtubeData
+      if (!ignore) {
+        setYtData(data)
+      }
+    })()
+    return () => {
+      ignore = true
+    }
+  }, [youtubeData])
+
   // Update markers when startTime, endTime, or beats change
   useEffect(() => {
     const newMarkers: Marker[] = []
@@ -174,10 +206,20 @@ export default function Song({
     for (const beat of beats ?? []) {
       newMarkers.push({ value: beat, color: 'green', showLabel: false })
     }
+
+    for (const [beat, level] of ytData?.beats ?? []) {
+      const o = 0.5 - (level - 1) * 0.1
+      newMarkers.push({ value: beat, color: `rgba(0, 0, 0, ${o})`, showLabel: false })
+    }
+
+    for (const [chordStart, chordEnd, chord] of ytData?.chords ?? []) {
+      newMarkers.push({ value: chordStart, color: 'purple', showLabel: true, label: chord })
+    }
+
     setMarkers(newMarkers)
 
     console.log('Effect ran: updated markers', { startTime, endTime, beats, newMarkers })
-  }, [startTime, endTime, beats])
+  }, [startTime, endTime, beats, ytData])
 
   const recordBeat = useCallback(() => {
     updateDataSubKey(
@@ -196,18 +238,7 @@ export default function Song({
       },
       updateDataFunc,
     )
-  }, [data, updateDataFunc, subKey, playSound])
-
-  const [playbackRates, setPlaybackRates] = useState<number[]>([])
-  const [currentPlaybackRate, setCurrentPlaybackRate] = useState<number | null>(null)
-
-  const toggleVideo = useCallback(() => {
-    if (player.current?.getPlayerState() === 1) {
-      player.current.pauseVideo()
-    } else {
-      player.current.playVideo()
-    }
-  }, [])
+  }, [data, updateDataFunc, subKey, playSound, player])
 
   const hoveredChordIndex = useRef<number | null>(null)
   const [seekTo, setSeekTo] = useState<number | null>(null)
@@ -215,6 +246,12 @@ export default function Song({
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      const tag = (event.target as HTMLElement).tagName.toLowerCase()
+
+      if (tag === 'input' || tag === 'textarea' || (event.target as HTMLElement).isContentEditable) {
+        return
+      }
+
       const data = dataRef.current
 
       if ((event.ctrlKey || event.metaKey) && event.key === 'e') {
@@ -261,7 +298,7 @@ export default function Song({
         event.preventDefault()
         const newTime = (currentTimeRef.current ?? 0) - 0.1
         setSeekTo(currentTimeRef.current ?? null)
-        player.current?.playVideo()
+        setPlaying(true)
         console.log('Seeking to:', currentTimeRef.current)
 
         player.current?.seekTo(Math.max(0, newTime), true)
@@ -271,7 +308,7 @@ export default function Song({
       if (event.key === 'ArrowRight') {
         event.preventDefault()
         setSeekTo(currentTimeRef.current ? currentTimeRef.current + 0.1 : null)
-        player.current?.playVideo()
+        setPlaying(true)
         console.log('Seeking to:', currentTimeRef.current)
       }
 
@@ -308,7 +345,7 @@ export default function Song({
       window.removeEventListener('keydown', handleKeyDown)
       console.log('Effect cleanup: removed keydown event listener')
     }
-  }, [updateDataFunc, recordBeat, subKey, toggleVideo])
+  }, [updateDataFunc, recordBeat, subKey, toggleVideo, player, setPlaying])
 
   const convertRelative = useCallback(
     (string: string) => {
@@ -328,7 +365,6 @@ export default function Song({
   )
 
   const [currentTime, setCurrentTime] = useState<number | undefined>(undefined)
-  const player = useRef<YouTubePlayer | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined)
   const [currentBeatIndex, setCurrentBeatIndex] = useState<number | null>(null)
 
@@ -341,9 +377,9 @@ export default function Song({
     if (seekTo !== null && currentTime !== undefined && currentTime >= seekTo) {
       console.log('Successfully seeked to:', currentTime)
       setSeekTo(null)
-      player.current?.pauseVideo()
+      setPlaying(false)
     }
-  }, [seekTo, currentTime])
+  }, [seekTo, currentTime, setPlaying])
 
   useEffect(() => {
     let raf = 0
@@ -362,6 +398,15 @@ export default function Song({
         }
       }
 
+      if (ytData?.beats && lastTime !== undefined) {
+        const idx = ytData.beats.findIndex(([beat, level]) => beat > lastTime && beat <= (time ?? 0))
+
+        if (idx !== -1) {
+          // playSound(ytData.beats[idx][1])
+          console.log('Playing sound at beat:', ytData.beats[idx], 'currentTime:', time)
+        }
+      }
+
       if (time !== undefined && endTime !== undefined && time >= endTime) {
         console.log('Looping back to start time:', startTime)
         player.current?.seekTo(startTime ?? 0, true)
@@ -376,34 +421,7 @@ export default function Song({
       console.log('Effect cleanup: clearing interval for updating current time')
       cancelAnimationFrame(raf)
     }
-  }, [startTime, endTime, beats, playSound])
-
-  const onPlayerReady = useCallback(
-    (event: YouTubeEvent<any>) => {
-      player.current = event.target
-      const time = event.target.getDuration()
-
-      if (endTime === 0) {
-        // @ts-ignore
-        updateDataSubKey(dataRef.current, 'endTime', subKey, time, updateDataFunc)
-      }
-
-      setDuration(time)
-
-      setPlaybackRates(event.target?.getAvailablePlaybackRates() ?? [])
-      setCurrentPlaybackRate(event.target?.getPlaybackRate() ?? null)
-    },
-    [endTime, subKey, updateDataFunc],
-  )
-
-  const onPause = useCallback(() => {
-    clearInterval(intervalRef.current)
-    intervalRef.current = undefined
-  }, [])
-
-  const onPlaybackRateChange = useCallback((event: YouTubeEvent<number>) => {
-    setCurrentPlaybackRate(event.data)
-  }, [])
+  }, [startTime, endTime, beats, playSound, ytData, player])
 
   const opts: YouTubeProps['opts'] = {
     height: '390',
@@ -419,6 +437,25 @@ export default function Song({
   }
 
   const audioRef = useRef(new Audio('/metronome_1.mp3'))
+
+  const [ytChords, ytTimes] = useMemo(() => {
+    console.log('ytData', ytData)
+    if (!ytData) return [[], []]
+    const result = ytData?.chords.map(([s, e, chord]) => {
+      const newChord = chord.replace(':maj', '').replace(':min', 'm')
+      if (!key) return newChord
+      return absolute_to_relative(newChord, key)
+    })
+    const times = ytData?.chords.map(([start]) => start)
+    return [result, times]
+  }, [ytData, key])
+
+  const strudel = useContext(StrudelCtx)
+
+  useEffect(() => {
+    if (!strudel) return
+    strudel.changeKey(key ?? null)
+  }, [key, strudel])
 
   return (
     <Dialog open onOpenChange={close}>
@@ -464,26 +501,34 @@ export default function Song({
                 convertAbsolute(e.target.value)
               }}
             />
+            <Input
+              className="mb-2 font-mono"
+              placeholder="Comment"
+              value={comment}
+              onChange={(
+                e, // @ts-ignore
+              ) => updateDataKey(data, 'comment', e.target.value, updateDataFunc)}
+            />
             <Label className="text-center">Current Time {player.current?.getCurrentTime()}</Label>
             <Label className="text-center">Start Time {startTime}</Label>
             <Label className="text-center">End Time {endTime}</Label>
             <div className="flex flex-row gap-2">
               <Button
                 onClick={() => {
-                  player.current?.playVideo()
+                  setPlaying(true)
                 }}
               >
                 Play
               </Button>
               <Button
                 onClick={() => {
-                  player.current?.pauseVideo()
+                  setPlaying(false)
                 }}
               >
                 Pause
               </Button>
               <Button onClick={recordBeat}>Record Beat</Button>
-              {playbackRates.map((rate, i) => (
+              {playbackRates?.map((rate, i) => (
                 <Button
                   key={i}
                   onClick={() => {
@@ -504,15 +549,16 @@ export default function Song({
                 el.scrollTo({ left: x, top: y, behavior: 'auto' })
               }}
             >
-              <YouTube
-                videoId={data.videoId!}
-                opts={opts}
-                onReady={onPlayerReady}
+              <YouTubePlayer
+                videoId={data.videoId}
+                playerStarted={playerStarted}
+                onPlayerReady={onPlayerReady}
+                onPlay={onPlay}
                 onPause={onPause}
                 onPlaybackRateChange={onPlaybackRateChange}
               />
             </div>
-            {duration && (
+            {/* {duration && (
               <TimelineTrack
                 value={currentTime}
                 onChange={(value) => {
@@ -521,9 +567,9 @@ export default function Song({
                 start={startTime ?? 0}
                 end={endTime ?? duration}
                 markers={markers ?? []}
-                pixPerValue={0.1}
+                pixPerValue={0.01}
               />
-            )}
+            )} */}
             {duration && player.current?.getCurrentTime() && (
               <Slider
                 className="w-full touch-none select-none mx-0.5"
@@ -605,15 +651,14 @@ export default function Song({
               {/* <div className="text-2xl font-bold ml-4 mt-1.5 font-[Campania]">
               {currentBeatIndex !== null && relativeChordSymbols[currentBeatIndex]}
             </div> */}
-              <ChordVis
-                value={currentTime ?? 0}
-                chords={relativeChordSymbols ?? []}
-                times={data?.chordTimes?.[subKey] ?? []}
-                activeIndex={currentBeatIndex}
-              />
+              {relativeChordSymbols && data?.chordTimes?.[subKey] && (
+                <ChordVis value={currentTime ?? 0} chords={relativeChordSymbols} times={data?.chordTimes?.[subKey]} />
+              )}
+              <ChordVis value={currentTime ?? 0} chords={ytChords} times={ytTimes} />
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>
+        {/* <ChordPlayer /> */}
       </DialogContent>
     </Dialog>
   )

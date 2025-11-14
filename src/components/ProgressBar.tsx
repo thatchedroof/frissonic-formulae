@@ -93,9 +93,8 @@ export default function ProgressBar({
           tabIndex={0}
           onKeyDown={onKeyDown}
           onMouseDown={(e) => {
-            if (!started) {
-              setIsPlaying(true)
-            }
+            // TODO: only start playing if started, seek to position
+            setIsPlaying(true)
             seekFromPointer(e.clientX)
             const move = (me: MouseEvent) => seekFromPointer(me.clientX)
             const up = () => {
