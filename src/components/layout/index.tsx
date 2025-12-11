@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from '../header'
-import { ThemeProvider } from './theme-provider';
+import { ThemeProvider } from './theme-provider'
 
 export const getNoneLayout = (page: React.ReactElement) => page
 

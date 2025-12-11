@@ -4,8 +4,8 @@ import { evalScope, repl, chord, n } from '@strudel/core'
 import { mini } from '@strudel/mini'
 import { initAudioOnFirstClick, samples, getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/webaudio'
 import { transpiler } from '@strudel/transpiler'
-import { relative_to_absolute } from '../../frissonic-formulae/pkg/frissonic_formulae'
 import { voicing } from '@strudel/tonal'
+import { relativeToAbsolute } from 'src/lib/chord.js'
 
 voicing
 
@@ -120,7 +120,7 @@ export function useStrudelPlayer() {
       console.log('Playing chord:', chordInput)
       if (!replRef.current) return
       // n([1..4]) to create four notes, then apply chord, voicing, etc.
-      const chordStr = key ? relative_to_absolute(chordInput, key) : chordInput
+      const chordStr = key ? relativeToAbsolute(chordInput, key) : chordInput
       const pattern = n(mini('[1,2,3,4]'))
         .set(chord(mini(`${chordStr}`)))
         .voicing()
@@ -143,18 +143,25 @@ export function useStrudelPlayer() {
 
   useEffect(() => {
     const keyToChordMap = {
-      KeyA: 'C',
-      KeyW: 'C#',
-      KeyS: 'D',
-      KeyE: 'D#',
-      KeyD: 'E',
+      // KeyA: 'C',
+      // KeyW: 'C#',
+      // KeyS: 'D',
+      // KeyE: 'D#',
+      // KeyD: 'E',
+      // KeyF: 'F',
+      // KeyT: 'F#',
+      // KeyG: 'G',
+      // KeyY: 'G#',
+      // KeyH: 'A',
+      // KeyU: 'A#',
+      // KeyJ: 'B',
+      KeyC: 'C',
+      KeyD: 'D',
+      KeyE: 'E',
       KeyF: 'F',
-      KeyT: 'F#',
       KeyG: 'G',
-      KeyY: 'G#',
-      KeyH: 'A',
-      KeyU: 'A#',
-      KeyJ: 'B',
+      KeyA: 'A',
+      KeyB: 'B',
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {

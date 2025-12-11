@@ -1,9 +1,9 @@
 // @ts-ignore
 import { Pattern } from '@strudel/core'
-import { absolute_to_relative } from '../../../frissonic-formulae/pkg/frissonic_formulae.js'
 import { useEffect, useState } from 'react'
 import { AutosizeTextarea } from '../ui/textarea-autosize.js'
 import { findNCycles } from 'src/lib/utils.js'
+import { absoluteToRelative } from 'src/lib/chord.js'
 
 export default function ChordRecorder({
   chords,
@@ -56,7 +56,7 @@ export default function ChordRecorder({
       <div className="mt-1.5">
         {haps?.map((hap, idx) => (
           <div key={hap.value?.chord ?? idx} className="font-[Campania]">
-            {key ? absolute_to_relative(hap.value.chord, key) : hap.value.chord}
+            {key ? absoluteToRelative(hap.value.chord, key) : hap.value.chord}
           </div>
         ))}
       </div>

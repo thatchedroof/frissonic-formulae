@@ -20,6 +20,7 @@ self.onmessage = (e: MessageEvent<InMsg>) => {
       return
     }
   } catch (err: any) {
+    console.error('Error in cycles.worker:', err)
     self.postMessage({ type: 'error', message: err?.message || String(err) } as OutMsg)
   }
 }

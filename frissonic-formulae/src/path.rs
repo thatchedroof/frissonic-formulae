@@ -1,6 +1,6 @@
 use wasm_bindgen::prelude::*;
 
-/// Monotone (strictly increasing) cubic spline via Fritsch–Carlson.
+/// Monotone (strictly increasing) cubic spline via Fritsch-Carlson.
 /// References: Fritsch & Carlson (1980), "Monotone Piecewise Cubic Interpolation".
 #[wasm_bindgen]
 #[derive(Debug, Clone)]
@@ -55,7 +55,7 @@ impl MonotoneCubicSpline {
             for i in 1..(n - 1) {
                 m[i] = 0.5 * (delta[i - 1] + delta[i]);
             }
-            // Endpoints (Fritsch–Butland style, then clamped)
+            // Endpoints (Fritsch-Butland style, then clamped)
             m[0] = 2.0 * delta[0] - delta[1];
             m[n - 1] = 2.0 * delta[n - 2] - delta[n - 3];
 
@@ -82,7 +82,7 @@ impl MonotoneCubicSpline {
                 }
             }
 
-            // Fritsch–Carlson non-overshoot scaling per interval
+            // Fritsch-Carlson non-overshoot scaling per interval
             for i in 0..(n - 1) {
                 if delta[i] == 0.0 {
                     // would flatten — but won’t happen with strictly increasing y

@@ -1,16 +1,8 @@
-import { Pause, Play } from 'lucide-react'
 import React, { useCallback, useMemo, useRef } from 'react'
 import ChordVis from './ChordVis.js'
+import { Spinner } from './ui/spinner.js'
+import { Pause, Play } from 'lucide-react'
 
-/**
- * MinimalMediaBar
- *
- * A compact media/progress bar inspired by the provided mock.
- * - Lucide icons on the left (Play/Pause)
- * - Rounded container with subtle border
- * - Click/drag to seek
- * - Keyboard accessible (Left/Right/Home/End)
- */
 export default function ProgressBar({
   value,
   onValueChange,
@@ -23,6 +15,7 @@ export default function ProgressBar({
   chords,
   times,
   activeIndex,
+  buffering,
 }: {
   value: number
   onValueChange: (value: number | ((prev: number) => number)) => void
@@ -35,6 +28,7 @@ export default function ProgressBar({
   chords: string[] | undefined
   times: number[] | undefined
   activeIndex: number | null
+  buffering?: boolean
 }) {
   const barRef = useRef<HTMLDivElement | null>(null)
 
@@ -65,19 +59,23 @@ export default function ProgressBar({
     [max, min, onValueChange],
   )
 
+  const playStyle = 'h-7 w-7'
+
   return (
-    <div className="w-full max-w-md">
-      <div className="flex h-10 items-center rounded-[.5rem] border-[1.5px] border-ring bg-muted ring-1 ring-black/30 shadow-inner overflow-hidden">
+    <div className="w-full max-w-md text-3xl">
+      <div className="flex h-12 items-center rounded-[.5rem] border-[1.5px] border-ring bg-muted ring-1 ring-black/30 shadow-inner overflow-hidden">
         {/* Play/Pause button */}
         <button
-          aria-label={isPlaying ? 'Pause' : 'Play'}
+          aria-label={buffering ? 'Buffering' : isPlaying ? 'Pause' : 'Play'}
           onClick={() => setIsPlaying(!isPlaying)}
-          className="flex h-full w-10 shrink-0 items-center justify-center border-r bg-muted hover:bg-accent active:scale-[0.97] transition"
+          className="flex h-full w-12 shrink-0 items-center justify-center border-r bg-muted hover:bg-accent active:scale-[0.97] transition"
         >
           {isPlaying ? (
-            <Pause color="transparent" className="h-6 w-6 fill-muted-foreground" />
+            <Pause color="transparent" className={playStyle + ' fill-muted-foreground'} />
+          ) : buffering ? (
+            <Spinner className={playStyle + ' text-muted-foreground'} />
           ) : (
-            <Play color="transparent" className="h-6 w-6 fill-muted-foreground" />
+            <Play color="transparent" className={playStyle + ' fill-muted-foreground'} />
           )}
         </button>
 
@@ -108,11 +106,13 @@ export default function ProgressBar({
         >
           {/* Fill (dark segment like the mock) */}
           <div
-            className="absolute left-0 top-0 h-full bg-accent-foreground/20"
+            className="absolute left-0 top-0 h-full bg-muted-foreground/20"
             style={{ width: `${((value - min) / (max - min)) * 100}%` }}
           />
           <div className="absolute h-full w-full pointer-none flex justify-center items-center">
-            {chords && times && <ChordVis value={value} chords={chords} times={times} activeIndex={activeIndex} />}
+            {chords && times && started && (
+              <ChordVis value={value} chords={chords} times={times} activeIndex={activeIndex} />
+            )}
           </div>
         </div>
       </div>

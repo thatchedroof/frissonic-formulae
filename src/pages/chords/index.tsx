@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import SongPlayer from 'src/components/SongPlayer.js'
-import { SplineWorkerProvider } from 'src/hooks/useSplineWorker.js'
 import { ChordData, parseChordData } from 'src/lib/utils.js'
 
 export default function Chords() {
@@ -26,7 +25,7 @@ export default function Chords() {
   }, [])
 
   return (
-    <SplineWorkerProvider size={Math.min(4, navigator.hardwareConcurrency || 2)}>
+    <>
       <Helmet>
         <title>Frissonic Formulae</title>
       </Helmet>
@@ -44,7 +43,7 @@ export default function Chords() {
         ))}
       <div className="m-20">
         <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">TODO:</h2>
-        <p className="leading-7 [&:not(:first-child)]:mt-6">
+        <p className="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
           {data
             .filter(
               (item) =>
@@ -72,7 +71,7 @@ export default function Chords() {
                     {item.name}
                   </span>
                 )}
-                <span className="text-gray-500 mx-2" key={`dot-${index}`}>
+                <span className="text-muted-foreground mx-2" key={`dot-${index}`}>
                   •
                 </span>
               </>
@@ -80,6 +79,6 @@ export default function Chords() {
           and more...
         </p>
       </div>
-    </SplineWorkerProvider>
+    </>
   )
 }

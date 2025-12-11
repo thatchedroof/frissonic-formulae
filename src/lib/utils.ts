@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 // @ts-ignore
-import { chord, Pattern, Fraction } from '@strudel/core'
+import { Pattern, Fraction, Patternable, Patternable, chord } from '@strudel/core'
 import { mini } from '@strudel/mini'
 
 export function cn(...inputs: ClassValue[]) {
@@ -9,7 +9,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatChords(chordInput: string, multiplier?: number): Pattern {
-  return chord(mini(`<${chordInput}>${multiplier ? `*${multiplier}` : ''}`))
+  console.log(`Formatting chords: <${chordInput}> with multiplier: ${multiplier}`)
+  const miniOutput: Patternable = mini(`<${chordInput.replaceAll('/', ':')}>${multiplier ? `*${multiplier}` : ''}`)
+  // const result = miniOutput.as('chord:null')
+  const result = chord(miniOutput)
+  return result
 }
 
 export type Marker = {
@@ -161,6 +165,16 @@ export function chordDataToString(data: ChordData[]): string {
   return data.map((item: ChordData) => singleToString(item)).join('\n')
 }
 
+function splitOnce(str: string, delimiter: string): [string, string] {
+  const index = str.indexOf(delimiter)
+  if (index === -1) {
+    return [str, '']
+  }
+  const firstPart = str.slice(0, index)
+  const secondPart = str.slice(index + delimiter.length)
+  return [firstPart, secondPart]
+}
+
 const notes = ['C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B']
 
 export function parseSingleChordData(input: string): ChordData {
@@ -255,15 +269,16 @@ export function parseSingleChordData(input: string): ChordData {
     }
 
     if (line.startsWith('By:')) {
-      chordData.artists = line
-        .split(':')[1]
+      chordData.artists = splitOnce(line, ':')[1]
         .trim()
         .split(',')
         .map((part) => part.trim())
+      continue
     }
 
     if (line.startsWith('On:')) {
-      chordData.album = line.split(':')[1].trim()
+      chordData.album = splitOnce(line, ':')[1].trim()
+      continue
     }
 
     chordData.chords = line.split(';').map((part) => part.trim())

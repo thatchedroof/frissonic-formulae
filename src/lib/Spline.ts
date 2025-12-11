@@ -5,9 +5,9 @@
  */
 
 class Spline {
-  xs: number[]
-  ys: number[]
-  ks: Float64Array
+  public xs: number[]
+  public ys: number[]
+  public ks: Float64Array
 
   constructor(xs: number[], ys: number[]) {
     if (xs.length !== ys.length) {

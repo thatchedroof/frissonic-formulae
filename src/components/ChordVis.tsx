@@ -1,7 +1,23 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { StrudelCtx } from 'src/hooks/chordPlayer.js'
-import { useSplineWorker } from 'src/hooks/useSplineWorker.js'
 import Spline from 'src/lib/Spline'
+
+function splineCacheKey(times: number[], widths: number[]) {
+  const payload = JSON.stringify({ t: times, w: widths })
+  return `spline:${payload}`
+}
+
+function cumWidths(widths: number[], spaceBetween: number): number[] {
+  const result: number[] = []
+  let total = 0
+  for (let i = 0; i < widths.length; i++) {
+    total += widths[i] / 2
+    result.push(total)
+    total += widths[i] / 2
+    total += spaceBetween
+  }
+  return result
+}
 
 export default function ChordVis({ value, chords, times }: { value: number; chords: string[]; times: number[] }) {
   const refs = useRef<(HTMLDivElement | null)[]>([])
@@ -10,7 +26,11 @@ export default function ChordVis({ value, chords, times }: { value: number; chor
   const [currentOffset, setCurrentOffset] = useState(0)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
-  const [maxMinTimes, setMaxMinTimes] = useState<{ max: number; min: number } | null>(null)
+  const maxMinTimes = useMemo<{ max: number; min: number }>(() => {
+    const maxTime = times.toSorted((a, b) => b - a)[0]
+    const minTime = times.toSorted((a, b) => a - b)[0]
+    return { max: maxTime, min: minTime }
+  }, [times])
   const [opacity, setOpacity] = useState(0)
 
   const strudel = useContext(StrudelCtx)
@@ -20,30 +40,46 @@ export default function ChordVis({ value, chords, times }: { value: number; chor
     setWidths(newWidths)
   }, [chords])
 
-  const { run } = useSplineWorker()
-  const [memoizedOffsets, setMemoizedOffsets] = useState<{ time: number; value: number }[]>([])
+  const key = useMemo(() => splineCacheKey(times, widths), [times, widths])
+
   const [spline, setSpline] = useState<Spline | null>(null)
 
   useEffect(() => {
-    let mounted = true
-    if (times.length === 0 || widths.length === 0) {
-      console.log('Not enough data to run spline worker')
+    const cached = localStorage.getItem(key)
+    if (cached) {
+      try {
+        setSpline(Spline.fromJSON(JSON.parse(cached)))
+        console.log('Loaded spline from cache')
+        return
+      } catch {
+        // Bad JSON - ignore and recompute
+        console.warn('Unable to parse cached spline from localStorage')
+      }
+    }
+
+    try {
+      if (times.length < 2 || widths.length < 2 || times.length !== widths.length) {
+        return
+      }
+
+      const computed = new Spline(times, cumWidths(widths, 8))
+      setSpline(computed)
+      console.log('Computed new spline')
+
+      try {
+        localStorage.setItem(key, JSON.stringify(computed.toJSON()))
+      } catch {
+        // Storage might be full or unavailable - fail gracefully
+        console.warn('Unable to store spline in localStorage')
+      }
+    } catch (e) {
+      setError((e as Error).message)
+      setSpline(null)
       return
     }
-    console.log('Running spline worker with times and widths')
+  }, [key, times, widths])
 
-    run({ times, widths }).then((res) => {
-      if (!mounted) return
-      if (res.ok) {
-        setMemoizedOffsets(res.memoizedOffsets)
-        const splineInstance = Spline.fromJSON(res.splineData)
-        setSpline(splineInstance)
-      } else console.error(res.error)
-    })
-    return () => {
-      mounted = false
-    }
-  }, [times, widths, run])
+  // const [memoizedOffsets, setMemoizedOffsets] = useState<{ time: number; value: number }[]>([])
 
   useEffect(() => {
     if (spline) {
@@ -57,7 +93,7 @@ export default function ChordVis({ value, chords, times }: { value: number; chor
 
       // Find the current time index
       const currentIndex = times.findIndex((time) => time >= value) - 1
-      setActiveIndex(currentIndex)
+      setActiveIndex(currentIndex >= 0 ? currentIndex : times.length - 1)
 
       if (maxMinTimes) {
         const buffer = 0.5
@@ -93,7 +129,7 @@ export default function ChordVis({ value, chords, times }: { value: number; chor
           {chords?.map((chord, idx) => (
             <div
               key={idx}
-              className="font-[Campania] text-2xl font-bold mb-1.5 text-secondary-foreground"
+              className="font-[Campania] font-bold mb-2 text-secondary-foreground"
               ref={(el) => {
                 refs.current[idx] = el
               }}

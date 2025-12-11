@@ -6,7 +6,6 @@ import { ChordData, chordDataToString, parseChordData, YoutubeData } from 'src/l
 import useLocalStorageState from 'src/hooks/use-localstorage-state.js'
 import { Button } from 'src/components/ui/button.js'
 import { StrudelCtx, useStrudelPlayer } from 'src/hooks/chordPlayer.js'
-import { SplineWorkerProvider } from 'src/hooks/useSplineWorker.js'
 
 export default function Home() {
   const [data, setData] = useLocalStorageState<ChordData[] | null>('chordData', null)
@@ -102,40 +101,38 @@ export default function Home() {
 
   return (
     <StrudelCtx.Provider value={api}>
-      <SplineWorkerProvider size={Math.min(4, navigator.hardwareConcurrency || 2)}>
-        <Helmet>
-          <title>Frissonic Formulae</title>
-        </Helmet>
-        <div className="h-20"></div>
-        <p className="mb-4">
-          {(data ?? []).filter((item) => !item.todo).filter((item) => (item.chordTimes ?? []).flat().length > 0).length}
-          {' / '}
-          {(data ?? []).filter((item) => !item.todo).length}
-          {' / '}
-          {(data ?? []).length} songs with chords
-        </p>
-        {data && <Button onClick={() => saveData(data)}>Save songs.txt</Button>}
-        {data
-          ?.map((item, index) => [item, index] as const)
-          .filter(([item]) => item.videoId)
-          // .filter(([item]) => !item.todo)
-          .map(([item, index]) => (
-            <SongPreview
-              key={index}
-              data={item}
-              highlighted={(item.chordTimes ?? []).flat().length > 0}
-              setActive={() => setActiveIndex(index)}
-            />
-          ))}
-        {activeIndex !== null && inputData !== null && (
-          <Song
-            inputData={inputData}
-            close={() => setActiveIndex(null)}
-            updateData={updateData}
-            youtubeData={inputData.videoId ? getYoutubeData(inputData.videoId) : undefined}
+      <Helmet>
+        <title>Frissonic Formulae</title>
+      </Helmet>
+      <div className="h-20"></div>
+      <p className="mb-4">
+        {(data ?? []).filter((item) => !item.todo).filter((item) => (item.chordTimes ?? []).flat().length > 0).length}
+        {' / '}
+        {(data ?? []).filter((item) => !item.todo).length}
+        {' / '}
+        {(data ?? []).length} songs with chords
+      </p>
+      {data && <Button onClick={() => saveData(data)}>Save songs.txt</Button>}
+      {data
+        ?.map((item, index) => [item, index] as const)
+        .filter(([item]) => item.videoId)
+        // .filter(([item]) => !item.todo)
+        .map(([item, index]) => (
+          <SongPreview
+            key={index}
+            data={item}
+            highlighted={(item.chordTimes ?? []).flat().length > 0}
+            setActive={() => setActiveIndex(index)}
           />
-        )}
-      </SplineWorkerProvider>
+        ))}
+      {activeIndex !== null && inputData !== null && (
+        <Song
+          inputData={inputData}
+          close={() => setActiveIndex(null)}
+          updateData={updateData}
+          youtubeData={inputData.videoId ? getYoutubeData(inputData.videoId) : undefined}
+        />
+      )}
     </StrudelCtx.Provider>
   )
 }

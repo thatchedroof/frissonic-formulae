@@ -3,7 +3,6 @@ import { Dialog, DialogHeader, DialogTitle, DialogContent } from './ui/dialog.js
 import { Marker } from './TimelineTrack.js'
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Slider } from './ui/slider.js'
-import { absolute_to_relative, relative_to_absolute } from '../../frissonic-formulae/pkg/frissonic_formulae'
 import { Input } from './ui/input.js'
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './ui/resizable.js'
 import { Label } from './ui/label.js'
@@ -14,7 +13,7 @@ import ChordVis from './ChordVis.js'
 import { StrudelCtx } from 'src/hooks/chordPlayer.js'
 import { useYouTubeController } from 'src/hooks/useYoutubeController.js'
 import YouTubePlayer from './YouTubePlayer.js'
-import { YouTubeProps } from 'react-youtube'
+import { absoluteToRelative, relativeToAbsolute } from 'src/lib/chord.js'
 
 function updateDataKey<K extends keyof ChordData>(
   data: ChordData,
@@ -65,6 +64,7 @@ export default function Song({
   updateData: (data: ChordData) => void
   youtubeData?: Promise<YoutubeData>
 }) {
+  // console.log('Input data', inputData)
   // console.log('Rendering Song component with data:', data)
   const [data, setData] = useState<ChordData>(inputData)
   const updateDataRef = useRef(updateData)
@@ -95,11 +95,12 @@ export default function Song({
     player,
     playerStarted,
     setPlaying,
+    setPlaybackRate,
     toggleVideo,
     duration,
     playbackRates,
     currentPlaybackRate,
-    handlers: { onPlayerReady, onPlay, onPause, onPlaybackRateChange },
+    handlers: { onPlayerReady, onPlay, onPause, onPlaybackRateChange, onStateChange },
   } = useYouTubeController()
 
   const playSound = useCallback((level: number = 1) => {
@@ -132,19 +133,19 @@ export default function Song({
 
   const [haps, setHaps] = useState<any[]>([])
   const relativeChordSymbols = useMemo(
-    () => data.chordSymbols?.[subKey].map((chord) => (key ? absolute_to_relative(chord, key) : chord) as string),
+    () => data.chordSymbols?.[subKey].map((chord) => (key ? absoluteToRelative(chord, key) : chord) as string),
     [data.chordSymbols, subKey, key],
   )
 
   useEffect(() => {
-    if (beatText === null && beats) {
+    if (beats) {
       setBeatText((beats ?? []).map((b) => b.toFixed(4)).join('\n'))
     }
-  }, [beats, beatText])
+  }, [beats])
 
   useEffect(() => {
     if (key && chords) {
-      setRelativeString(absolute_to_relative(chords, key))
+      setRelativeString(absoluteToRelative(chords, key))
     }
   }, [key, chords, subKey])
 
@@ -163,7 +164,7 @@ export default function Song({
           // @ts-ignore
           'chordSymbols',
           subKey,
-          e.data.haps.map((hap: any) => hap.value.chord),
+          e.data.haps.map((hap: any) => (Array.isArray(hap.value.chord) ? hap.value.chord.join('/') : hap.value.chord)),
           updateDataFunc,
         )
       }
@@ -254,7 +255,7 @@ export default function Song({
 
       const data = dataRef.current
 
-      if ((event.ctrlKey || event.metaKey) && event.key === 'e') {
+      if (/* event.altKey && */ event.key === 'r') {
         event.preventDefault()
         console.log('Start time:', data.startTime?.[subKey])
 
@@ -269,7 +270,7 @@ export default function Song({
         console.log('Start time set to:', data.startTime?.[subKey])
       }
 
-      if ((event.ctrlKey || event.metaKey) && event.key === 'r') {
+      if (/* event.altKey && */ event.key === 't') {
         event.preventDefault()
         console.log('End time:', data.endTime?.[subKey])
 
@@ -284,7 +285,7 @@ export default function Song({
         console.log('End time set to:', data.endTime?.[subKey])
       }
 
-      if (event.key === 'c') {
+      if (event.key === 'v') {
         event.preventDefault()
         recordBeat()
       }
@@ -350,7 +351,7 @@ export default function Song({
   const convertRelative = useCallback(
     (string: string) => {
       if (!key) return
-      setRelativeString(absolute_to_relative(string, key))
+      setRelativeString(absoluteToRelative(string, key))
     },
     [key],
   )
@@ -359,7 +360,7 @@ export default function Song({
     (string: string) => {
       if (!dataRef.current.key) return
       // @ts-ignore
-      updateDataSubKey(dataRef.current, 'chords', subKey, relative_to_absolute(string, key), updateDataFunc)
+      updateDataSubKey(dataRef.current, 'chords', subKey, relativeToAbsolute(string, key), updateDataFunc)
     },
     [updateDataFunc, key, subKey],
   )
@@ -423,19 +424,6 @@ export default function Song({
     }
   }, [startTime, endTime, beats, playSound, ytData, player])
 
-  const opts: YouTubeProps['opts'] = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      autoplay: 1,
-      controls: 0,
-      disablekb: 1,
-      showinfo: 0,
-      playsinline: 1,
-      rel: 0,
-    },
-  }
-
   const audioRef = useRef(new Audio('/metronome_1.mp3'))
 
   const [ytChords, ytTimes] = useMemo(() => {
@@ -444,7 +432,7 @@ export default function Song({
     const result = ytData?.chords.map(([s, e, chord]) => {
       const newChord = chord.replace(':maj', '').replace(':min', 'm')
       if (!key) return newChord
-      return absolute_to_relative(newChord, key)
+      return absoluteToRelative(newChord, key)
     })
     const times = ytData?.chords.map(([start]) => start)
     return [result, times]
@@ -532,7 +520,8 @@ export default function Song({
                 <Button
                   key={i}
                   onClick={() => {
-                    player.current?.setPlaybackRate(rate)
+                    console.log('Setting playback rate to', rate)
+                    setPlaybackRate(rate)
                   }}
                   disabled={currentPlaybackRate === rate}
                 >
@@ -556,6 +545,7 @@ export default function Song({
                 onPlay={onPlay}
                 onPause={onPause}
                 onPlaybackRateChange={onPlaybackRateChange}
+                onStateChange={onStateChange}
               />
             </div>
             {/* {duration && (
