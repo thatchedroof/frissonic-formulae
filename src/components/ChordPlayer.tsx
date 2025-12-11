@@ -1,13 +1,13 @@
+// @ts-ignore
 import { evalScope, repl, chord, n } from '@strudel/core'
 import { mini } from '@strudel/mini'
+// @ts-ignore
 import { initAudioOnFirstClick, samples, getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/webaudio'
+// @ts-ignore
 import { transpiler } from '@strudel/transpiler'
 import { useCallback, useEffect, useRef } from 'react'
-// @ts-ignore
-import { voicing } from '@strudel/tonal'
 
 export default function ChordPlayer() {
-  voicing
   const replRef = useRef<ReturnType<typeof repl> | null>(null)
 
   // Load strudel
@@ -17,8 +17,10 @@ export default function ChordPlayer() {
         initAudioOnFirstClick() // needed to make the browser happy (don't await this here..)
         const loadModules = evalScope(
           import('@strudel/core'),
+          // @ts-ignore
           import('@strudel/draw'),
           import('@strudel/mini'),
+          // @ts-ignore
           import('@strudel/tonal'),
           import('@strudel/webaudio'),
         )
@@ -44,6 +46,7 @@ export default function ChordPlayer() {
       replRef.current = repl({
         defaultOutput: webaudioOutput,
         getTime,
+        // @ts-ignore
         id,
         transpiler,
         beforeEval: async () => {
@@ -70,11 +73,14 @@ export default function ChordPlayer() {
     console.log(result2)
     const result3 = result2.voicing().clip(1).release(0.5).s('piano').room(0.2)
     console.log(result3)
+    // @ts-ignore
     replRef.current?.setPattern(result3)
   }, [])
 
   const haltPlayback = useCallback(() => {
+    // @ts-ignore
     replRef.current?.setPattern(n())
+    // @ts-ignore
     replRef.current?.stop()
   }, [])
 

@@ -9,8 +9,6 @@ import { useYouTubeController } from 'src/hooks/useYoutubeController.js'
 import YouTubePlayer from './YouTubePlayer.js'
 import { absoluteToRelative } from 'src/lib/chord.js'
 import { motion, AnimatePresence } from 'motion/react'
-import { buildRepeatTree } from '../lib/repeatTree'
-import { RepeatTreeView } from './RepeatChords.js'
 
 export default function SongPlayer({ data }: { data: ChordData }) {
   const [subKey, setSubKey] = useState<number>(0)
@@ -308,7 +306,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
               />
             </div>
             <div className="flex flex-wrap gap-2 justify-center mt-4 col-span-2 text-[1.4rem] font-[Campania] text-secondary-foreground">
-              {false && relativeChordSymbols && chordSymbols && (
+              {/* {relativeChordSymbols && chordSymbols && (
                 <RepeatTreeView
                   nodes={buildRepeatTree(
                     chordSymbols.map((chord, idx) => [chord, relativeChordSymbols[idx]]),
@@ -333,7 +331,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                     </div>
                   )}
                 />
-              )}
+              )} */}
             </div>
           </div>
         </CollapsibleContent>

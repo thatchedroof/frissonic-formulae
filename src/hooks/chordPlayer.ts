@@ -1,13 +1,13 @@
 // useStrudelPlayer.ts
 import { createContext, useCallback, useEffect, useRef, useState } from 'react'
+// @ts-ignore
 import { evalScope, repl, chord, n } from '@strudel/core'
 import { mini } from '@strudel/mini'
+// @ts-ignore
 import { initAudioOnFirstClick, samples, getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/webaudio'
+// @ts-ignore
 import { transpiler } from '@strudel/transpiler'
-import { voicing } from '@strudel/tonal'
 import { relativeToAbsolute } from 'src/lib/chord.js'
-
-voicing
 
 type ReplInstance = ReturnType<typeof repl>
 
@@ -22,8 +22,10 @@ async function prebake() {
   initAudioOnFirstClick()
   const loadModules = evalScope(
     import('@strudel/core'),
+    // @ts-ignore
     import('@strudel/draw'),
     import('@strudel/mini'),
+    // @ts-ignore
     import('@strudel/tonal'),
     import('@strudel/webaudio'),
   )
@@ -57,6 +59,7 @@ export function useStrudelPlayer() {
       const instance = repl({
         defaultOutput: webaudioOutput,
         getTime: () => getAudioContext().currentTime,
+        // @ts-ignore
         id,
         transpiler,
         beforeEval: async () => {
@@ -80,16 +83,22 @@ export function useStrudelPlayer() {
     return () => {
       cancelled = true
       try {
+        // @ts-ignore
         replRef.current?.setPattern(n())
+        // @ts-ignore
         replRef.current?.stop?.()
-      } catch {}
+      } catch {
+        // ignore
+      }
       replRef.current = null
     }
   }, [])
 
   const haltPlayback = useCallback(() => {
     if (!replRef.current) return
+    // @ts-ignore
     replRef.current.setPattern(n())
+    // @ts-ignore
     replRef.current.stop()
   }, [])
 
@@ -106,6 +115,7 @@ export function useStrudelPlayer() {
         .s('piano')
         .room(0.2)
 
+      // @ts-ignore
       replRef.current.setPattern(pattern)
 
       if (timeout) {
@@ -129,6 +139,7 @@ export function useStrudelPlayer() {
         .s('piano')
         .room(0.2)
 
+      // @ts-ignore
       replRef.current.setPattern(pattern)
       if (timeout) {
         setTimeout(haltPlayback, timeout)
@@ -166,12 +177,14 @@ export function useStrudelPlayer() {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.repeat) return
+      // @ts-ignore
       const c = keyToChordMap[event.code]
       if (c) playChord(c)
     }
 
     const handleKeyUp = (event: KeyboardEvent) => {
       if (event.repeat) return
+      // @ts-ignore
       const c = keyToChordMap[event.code]
       if (c) haltPlayback()
     }

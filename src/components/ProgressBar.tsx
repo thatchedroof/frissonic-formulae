@@ -110,9 +110,7 @@ export default function ProgressBar({
             style={{ width: `${((value - min) / (max - min)) * 100}%` }}
           />
           <div className="absolute h-full w-full pointer-none flex justify-center items-center">
-            {chords && times && started && (
-              <ChordVis value={value} chords={chords} times={times} activeIndex={activeIndex} />
-            )}
+            {chords && times && started && <ChordVis value={value} chords={chords} times={times} />}
           </div>
         </div>
       </div>
