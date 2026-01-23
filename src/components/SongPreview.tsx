@@ -13,7 +13,10 @@ export default function SongPreview({
   return (
     <Card onClick={setActive} className={`m-4 cursor-pointer hover:bg-accent gap-3 ${highlighted ? 'bg-accent' : ''}`}>
       <CardHeader>
-        <CardTitle className="text-lg font-bold">{data.name}</CardTitle>
+        <CardTitle className="text-lg font-bold">
+          {data.name}
+          {data.todo ? ' (TODO)' : ''}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <pre className="whitespace-pre-wrap">{data.chords?.join('; ')}</pre>

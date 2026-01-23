@@ -14,6 +14,7 @@ import { StrudelCtx } from 'src/hooks/chordPlayer.js'
 import { useYouTubeController } from 'src/hooks/useYoutubeController.js'
 import YouTubePlayer from './YouTubePlayer.js'
 import { absoluteToRelative, relativeToAbsolute } from 'src/lib/chord.js'
+import { Toggle } from './ui/toggle.js'
 
 function updateDataKey<K extends keyof ChordData>(
   data: ChordData,
@@ -641,10 +642,22 @@ export default function Song({
               {/* <div className="text-2xl font-bold ml-4 mt-1.5 font-[Campania]">
               {currentBeatIndex !== null && relativeChordSymbols[currentBeatIndex]}
             </div> */}
-              {relativeChordSymbols && data?.chordTimes?.[subKey] && (
-                <ChordVis value={currentTime ?? 0} chords={relativeChordSymbols} times={data?.chordTimes?.[subKey]} />
-              )}
-              <ChordVis value={currentTime ?? 0} chords={ytChords} times={ytTimes} />
+              <div className="text-4xl">
+                {relativeChordSymbols && data?.chordTimes?.[subKey] && (
+                  <ChordVis value={currentTime ?? 0} chords={relativeChordSymbols} times={data?.chordTimes?.[subKey]} />
+                )}
+                <ChordVis value={currentTime ?? 0} chords={ytChords} times={ytTimes} />
+              </div>
+              <Toggle
+                className="mt-4"
+                variant="outline"
+                pressed={data.todo || false}
+                onPressedChange={(pressed) => {
+                  updateDataKey(data, 'todo', pressed, updateDataFunc)
+                }}
+              >
+                TODO
+              </Toggle>
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>

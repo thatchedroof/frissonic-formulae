@@ -1020,7 +1020,7 @@ A@2 D G F#@2 Bm E7
 A
 
 Teardrop
-By: Massive Attack, Elizabeth Fraser
+By: Massive Attack
 On: Mezzanine
 https://www.youtube.com/watch?v=3h-JYx76QNM
 https://www.hooktheory.com/theorytab/view/massive-attack/teardrop#Verse
@@ -1196,7 +1196,7 @@ Tropicalia
 By: Beck
 On: Mutations
 https://www.youtube.com/watch?v=3WupmwnVjPQ
-https://tabs.ultimate-guitar.com/tab/beck/tropicalia-chords-1710505
+https://tabs.ultimate-guitar.com/tab/beck/tropicalia-chords-1708735
 TODO
 
 Gameun Deut
@@ -1549,3 +1549,16 @@ Party Girl
 By: John Zorn
 D7 F7 Bb7 A7
 A
+TODO
+
+0xBAADF00D
+By: Slugbug
+TODO
+
+Dancing Girls
+By: Nik Kershaw
+TODO
+
+Toxic
+By: Brittney Spears
+TODO
