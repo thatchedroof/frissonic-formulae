@@ -9,6 +9,8 @@ import { useYouTubeController } from 'src/hooks/useYoutubeController.js'
 import YouTubePlayer from './YouTubePlayer.js'
 import { absoluteToRelative } from 'src/lib/chord.js'
 import { motion, AnimatePresence } from 'motion/react'
+import { buildRepeatTree } from 'src/lib/repeatTree.js'
+import { RepeatTreeView } from './RepeatChords.js'
 
 export default function SongPlayer({ data }: { data: ChordData }) {
   const [subKey, setSubKey] = useState<number>(0)
@@ -172,7 +174,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
 
   return (
     <div
-      className={`p-4 rounded-lg m-3 hover:bg-card-foreground/10`}
+      className={`p-4 rounded-lg m-3 hover:bg-card-foreground/3`}
       style={{ transition: 'background-color 0.2s ease, border 1s ease' }}
       onClick={() => {
         setCollapsibleState(!collapsibleState)
@@ -180,58 +182,90 @@ export default function SongPlayer({ data }: { data: ChordData }) {
     >
       <Collapsible open={collapsibleState} onOpenChange={setCollapsibleState}>
         <CollapsibleTrigger className="text-lg font-medium mb-2 ml-1 flex flex-row items-center gap-2">
-          <ChevronRight className={`h-6 w-6 transition-transform ${collapsibleState ? 'rotate-90' : ''}`} />
-          <div onClick={(e) => e.stopPropagation()} className="w-md">
-            <ProgressBar
-              value={currentTime ?? 0}
-              onValueChange={(value) => {
-                console.log('Seeking to', value)
-                player.current?.seekTo(typeof value === 'number' ? value : value(currentTime ?? 0), true)
-              }}
-              isPlaying={isPlaying}
-              setIsPlaying={(play) => {
-                console.log('Setting playing to', play)
-                if (play && playerMax !== undefined && (currentTime ?? 0) >= playerMax) {
-                  player.current?.seekTo(playerMin, true)
-                }
-                setPlaying(play)
-              }}
-              step={0.1}
-              min={playerMin}
-              max={playerMax}
-              started={playerStarted}
-              chords={relativeChordSymbols}
-              times={chordTimes}
-              activeIndex={currentChordIndex}
-              buffering={/* currentState === 3 ||  */ currentState === -1}
-            />
-          </div>
-          <h1 className="text-[1.6rem] font-bold ml-4 italic">
-            {data.name}
+          <div className="flex flex-row">
+            <ChevronRight className={`mt-2 h-6 w-6 transition-transform ${collapsibleState ? 'rotate-90' : ''}`} />
+            <div className="flex flex-col gap-3 items-start">
+              <h1 className="ml-2 text-[1.6rem] font-bold italic">
+                {data.name}
 
-            <AnimatePresence initial={false}>
-              {collapsibleState && data.artists && data.artists.length > 0 && (
-                <>
-                  {' '}
-                  <motion.span
-                    key="artists"
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 'auto', opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    transition={{ duration: 0.15, ease: 'easeInOut' }}
-                    className="inline-flex overflow-hidden align-baseline"
-                  >
-                    <span className="whitespace-nowrap text-[1.6rem] font-bold text-muted-foreground">
-                      {' by '}
-                      {data.artists.length < 3
-                        ? data.artists.join(' and ')
-                        : `${data.artists.slice(0, -1).join(', ')} and ${data.artists.at(-1)}`}
-                    </span>
-                  </motion.span>
-                </>
-              )}
-            </AnimatePresence>
-          </h1>
+                <AnimatePresence initial={false}>
+                  {collapsibleState && data.artists && data.artists.length > 0 && (
+                    <>
+                      {' '}
+                      <motion.span
+                        key="artists"
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: 'auto', opacity: 1 }}
+                        exit={{ width: 0, opacity: 0 }}
+                        transition={{ duration: 0.15, ease: 'easeInOut' }}
+                        className="inline-flex overflow-hidden align-baseline"
+                      >
+                        <span className="whitespace-nowrap text-[1.6rem] font-bold text-muted-foreground">
+                          {' by '}
+                          {data.artists.length < 3
+                            ? data.artists.join(' and ')
+                            : `${data.artists.slice(0, -1).join(', ')} and ${data.artists.at(-1)}`}
+                        </span>
+                      </motion.span>
+                    </>
+                  )}
+                </AnimatePresence>
+              </h1>
+              <div className="mb-2 col-span-2 text-[1.4rem] font-[Campania] text-secondary-foreground">
+                {relativeChordSymbols && chordSymbols && (
+                  <RepeatTreeView
+                    nodes={buildRepeatTree(
+                      chordSymbols.map((chord, idx) => [chord, relativeChordSymbols[idx]]),
+                      (a, b) => {
+                        return a[0] === b[0] && a[1] === b[1]
+                      },
+                    )}
+                    renderLeaf={([chord, relativeChord], indices) => (
+                      <div key={indices.join(',')} className="flex flex-col items-center">
+                        {relativeChordSymbols && (
+                          <div
+                            className={`mb-2 ${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
+                          >
+                            {relativeChord}
+                          </div>
+                        )}
+                        <div
+                          className={`mb-2 ${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
+                        >
+                          {chord}
+                        </div>
+                      </div>
+                    )}
+                  />
+                )}
+              </div>
+              <div onClick={(e) => e.stopPropagation()} className="w-md">
+                <ProgressBar
+                  value={currentTime ?? 0}
+                  onValueChange={(value) => {
+                    console.log('Seeking to', value)
+                    player.current?.seekTo(typeof value === 'number' ? value : value(currentTime ?? 0), true)
+                  }}
+                  isPlaying={isPlaying}
+                  setIsPlaying={(play) => {
+                    console.log('Setting playing to', play)
+                    if (play && playerMax !== undefined && (currentTime ?? 0) >= playerMax) {
+                      player.current?.seekTo(playerMin, true)
+                    }
+                    setPlaying(play)
+                  }}
+                  step={0.1}
+                  min={playerMin}
+                  max={playerMax}
+                  started={playerStarted}
+                  chords={relativeChordSymbols}
+                  times={chordTimes}
+                  activeIndex={currentChordIndex}
+                  buffering={/* currentState === 3 ||  */ currentState === -1}
+                />
+              </div>
+            </div>
+          </div>
         </CollapsibleTrigger>
         <CollapsibleContent
           forceMount
@@ -304,34 +338,6 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                 outerRadius={300}
                 textStyle={{ fontSize: '5rem' }}
               />
-            </div>
-            <div className="flex flex-wrap gap-2 justify-center mt-4 col-span-2 text-[1.4rem] font-[Campania] text-secondary-foreground">
-              {/* {relativeChordSymbols && chordSymbols && (
-                <RepeatTreeView
-                  nodes={buildRepeatTree(
-                    chordSymbols.map((chord, idx) => [chord, relativeChordSymbols[idx]]),
-                    (a, b) => {
-                      return a[0] === b[0] && a[1] === b[1]
-                    },
-                  )}
-                  renderLeaf={([chord, relativeChord], indices) => (
-                    <div key={indices.join(',')} className="flex flex-col items-center">
-                      {relativeChordSymbols && (
-                        <div
-                          className={`mb-2 ${currentChordIndex !== null && indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
-                        >
-                          {relativeChord}
-                        </div>
-                      )}
-                      <div
-                        className={`mb-2${currentChordIndex !== null && indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
-                      >
-                        {chord}
-                      </div>
-                    </div>
-                  )}
-                />
-              )} */}
             </div>
           </div>
         </CollapsibleContent>
