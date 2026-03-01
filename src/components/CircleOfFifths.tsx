@@ -90,25 +90,30 @@ export default function CircleOfFifths({
 
   return (
     <div className="flex items-center justify-center">
-      <svg viewBox={`-${radius} -${radius} ${radius * 2} ${radius * 2}`} className="w-60 h-60">
-        {/* --- MASK: hide lines where notes are --- */}
+      <svg viewBox={`-${radius} -${radius} ${radius * 2} ${radius * 2}`} className="w-56 h-56">
         <defs>
           <radialGradient id="noteFade" cx="0.5" cy="0.5" r="0.5">
             <stop offset="60%" stopColor="black" />
             <stop offset="100%" stopColor="white" />
           </radialGradient>
 
+          <filter id="activeGlow">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
           <mask id="chord-line-mask">
             <rect x={-radius} y={-radius} width={radius * 2} height={radius * 2} fill="white" />
-
-            {/* Apply gradient masks for each note */}
             {circleCoords.map(({ x, y }, index) =>
               anyIsMinor || index < 12 ? (
                 <circle
                   key={`mask-${index}`}
                   cx={x}
                   cy={y}
-                  r={maskRadius} // outer radius of the fade
+                  r={maskRadius}
                   fill="url(#noteFade)"
                 />
               ) : null,
@@ -116,33 +121,7 @@ export default function CircleOfFifths({
           </mask>
         </defs>
 
-        {/* <g opacity={0.5}>
-          <rect
-            x={-radius}
-            y={-radius}
-            width={radius * 2}
-            height={radius * 2}
-            fill="white"
-            stroke="black"
-            strokeWidth={1}
-          />
-          {circleCoords.map(({ x, y }, index) =>
-            anyIsMinor || index < 12 ? (
-              <circle
-                key={`debug-${index}`}
-                cx={x}
-                cy={y}
-                r={maskRadius}
-                fill="url(#noteFade)"
-                stroke="red"
-                strokeWidth={1}
-              />
-            ) : null,
-          )}
-        </g> */}
-
-        {/* --- LINES between chords, with mask applied --- */}
-        <g mask="url(#chord-line-mask)" /* className="text-muted-foreground" */>
+        <g mask="url(#chord-line-mask)">
           {chordPoints.map((pt, i) => {
             if (!pt || i === 0) return null
             const prev = chordPoints[i - 1]
@@ -150,25 +129,18 @@ export default function CircleOfFifths({
             if (prev.x === pt.x && prev.y === pt.y) return null
 
             const pull = 0.54
-
             const controlX = (prev.x + pt.x) * (1 - pull)
             const controlY = (prev.y + pt.y) * (1 - pull)
-
             const d = `M ${prev.x} ${prev.y} Q ${controlX} ${controlY} ${pt.x} ${pt.y}`
-
-            // --- label midpoint ---
-            // const midX = 0.25 * prev.x + 0.5 * controlX + 0.25 * pt.x
-            // const midY = 0.25 * prev.y + 0.5 * controlY + 0.25 * pt.y
 
             return (
               <g key={`curve-${i}`}>
-                <path d={d} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" opacity={0.8} />
+                <path d={d} fill="none" stroke="currentColor" strokeWidth={1.2} strokeLinecap="round" opacity={0.5} />
               </g>
             )
           })}
         </g>
 
-        {/* --- NOTES --- */}
         {circleCoords.map(
           ({ note, x, y }, index) =>
             (anyIsMinor || index < 12) && (
@@ -180,16 +152,17 @@ export default function CircleOfFifths({
                 dominantBaseline="central"
                 className={`font-[Campania] transition-all duration-300 ${
                   activeIndex != null && index === chordIndexes[activeIndex]
-                    ? 'fill-secondary-foreground font-semibold scale-110'
-                    : 'fill-muted-foreground'
+                    ? 'fill-primary font-semibold'
+                    : 'fill-muted-foreground/80'
                 }`}
                 style={{
                   ...textStyle,
                   filter:
                     activeIndex != null && index === chordIndexes[activeIndex]
-                      ? 'drop-shadow(2px 17px 4px rgba(0,0,0,.2))'
-                      : 'drop-shadow(1px 4px 3px rgba(0,0,0,.4))',
+                      ? undefined
+                      : undefined,
                 }}
+                {...(activeIndex != null && index === chordIndexes[activeIndex] ? { filter: 'url(#activeGlow)' } : {})}
               >
                 {note}
               </text>

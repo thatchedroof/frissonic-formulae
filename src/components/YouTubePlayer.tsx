@@ -31,7 +31,7 @@ export default function YouTubePlayer({
   }
 
   return (
-    <div className="bg-muted rounded-lg overflow-hidden video-container aspect-video">
+    <div className="bg-muted rounded-xl overflow-hidden video-container aspect-video">
       {videoId && playerStarted ? (
         <YouTube
           style={{ height: '100%', width: '100%' }}
@@ -45,7 +45,7 @@ export default function YouTubePlayer({
         />
       ) : (
         <div
-          className="relative w-full h-full"
+          className="relative w-full h-full group/thumb cursor-pointer"
           onClick={(e) => {
             e.stopPropagation()
             onClick && onClick()
@@ -54,13 +54,12 @@ export default function YouTubePlayer({
           <img
             src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
             alt="Video thumbnail"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover/thumb:scale-105"
           />
 
-          {/* Play button overlay */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-black/50 rounded-full p-4">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+          <div className="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/30 transition-colors flex items-center justify-center">
+            <div className="bg-primary/90 rounded-full p-3.5 shadow-lg transition-transform duration-200 group-hover/thumb:scale-110">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>

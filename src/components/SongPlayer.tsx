@@ -172,46 +172,54 @@ export default function SongPlayer({ data }: { data: ChordData }) {
   const playerMin = Math.max(chordTimeBounds?.min ?? 0 - 1, 0)
   const playerMax = Math.min(chordTimeBounds?.max ?? 0 + 1, duration ?? Infinity)
 
+  const artistsText = data.artists && data.artists.length > 0
+    ? data.artists.length < 3
+      ? data.artists.join(' and ')
+      : `${data.artists.slice(0, -1).join(', ')} and ${data.artists.at(-1)}`
+    : null
+
   return (
     <div
-      className={`p-4 rounded-lg m-3 hover:bg-card-foreground/3`}
-      style={{ transition: 'background-color 0.2s ease, border 1s ease' }}
+      className={`group rounded-xl border border-transparent transition-all duration-200 ${
+        collapsibleState
+          ? 'bg-card border-border shadow-lg'
+          : 'hover:bg-card/60 hover:border-border/50 hover:shadow-sm'
+      }`}
       onClick={() => {
         setCollapsibleState(!collapsibleState)
       }}
     >
       <Collapsible open={collapsibleState} onOpenChange={setCollapsibleState}>
-        <CollapsibleTrigger className="text-lg font-medium mb-2 ml-1 flex flex-row items-center gap-2">
-          <div className="flex flex-row">
-            <ChevronRight className={`mt-2 h-6 w-6 transition-transform ${collapsibleState ? 'rotate-90' : ''}`} />
-            <div className="flex flex-col gap-3 items-start">
-              <h1 className="ml-2 text-[1.6rem] font-bold italic">
-                {data.name}
+        <CollapsibleTrigger className="w-full text-left">
+          <div className="px-5 py-4 flex items-start gap-4">
+            <div className={`mt-1.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-all duration-200 ${
+              collapsibleState ? 'bg-primary/15 text-primary' : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
+            }`}>
+              <ChevronRight className={`h-4 w-4 transition-transform duration-200 ${collapsibleState ? 'rotate-90' : ''}`} />
+            </div>
 
+            <div className="flex flex-col gap-2.5 min-w-0 flex-1">
+              <div>
+                <h2 className="text-xl font-semibold tracking-tight leading-tight">
+                  {data.name}
+                </h2>
                 <AnimatePresence initial={false}>
-                  {collapsibleState && data.artists && data.artists.length > 0 && (
-                    <>
-                      {' '}
-                      <motion.span
-                        key="artists"
-                        initial={{ width: 0, opacity: 0 }}
-                        animate={{ width: 'auto', opacity: 1 }}
-                        exit={{ width: 0, opacity: 0 }}
-                        transition={{ duration: 0.15, ease: 'easeInOut' }}
-                        className="inline-flex overflow-hidden align-baseline"
-                      >
-                        <span className="whitespace-nowrap text-[1.6rem] font-bold text-muted-foreground">
-                          {' by '}
-                          {data.artists.length < 3
-                            ? data.artists.join(' and ')
-                            : `${data.artists.slice(0, -1).join(', ')} and ${data.artists.at(-1)}`}
-                        </span>
-                      </motion.span>
-                    </>
+                  {artistsText && (
+                    <motion.p
+                      key="artists"
+                      initial={collapsibleState ? { height: 0, opacity: 0 } : false}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.15, ease: 'easeInOut' }}
+                      className="overflow-hidden text-sm text-muted-foreground mt-0.5"
+                    >
+                      {artistsText}
+                    </motion.p>
                   )}
                 </AnimatePresence>
-              </h1>
-              <div className="mb-2 col-span-2 text-[1.4rem] font-[Campania] text-secondary-foreground">
+              </div>
+
+              <div className="text-[1.15rem] font-[Campania] text-secondary-foreground leading-relaxed">
                 {relativeChordSymbols && chordSymbols && (
                   <RepeatTreeView
                     nodes={buildRepeatTree(
@@ -224,13 +232,13 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                       <div key={indices.join(',')} className="flex flex-col items-center">
                         {relativeChordSymbols && (
                           <div
-                            className={`mb-2 ${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
+                            className={`mb-1 transition-opacity duration-200 ${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-25'}`}
                           >
                             {relativeChord}
                           </div>
                         )}
                         <div
-                          className={`mb-2 ${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
+                          className={`mb-1 text-muted-foreground text-[0.95rem] transition-opacity duration-200 ${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-25'}`}
                         >
                           {chord}
                         </div>
@@ -239,7 +247,8 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                   />
                 )}
               </div>
-              <div onClick={(e) => e.stopPropagation()} className="w-md">
+
+              <div onClick={(e) => e.stopPropagation()} className="max-w-md">
                 <ProgressBar
                   value={currentTime ?? 0}
                   onValueChange={(value) => {
@@ -267,6 +276,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
             </div>
           </div>
         </CollapsibleTrigger>
+
         <CollapsibleContent
           forceMount
           className="
@@ -274,70 +284,66 @@ export default function SongPlayer({ data }: { data: ChordData }) {
               data-[state=closed]:animate-collapsible-up
               overflow-hidden
               data-[state=closed]:h-0
-              grid
-              place-items-center
             "
-          style={{ gridTemplateColumns: 'auto 1fr' }}
         >
-          <div className="flex flex-col items-center">
-            <div
-              className="m-4 h-fit w-fit"
-              style={{
-                transition: 'opacity 1s ease-in-out',
-              }}
-            >
-              <YouTubePlayer
-                videoId={data.videoId}
-                playerStarted={playerStarted}
-                onPlayerReady={onPlayerReady}
-                onPlay={onPlay}
-                onPause={onPause}
-                onPlaybackRateChange={onPlaybackRateChange}
-                onStateChange={onStateChange}
-                onClick={() => {
-                  setPlaying(true)
-                }}
-              />
-            </div>
+          <div className="px-5 pb-5 pt-2 border-t border-border/40 mx-5">
+            <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto] gap-6 pt-4 items-start">
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-full max-w-sm rounded-xl overflow-hidden shadow-md">
+                  <YouTubePlayer
+                    videoId={data.videoId}
+                    playerStarted={playerStarted}
+                    onPlayerReady={onPlayerReady}
+                    onPlay={onPlay}
+                    onPause={onPause}
+                    onPlaybackRateChange={onPlaybackRateChange}
+                    onStateChange={onStateChange}
+                    onClick={() => {
+                      setPlaying(true)
+                    }}
+                  />
+                </div>
 
-            {playbackRates && playbackRates.length > 1 && (
-              <ToggleGroup
-                onClick={(e) => e.stopPropagation()}
-                type="single"
-                className="inline-flex ml-1 mb-2 border-ring text-muted-foreground"
-                value={currentPlaybackRate?.toString()}
-                onValueChange={(value) => {
-                  const rate = parseFloat(value)
-                  if (player.current && !isNaN(rate)) {
-                    player.current.setPlaybackRate(rate)
-                  }
-                }}
-              >
-                {playbackRates?.map((rate, i) => (
-                  <ToggleGroupItem
-                    key={i}
-                    value={rate.toString()}
-                    aria-label={`Toggle ${rate}x speed`}
-                    className={`border-ring data-[state=on]:text-primary hover:bg-accent/50`}
+                {playbackRates && playbackRates.length > 1 && (
+                  <ToggleGroup
+                    onClick={(e) => e.stopPropagation()}
+                    type="single"
+                    className="inline-flex rounded-lg bg-muted/50 p-0.5"
+                    value={currentPlaybackRate?.toString()}
+                    onValueChange={(value) => {
+                      const rate = parseFloat(value)
+                      if (player.current && !isNaN(rate)) {
+                        player.current.setPlaybackRate(rate)
+                      }
+                    }}
                   >
-                    {rate}x
-                  </ToggleGroupItem>
-                ))}
-              </ToggleGroup>
-            )}
-          </div>
-          {/* <ChordVis value={currentTime ?? 0} chords={chordSymbols ?? []} times={chordTimes ?? []} /> */}
-          <div>
-            <div className="border-ring p-2 rounded-lg border-2">
-              <CircleOfFifths
-                value={currentTime ?? 0}
-                chords={chordSymbols ?? []}
-                times={chordTimes ?? []}
-                activeIndex={preCurrentChordIndex}
-                songKey={key}
-                outerRadius={300}
-                textStyle={{ fontSize: '5rem' }}
-              />
+                    {playbackRates?.map((rate, i) => (
+                      <ToggleGroupItem
+                        key={i}
+                        value={rate.toString()}
+                        aria-label={`Toggle ${rate}x speed`}
+                        className="text-xs px-2.5 py-1 rounded-md data-[state=on]:bg-background data-[state=on]:text-primary data-[state=on]:shadow-sm"
+                      >
+                        {rate}x
+                      </ToggleGroupItem>
+                    ))}
+                  </ToggleGroup>
+                )}
+              </div>
+
+              <div className="flex items-center justify-center">
+                <div className="rounded-xl bg-muted/30 p-3 border border-border/30">
+                  <CircleOfFifths
+                    value={currentTime ?? 0}
+                    chords={chordSymbols ?? []}
+                    times={chordTimes ?? []}
+                    activeIndex={preCurrentChordIndex}
+                    songKey={key}
+                    outerRadius={280}
+                    textStyle={{ fontSize: '4.5rem' }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </CollapsibleContent>

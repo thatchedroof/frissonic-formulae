@@ -17,8 +17,8 @@ export default function App() {
 
   if (!ready)
     return (
-      <div className="flex h-screen w-screen items-center justify-center bg-neutral-900">
-        <Spinner size={48} className="text-neutral-200" variant="ring" />
+      <div className="flex h-screen w-screen items-center justify-center bg-background">
+        <Spinner size={48} className="text-primary" variant="ring" />
       </div>
     )
 

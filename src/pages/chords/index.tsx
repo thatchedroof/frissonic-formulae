@@ -24,60 +24,75 @@ export default function Chords() {
     }
   }, [])
 
+  const completeSongs = data.filter(
+    (item) =>
+      item &&
+      !item.todo &&
+      (item.chordTimes ?? []).flat().length > 0 &&
+      (item.chordSymbols ?? []).flat().length > 0,
+  )
+
+  const todoSongs = data.filter(
+    (item) =>
+      item &&
+      !(
+        !item.todo &&
+        (item.chordTimes ?? []).flat().length > 0 &&
+        (item.chordSymbols ?? []).flat().length > 0
+      ),
+  )
+
   return (
     <>
       <Helmet>
         <title>Frissonic Formulae</title>
       </Helmet>
-      <div className="h-20"></div>
-      {data
-        .filter(
-          (item) =>
-            item &&
-            !item.todo &&
-            (item.chordTimes ?? []).flat().length > 0 &&
-            (item.chordSymbols ?? []).flat().length > 0,
-        )
-        .map((item, index) => (
-          <SongPlayer key={index} data={item} />
-        ))}
-      <div className="m-20">
-        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">TODO:</h2>
-        <p className="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
-          {data
-            .filter(
-              (item) =>
-                item &&
-                !(
-                  !item.todo &&
-                  (item.chordTimes ?? []).flat().length > 0 &&
-                  (item.chordSymbols ?? []).flat().length > 0
-                ),
-            )
-            .map((item, index) => (
-              <>
-                {item.videoId ? (
+
+      <div className="h-16" />
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="pt-10 pb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            Chord Progressions
+          </h1>
+          <p className="mt-2 text-muted-foreground text-base sm:text-lg max-w-2xl">
+            Explore harmonic structures across {completeSongs.length > 0 ? completeSongs.length : ''} songs — visualised on the Circle of Fifths, synced to playback.
+          </p>
+        </div>
+
+        <div className="space-y-3 pb-8">
+          {completeSongs.map((item, index) => (
+            <SongPlayer key={index} data={item} />
+          ))}
+        </div>
+
+        {todoSongs.length > 0 && (
+          <div className="border-t border-border/50 pt-8 pb-16">
+            <h2 className="text-lg font-semibold text-muted-foreground mb-4">Coming Soon</h2>
+            <div className="flex flex-wrap gap-2">
+              {todoSongs.map((item, index) =>
+                item.videoId ? (
                   <a
                     key={`link-${index}`}
                     href={`https://www.youtube.com/watch?v=${item.videoId}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline italic"
+                    className="inline-flex items-center rounded-full bg-muted/80 px-3 py-1 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
                     {item.name}
                   </a>
                 ) : (
-                  <span key={`link-${index}`} className="italic">
+                  <span
+                    key={`link-${index}`}
+                    className="inline-flex items-center rounded-full bg-muted/50 px-3 py-1 text-sm text-muted-foreground/70"
+                  >
                     {item.name}
                   </span>
-                )}
-                <span className="text-muted-foreground mx-2" key={`dot-${index}`}>
-                  •
-                </span>
-              </>
-            ))}
-          and more...
-        </p>
+                ),
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </>
   )

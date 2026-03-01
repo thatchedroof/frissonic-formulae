@@ -59,29 +59,27 @@ export default function ProgressBar({
     [max, min, onValueChange],
   )
 
-  const playStyle = 'h-7 w-7'
+  const playStyle = 'h-5 w-5'
 
   return (
-    <div className="w-full max-w-md text-3xl">
-      <div className="flex h-12 items-center rounded-[.5rem] border-[1.5px] border-ring bg-muted ring-1 ring-black/30 shadow-inner overflow-hidden">
-        {/* Play/Pause button */}
+    <div className="w-full max-w-md">
+      <div className="flex h-10 items-center rounded-lg bg-muted/60 border border-border/60 overflow-hidden transition-colors hover:border-border">
         <button
           aria-label={buffering ? 'Buffering' : isPlaying ? 'Pause' : 'Play'}
           onClick={() => setIsPlaying(!isPlaying)}
-          className="flex h-full w-12 shrink-0 items-center justify-center border-r bg-muted hover:bg-accent active:scale-[0.97] transition"
+          className="flex h-full w-10 shrink-0 items-center justify-center border-r border-border/40 hover:bg-accent/60 active:scale-[0.97] transition-all"
         >
           {isPlaying ? (
-            <Pause color="transparent" className={playStyle + ' fill-muted-foreground'} />
+            <Pause color="transparent" className={playStyle + ' fill-foreground/70'} />
           ) : buffering ? (
             <Spinner className={playStyle + ' text-muted-foreground'} />
           ) : (
-            <Play color="transparent" className={playStyle + ' fill-muted-foreground'} />
+            <Play color="transparent" className={playStyle + ' fill-foreground/70'} />
           )}
         </button>
 
-        {/* Progress track */}
         <div
-          className="relative h-full flex-1 select-none bg-muted border-l-[1.5px] border-ring"
+          className="relative h-full flex-1 select-none cursor-pointer"
           role="slider"
           aria-valuemin={min}
           aria-valuemax={max}
@@ -91,7 +89,6 @@ export default function ProgressBar({
           tabIndex={0}
           onKeyDown={onKeyDown}
           onMouseDown={(e) => {
-            // TODO: only start playing if started, seek to position
             setIsPlaying(true)
             seekFromPointer(e.clientX)
             const move = (me: MouseEvent) => seekFromPointer(me.clientX)
@@ -104,12 +101,15 @@ export default function ProgressBar({
           }}
           ref={barRef}
         >
-          {/* Fill (dark segment like the mock) */}
           <div
-            className="absolute left-0 top-0 h-full bg-muted-foreground/20"
+            className="absolute left-0 top-0 h-full bg-primary/15 transition-[width] duration-75"
             style={{ width: `${((value - min) / (max - min)) * 100}%` }}
           />
-          <div className="absolute h-full w-full pointer-none flex justify-center items-center">
+          <div
+            className="absolute top-0 h-full w-0.5 bg-primary/60 transition-[left] duration-75"
+            style={{ left: `${((value - min) / (max - min)) * 100}%` }}
+          />
+          <div className="absolute h-full w-full pointer-events-none flex justify-center items-center">
             {chords && times && started && <ChordVis value={value} chords={chords} times={times} />}
           </div>
         </div>
