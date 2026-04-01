@@ -4,6 +4,7 @@ import ErrorPage from './components/error-page'
 import { getDefaultLayout } from './components/layout'
 import HomePage from './pages/home'
 import ChordsPage from './pages/chords'
+import TocEditPage from './pages/tocedit'
 
 export const routerObjects: RouteObject[] = [
   {
@@ -13,6 +14,10 @@ export const routerObjects: RouteObject[] = [
   {
     path: '/edit',
     Component: HomePage,
+  },
+  {
+    path: '/toc-edit',
+    Component: TocEditPage,
   },
 ]
 

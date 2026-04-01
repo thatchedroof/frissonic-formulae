@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import SongPlayer from 'src/components/SongPlayer.js'
+import { Spinner } from '../../components/ui/shadcn-io/spinner'
 import { ChordData, parseChordData } from 'src/lib/utils.js'
 
 export default function Chords() {
@@ -24,6 +25,13 @@ export default function Chords() {
     }
   }, [])
 
+  if (data.length === 0)
+    return (
+      <div className="flex h-screen w-screen items-center justify-center bg-neutral-900">
+        <Spinner size={48} className="text-neutral-200" variant="ring" />
+      </div>
+    )
+
   return (
     <>
       <Helmet>
@@ -41,6 +49,16 @@ export default function Chords() {
         .map((item, index) => (
           <SongPlayer key={index} data={item} />
         ))}
+      {data
+        .filter(
+          (item) =>
+            item &&
+            !item.todo &&
+            !((item.chordTimes ?? []).flat().length > 0 && (item.chordSymbols ?? []).flat().length > 0),
+        )
+        .map((item, index) => (
+          <SongPlayer key={index} data={item} />
+        ))}
       <div className="m-20">
         <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">TODO:</h2>
         <p className="leading-7 [&:not(:first-child)]:mt-6 text-muted-foreground">
@@ -49,9 +67,10 @@ export default function Chords() {
               (item) =>
                 item &&
                 !(
-                  !item.todo &&
-                  (item.chordTimes ?? []).flat().length > 0 &&
-                  (item.chordSymbols ?? []).flat().length > 0
+                  !item.todo
+                  // &&
+                  // (item.chordTimes ?? []).flat().length > 0 &&
+                  // (item.chordSymbols ?? []).flat().length > 0
                 ),
             )
             .map((item, index) => (

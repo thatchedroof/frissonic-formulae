@@ -20,6 +20,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
   const chordTimes = data.chordTimes?.[subKey]
   const chordSymbols = data.chordSymbols?.[subKey]
   const key = data.key?.[subKey]
+  const hasChords = chordSymbols && chordTimes && chordTimes.length > 0 && chordSymbols.length > 0
 
   const chordTimeBounds = useMemo(() => {
     if (!chordTimes || chordTimes.length === 0) return null
@@ -211,7 +212,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                   )}
                 </AnimatePresence>
               </h1>
-              <div className="mb-2 col-span-2 text-[1.4rem] font-[Campania] text-secondary-foreground">
+              <div className="col-span-2 text-[1.4rem] font-[Campania] text-secondary-foreground">
                 {relativeChordSymbols && chordSymbols && (
                   <RepeatTreeView
                     nodes={buildRepeatTree(
@@ -230,7 +231,7 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                           </div>
                         )}
                         <div
-                          className={`mb-2 ${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
+                          className={`${currentChordIndex === null || indices.includes(currentChordIndex) ? '' : 'opacity-30'}`}
                         >
                           {chord}
                         </div>
@@ -239,31 +240,33 @@ export default function SongPlayer({ data }: { data: ChordData }) {
                   />
                 )}
               </div>
-              <div onClick={(e) => e.stopPropagation()} className="w-md">
-                <ProgressBar
-                  value={currentTime ?? 0}
-                  onValueChange={(value) => {
-                    console.log('Seeking to', value)
-                    player.current?.seekTo(typeof value === 'number' ? value : value(currentTime ?? 0), true)
-                  }}
-                  isPlaying={isPlaying}
-                  setIsPlaying={(play) => {
-                    console.log('Setting playing to', play)
-                    if (play && playerMax !== undefined && (currentTime ?? 0) >= playerMax) {
-                      player.current?.seekTo(playerMin, true)
-                    }
-                    setPlaying(play)
-                  }}
-                  step={0.1}
-                  min={playerMin}
-                  max={playerMax}
-                  started={playerStarted}
-                  chords={relativeChordSymbols}
-                  times={chordTimes}
-                  activeIndex={currentChordIndex}
-                  buffering={/* currentState === 3 ||  */ currentState === -1}
-                />
-              </div>
+              {hasChords && (
+                <div onClick={(e) => e.stopPropagation()} className="w-md mt-2">
+                  <ProgressBar
+                    value={currentTime ?? 0}
+                    onValueChange={(value) => {
+                      console.log('Seeking to', value)
+                      player.current?.seekTo(typeof value === 'number' ? value : value(currentTime ?? 0), true)
+                    }}
+                    isPlaying={isPlaying}
+                    setIsPlaying={(play) => {
+                      console.log('Setting playing to', play)
+                      if (play && playerMax !== undefined && (currentTime ?? 0) >= playerMax) {
+                        player.current?.seekTo(playerMin, true)
+                      }
+                      setPlaying(play)
+                    }}
+                    step={0.1}
+                    min={playerMin}
+                    max={playerMax}
+                    started={playerStarted}
+                    chords={relativeChordSymbols}
+                    times={chordTimes}
+                    activeIndex={currentChordIndex}
+                    buffering={/* currentState === 3 ||  */ currentState === -1}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </CollapsibleTrigger>
@@ -327,19 +330,21 @@ export default function SongPlayer({ data }: { data: ChordData }) {
             )}
           </div>
           {/* <ChordVis value={currentTime ?? 0} chords={chordSymbols ?? []} times={chordTimes ?? []} /> */}
-          <div>
-            <div className="border-ring p-2 rounded-lg border-2">
-              <CircleOfFifths
-                value={currentTime ?? 0}
-                chords={chordSymbols ?? []}
-                times={chordTimes ?? []}
-                activeIndex={preCurrentChordIndex}
-                songKey={key}
-                outerRadius={300}
-                textStyle={{ fontSize: '5rem' }}
-              />
+          {hasChords && (
+            <div>
+              <div className="border-ring p-2 rounded-lg border-2">
+                <CircleOfFifths
+                  value={currentTime ?? 0}
+                  chords={chordSymbols ?? []}
+                  times={chordTimes ?? []}
+                  activeIndex={preCurrentChordIndex}
+                  songKey={key}
+                  outerRadius={300}
+                  textStyle={{ fontSize: '5rem' }}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </CollapsibleContent>
       </Collapsible>
     </div>

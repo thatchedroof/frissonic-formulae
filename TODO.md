@@ -7,3 +7,9 @@
 - Notes box
 - Make monotonic by stopping when starting to go backwards then starting again at same place
 - Should split big components into hooks
+
+Bugs
+- CoF wheel is rotated in minor key
+- Final chord stays white
+- Fix absoluteToRelative rust code
+- Fix reruns on repeat tree code

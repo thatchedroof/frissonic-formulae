@@ -99,6 +99,27 @@ export default function Home() {
 
   const api = useStrudelPlayer()
 
+  useEffect(() => {
+    for (const [i, item] of (data ?? []).entries()) {
+      if ((item.chordSymbols?.[0] ?? []).length === 0 && item.chords && !item.todo) {
+        setData((prevData) => {
+          if (!prevData) return prevData
+          if (!item.chords) return prevData
+          const newData = [...prevData]
+          const chordSymbols = item.chords.map((line) =>
+            line
+              .replaceAll(/@\.?\d+|[\[\]]/g, '')
+              .trim()
+              .split(' '),
+          )
+          newData[i] = { ...item, chordSymbols }
+          console.log('Auto-filling chordSymbols for', item.name)
+          return newData
+        })
+      }
+    }
+  }, [data])
+
   return (
     <StrudelCtx.Provider value={api}>
       <Helmet>
