@@ -14,7 +14,7 @@ export function useYouTubeController(startAt?: number) {
     (e: YouTubeEvent) => {
       player.current = e.target
       setDuration(e.target.getDuration())
-      player.current.seekTo(Math.max((startAt ?? 0) - 1, 0), true)
+      player.current.seekTo(startAt ?? 0, true)
       setPlaybackRates(e.target.getAvailablePlaybackRates())
     },
     [startAt],
